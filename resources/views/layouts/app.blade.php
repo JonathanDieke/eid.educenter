@@ -5,15 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ env('APP_NAME',  "Laravel") }}</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <!-- mobile responsive meta -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
         <!-- ** Plugins Needed for the Project ** -->
         <!-- Bootstrap -->
@@ -31,39 +29,46 @@
 
         <!-- Main Stylesheet -->
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
+        
         <!--Favicon-->
-        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
-        <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
+        <!-- Scripts -->
+        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     </head>
     <body class="">
+        {{-- <div class="min-h-screen bg-gray-100"> --}}
+            {{-- @include('layouts.navigation')
 
-        <div style="">
-            {{ $slot }}
-        </div>
+            <!-- Page Heading -->
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header> --}}
+
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+        {{-- </div> --}}
 
         <!-- jQuery -->
-        <script src="{{ asset('assets/plugins/jQuery/jquery.min.js') }} "></script>
+        <script src="{{ asset('assets/plugins/jQuery/jquery.min.js') }}"></script>
         <!-- Bootstrap JS -->
-        <script src="{{ asset('assets/plugins/bootstrap/bootstrap.min.js') }} "></script>
+        <script src="{{ asset('assets/plugins/bootstrap/bootstrap.min.js') }}"></script>
         <!-- slick slider -->
-        <script src="{{ asset('assets/plugins/slick/slick.min.js') }} "></script>
+        <script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
         <!-- aos -->
-        <script src="{{ asset('assets/plugins/aos/aos.js') }} "></script>
+        <script src="{{ asset('assets/plugins/aos/aos.js') }}"></script>
         <!-- venobox popup -->
-        <script src="{{ asset('assets/plugins/venobox/venobox.min.js') }} "></script>
+        <script src="{{ asset('assets/plugins/venobox/venobox.min.js') }}"></script>
         <!-- mixitup filter -->
-        <script src="{{ asset('assets/plugins/mixitup/mixitup.min.js') }} "></script>
+        <script src="{{ asset('assets/plugins/mixitup/mixitup.min.js') }}"></script>
         <!-- google map -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-        <script src="{{ asset('assets/plugins/google-map/gmap.js') }} "></script>
+        <script src="{{ asset('assets/plugins/google-map/gmap.js') }}"></script>
 
         <!-- Main Script -->
         <script src="{{ asset('assets/js/script.js') }}"></script>

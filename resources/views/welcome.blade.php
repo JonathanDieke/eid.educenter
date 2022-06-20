@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="navbar-nav ml-auto text-center">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.html">Dashboard</a>
                 </li>
                 <li class="nav-item @@about">
                     <a class="nav-link" href="about.html">About</a>
