@@ -24,7 +24,6 @@
                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li> --}}
                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
-                {{-- <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{{ route('register2') }}">Inscription</a></li> --}}
                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal" >Inscription</a></li>
                </ul>
            </div>
@@ -86,7 +85,7 @@
    </header>
    <!-- /header -->
    <!-- Modal Register -->
-   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true" wire:ignore.self>
+   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
@@ -101,23 +100,24 @@
                     </div>
                @endforeach --}}
                <div class="modal-body">
-                    <div class="login">
-                        <form  class="row" wire:submit.prevent="register">
+                    <div>
+                        <form  class="row" wire:submit.prevent="register" autocomplete="off">
+                            <input autocomplete="false" name="hidden" type="text" style="display:none;">
                             <div class="col-12">
                                 @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="text" class="form-control mb-3" id="name" wire:model="name"  placeholder="Nom">
+                                <input type="text" class="form-control mb-3" wire:model="name"  placeholder="Nom">
                             </div>
                             <div class="col-12">
                                 @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="email" class="form-control mb-3" id="email" wire:model="email" placeholder="Email" autocomplete="off ">
+                                <input type="email" class="form-control mb-3" wire:model="email" placeholder="Email" autocomplete="off ">
                             </div>
                             <div class="col-12">
                                 @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="password" class="form-control mb-3" id="password" wire:model="password"  placeholder="Mot de passe">
+                                <input type="password" class="form-control mb-3" wire:model="password"  placeholder="Mot de passe">
                             </div>
                             <div class="col-12">
                                 @error('password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="password" class="form-control mb-3" id="password_confirmation" wire:model="password_confirmation"  placeholder="Confirmez mot de passe">
+                                <input type="password" class="form-control mb-3" wire:model="password_confirmation"  placeholder="Confirmez mot de passe">
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary">S'enregistrer</button>
@@ -131,7 +131,7 @@
    <!-- Modal Register -->
 
    <!-- Modal Login -->
-   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
@@ -141,16 +141,18 @@
                    </button>
                </div>
                <div class="modal-body">
-                   <form action="{{ route('login') }}" method="POST" class="row">
-                        @csrf
+                   <form wire:submit.prevent="login" class="row" autocomplete="off">
+                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
                        <div class="col-12">
-                           <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Name">
+                            @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                            <input type="email" class="form-control mb-3" wire:model="email" placeholder="Email">
+                        </div>
+                        <div class="col-12">
+                           @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                           <input type="password" class="form-control mb-3" wire:model="password" placeholder="Mot de passe">
                        </div>
                        <div class="col-12">
-                           <input type="password" class="form-control mb-3" id="password" name="password" placeholder="Password">
-                       </div>
-                       <div class="col-12">
-                           <button type="submit" class="btn btn-primary">Connexion</button>
+                           <button type="submit" class="btn btn-primary">Se connecter</button>
                        </div>
                    </form>
                </div>

@@ -1,6 +1,5 @@
 <?php
-
-use App\Http\Livewire\RegisterFormComponent;
+ 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\WelcomeComponent;
 
@@ -15,7 +14,6 @@ use App\Http\Livewire\WelcomeComponent;
 |
 */
 
-Route::get('/register2',  RegisterFormComponent::class)->name('register2');
 Route::get('/',  WelcomeComponent::class)->name('welcome');
 
 Route::get('/dashboard', function () {
