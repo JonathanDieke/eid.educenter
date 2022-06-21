@@ -1,5 +1,6 @@
 <?php
- 
+
+use App\Http\Livewire\User\UserDashboardComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\WelcomeComponent;
 
@@ -15,9 +16,9 @@ use App\Http\Livewire\WelcomeComponent;
 */
 
 Route::get('/',  WelcomeComponent::class)->name('welcome');
+Route::get('/student-profile',  WelcomeComponent::class)->name('student.profile');
+Route::get('/student-admision',  WelcomeComponent::class)->name('student.admission');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', UserDashboardComponent::class)->name('dashboard');
 
 require __DIR__.'/auth.php';

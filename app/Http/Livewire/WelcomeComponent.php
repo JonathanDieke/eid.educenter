@@ -15,7 +15,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use Illuminate\Support\Facades\Session;
+use App\View\Components\AppLayout;
 
 class WelcomeComponent extends Component
 {
@@ -45,7 +45,7 @@ class WelcomeComponent extends Component
         if(in_array($propertyName, array("email", "password")) ){
             $this->validateOnly($propertyName,  [
                 'email' => ['required', 'string', 'email', 'max:128'],
-                'password' => ['required', 'confirmed', Password::defaults()],
+                'password' => ['required', Password::defaults()],
             ]);
         }else{
             $this->validateOnly($propertyName);
@@ -144,6 +144,6 @@ class WelcomeComponent extends Component
     }
     public function render()
     {
-        return view('livewire.welcome-component');
+        return view('livewire.welcome-component')->layout(AppLayout::class);
     }
 }

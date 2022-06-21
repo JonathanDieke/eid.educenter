@@ -4,9 +4,8 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class AppLayout extends Component
+class AuthLayout extends Component
 {
-    // public $footer;
     /**
      * Create a new component instance.
      *
@@ -14,6 +13,7 @@ class AppLayout extends Component
      */
     public function __construct()
     {
+        //
     }
 
     /**
@@ -23,6 +23,6 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app');
+        return view('layouts.auth');
     }
 }
