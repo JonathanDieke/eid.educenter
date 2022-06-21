@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
+        @livewireStyles
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
         <!-- ** Plugins Needed for the Project ** -->
@@ -29,7 +30,7 @@
 
         <!-- Main Stylesheet -->
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-        
+
         <!--Favicon-->
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -72,5 +73,7 @@
 
         <!-- Main Script -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
+
+        @livewireScripts
     </body>
 </html>

@@ -12,6 +12,12 @@
                     You're logged in!
                 </div>
             </div>
+
+            <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</button>
         </div>
+
+        <form action="{{ route('logout') }}" method="post"  id='logout-form'>
+            @csrf
+        </form>
     </div>
 </x-app-layout>

@@ -1,4 +1,8 @@
-<div> 
+<div>
+
+
+
+
     <!-- header -->
    <header class="fixed-top header">
        <!-- top header -->
@@ -20,7 +24,8 @@
                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li> --}}
                 <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
-                <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal">Inscription</a></li>
+                {{-- <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{{ route('register2') }}">Inscription</a></li> --}}
+                <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal" >Inscription</a></li>
                </ul>
            </div>
            </div>
@@ -80,74 +85,79 @@
        </div>
    </header>
    <!-- /header -->
-   <!-- Modal -->
-   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+   <!-- Modal Register -->
+   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true" wire:ignore.self>
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
-                   <h3>Register</h3>
+                   <h3>Inscription</h3>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
+               {{-- @foreach ($errors->all() as $message )
+                    <div class="alert alert-success">
+                        {{ $message }}
+                    </div>
+               @endforeach --}}
                <div class="modal-body">
-                   <div class="login">
-                       <form action="{{ route('login') }}" class="row" method="POST">
-                            @csrf
-                            
-                           {{-- <div class="col-12">
-                               <input type="text" class="form-control mb-3" id="signupPhone" name="signupPhone" placeholder="Phone">
-                           </div> --}}
-                           <div class="col-12">
-                               <input type="text" class="form-control mb-3" id="signupName" name="name" value="jojo" placeholder="Nom">
-                           </div>
-                           <div class="col-12">
-                               <input type="email" class="form-control mb-3" id="signupEmail" name="email" value="jojo@jojo.ci" placeholder="Email">
-                           </div>
-                           <div class="col-12">
-                               <input type="password" class="form-control mb-3" id="signupPassword" name="password" value="12345678" placeholder="Mot de passe">
-                           </div>
-                           <div class="col-12">
-                               <input type="password" class="form-control mb-3" id="signupCPassword" name="cpassword" value="12345678" placeholder="Confirmez mot de passe">
-                           </div>
-                           <div class="col-12">
-                               <button type="submit" class="btn btn-primary">S'enregistrer</button>
-                           </div>
-                       </form>
-                   </div>
+                    <div class="login">
+                        <form  class="row" wire:submit.prevent="register">
+                            <div class="col-12">
+                                @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                <input type="text" class="form-control mb-3" id="name" wire:model="name"  placeholder="Nom">
+                            </div>
+                            <div class="col-12">
+                                @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                <input type="email" class="form-control mb-3" id="email" wire:model="email" placeholder="Email" autocomplete="off ">
+                            </div>
+                            <div class="col-12">
+                                @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                <input type="password" class="form-control mb-3" id="password" wire:model="password"  placeholder="Mot de passe">
+                            </div>
+                            <div class="col-12">
+                                @error('password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                <input type="password" class="form-control mb-3" id="password_confirmation" wire:model="password_confirmation"  placeholder="Confirmez mot de passe">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">S'enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
                </div>
            </div>
        </div>
    </div>
-   <!-- Modal -->
+   <!-- Modal Register -->
+
+   <!-- Modal Login -->
    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
-                   <h3>Login</h3>
+                   <h3>Connexion</h3>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
                <div class="modal-body">
-                   <form action="#" class="row">
+                   <form action="{{ route('login') }}" method="POST" class="row">
+                        @csrf
                        <div class="col-12">
-                           <input type="text" class="form-control mb-3" id="loginPhone" name="loginPhone" placeholder="Phone">
+                           <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Name">
                        </div>
                        <div class="col-12">
-                           <input type="text" class="form-control mb-3" id="loginName" name="loginName" placeholder="Name">
+                           <input type="password" class="form-control mb-3" id="password" name="password" placeholder="Password">
                        </div>
                        <div class="col-12">
-                           <input type="password" class="form-control mb-3" id="loginPassword" name="loginPassword" placeholder="Password">
-                       </div>
-                       <div class="col-12">
-                           <button type="submit" class="btn btn-primary">LOGIN</button>
+                           <button type="submit" class="btn btn-primary">Connexion</button>
                        </div>
                    </form>
                </div>
            </div>
        </div>
    </div>
+   <!-- Modal Login -->
 
    <!-- hero slider -->
    <section class="hero-section overlay bg-cover" data-background="{{ asset('assets/images/banner/banner-1.jpg') }}">
