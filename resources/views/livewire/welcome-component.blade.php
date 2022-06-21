@@ -510,7 +510,7 @@
    <!-- /blog -->
 
    <!-- footer -->
-   <x-slot:footer>
+   <x-slot name="footer">
         <!-- newsletter -->
         <div class="newsletter">
              <div class="container">

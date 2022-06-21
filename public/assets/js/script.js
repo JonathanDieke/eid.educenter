@@ -12,6 +12,10 @@
         }
     });
 
+    if($("footer").offset().top < window.innerHeight){
+        $('footer').addClass('fixed-bottom')
+    }
+
     // Background-images
     $('[data-background]').each(function () {
         $(this).css({
@@ -36,10 +40,10 @@
 
     // venobox popup
     $(document).ready(function(){
-        $('.venobox').venobox(); 
+        $('.venobox').venobox();
     });
 
-    
+
     // mixitup filter
     var containerEl = document.querySelector('[data-ref~="mixitup-container"]');
     var mixer;

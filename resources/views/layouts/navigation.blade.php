@@ -30,8 +30,8 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('student.profile')"> Mon profil étudiant </x-dropdown-link>
-                                <x-dropdown-link :href="route('student.admission')"> Mes admissions </x-dropdown-link>
+                                {{-- <x-dropdown-link :href="route('student.profile')"> Mon profil étudiant </x-dropdown-link>
+                                <x-dropdown-link :href="route('student.admission')"> Mes admissions </x-dropdown-link> --}}
                             </x-slot>
                         </x-dropdown>
                     </div>
