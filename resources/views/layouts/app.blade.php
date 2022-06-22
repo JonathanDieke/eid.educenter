@@ -94,17 +94,17 @@
                                 </li>
 
                             @else
-                                <li class="nav-item active">
+                                <li class="nav-item {{ set_active_route(['user.dashboard']) }}">
                                     <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
                                 </li>
-                                <li class="nav-item dropdown view">
+                                <li class="nav-item dropdown view {{ set_active_route(['admission.profile', 'admission.requests']) }}">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                         Admission
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('admission.profile') }}">Mon profil étudiant</a>
-                                        <a class="dropdown-item" href="#">Mes demandes</a>
+                                        <a class="dropdown-item" href="{{ route('admission.requests') }}">Mes demandes</a>
                                     </div>
                                 </li>
                                 <li class="nav-item @@courses">
@@ -116,7 +116,12 @@
                                         {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Déconnexion</a>
+                                        <a class="dropdown-item" href="#" onclick="event.preventDefault();
+                                        document.querySelector('#logoutForm').closest('form').submit();">Déconnexion</a>
+
+                                        <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </li>
                             @endguest
@@ -205,6 +210,9 @@
 
         <!-- Main Script -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
+
+        <!-- Alpine v3 -->
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         @livewireScripts
     </body>

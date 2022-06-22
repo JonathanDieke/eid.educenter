@@ -104,8 +104,9 @@ h6, .h6 {
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   text-transform: capitalize;
-  padding: 15px 40px;
-  border-radius: 0;
+  padding: 10px 25px;
+  /* padding: 15px 40px; */
+  border-radius: 20;
   font-weight: 500;
   border: 0;
   position: relative;
@@ -205,10 +206,16 @@ h6, .h6 {
 }
 
 .btn-secondary:hover {
-  background: #fff;
+  background: #ffbc3b;
   color: #fff;
   border: 1px solid #fff;
 }
+
+.btn-outline-secondary {
+    background: #fff;
+    color: #ffbc3b;
+    border: 1px solid #5c5c77;
+  }
 
 .btn-primary-outline {
   border: 1px solid #ffbc3b;
@@ -786,6 +793,18 @@ link:focus,
   display: inline-block;
 }
 
+.feature-icon-sm {
+  font-size: 20px;
+  color: #ffbc3b;
+  display: inline-block;
+}
+
+.feature-icon-sm-danger {
+  font-size: 20px;
+  color: #fb1613;
+  display: inline-block;
+}
+
 .feature-blocks {
   margin-top: -100px;
   padding-left: 70px;
@@ -981,6 +1000,10 @@ link:focus,
   background: #fff;
   border-radius: 0;
   padding-left: 25px;
+}
+
+.form-control-sm {
+  height: 40px;
 }
 
 .form-control:focus {

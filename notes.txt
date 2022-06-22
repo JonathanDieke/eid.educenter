@@ -1,1 +1,3 @@
 - exiger mot de passe FORT pour inscription
+- réduire les boutons sur mobile de la navigation du dossier d'admission
+

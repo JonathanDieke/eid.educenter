@@ -12,9 +12,9 @@
         }
     });
 
-    if($("footer").offset().top < window.innerHeight){
-        $('footer').addClass('fixed-bottom')
-    }
+    // if($("footer").offset().top < window.innerHeight){
+    //     $('footer').addClass('fixed-bottom')
+    // }
 
     // Background-images
     $('[data-background]').each(function () {
