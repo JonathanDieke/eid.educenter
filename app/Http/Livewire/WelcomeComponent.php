@@ -25,6 +25,8 @@ class WelcomeComponent extends Component
     public $password_confirmation ;
     protected $auth;
 
+    public $formType ;
+
     public function mount(AuthenticatedSessionController $auth){
         $this->auth = $auth ;
         // $this->name = "jojo";
@@ -33,23 +35,36 @@ class WelcomeComponent extends Component
         // $this->password_confirmation = " " ;
     }
 
+    public function setForm($formType){
+        $this->formType = $formType ;
+    }
+
     protected function rules(){
-        return   [
-            'name' => ['required', 'string', 'max:128'],
-            'email' => ['required', 'string', 'email', 'max:128', 'unique:users'],
-            'password' => ['required', 'confirmed', Password::defaults()],
-        ];
+        if($this->formType == "loginForm"){
+            return   [
+                'email' => ['required', 'string', 'email', 'max:128'],
+                'password' => ['required', 'string'],
+            ];
+        }elseif($this->formType == "registerForm"){
+            return   [
+                'name' => ['required', 'string', 'max:128'],
+                'email' => ['required', 'string', 'email', 'max:128', 'unique:users'],
+                'password' => ['required', 'string', 'confirmed', Password::defaults()],
+            ];
+
+        }
     }
 
     public function updated($propertyName){
-        if(in_array($propertyName, array("email", "password")) ){
-            $this->validateOnly($propertyName,  [
-                'email' => ['required', 'string', 'email', 'max:128'],
-                'password' => ['required', Password::defaults()],
-            ]);
-        }else{
-            $this->validateOnly($propertyName);
-        }
+        // if(in_array($propertyName, array("email", "password")) ){
+        //     $this->validateOnly($propertyName,  [
+        //         'email' => ['required', 'string', 'email', 'max:128'],
+        //         'password' => ['required', Password::defaults()],
+        //     ]);
+        // }else{
+        //     $this->validateOnly($propertyName);
+        // }
+        $this->validateOnly($propertyName);
     }
 
     public function hydrate()

@@ -103,7 +103,7 @@
                                         Admission
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Mon profil étudiant</a>
+                                        <a class="dropdown-item" href="{{ route('admission.profile') }}">Mon profil étudiant</a>
                                         <a class="dropdown-item" href="#">Mes demandes</a>
                                     </div>
                                 </li>
@@ -114,7 +114,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                         {{ Auth::user()->name }}
-                                    </a> 
+                                    </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#">Déconnexion</a>
                                     </div>
