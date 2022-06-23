@@ -41,6 +41,10 @@
             position: relative;
             display: table-cell;
         }
+        input[type="checkbox"] { /* change "blue" browser chrome to yellow */
+            /* filter: invert(50%) hue-rotate(18deg) brightness(1.7); */
+            accent-color: rgb(255,205,110, 1);
+        }
     </style>
 
     @if(!empty($successMsg))
@@ -55,21 +59,21 @@
                 <a href="#step-1" type="button" wire:click="setStep(1)" class="btn {{ $currentStep != 1 ? 'btn-default btn-step' : 'btn-primary' }}">1</a>
                 <p>Mes informations</p>
             </div>
-            <div class="multi-wizard-step">
+            {{-- <div class="multi-wizard-step">
                 <a href="#step-2" type="button" wire:click="setStep(2)" class="btn {{ $currentStep != 2 ? 'btn-default btn-step' : 'btn-primary' }}">2</a>
                 <p>Mes adresses</p>
-            </div>
+            </div> --}}
             <div class="multi-wizard-step">
-                <a href="#step-3" type="button" wire:click="setStep(3)" class="btn {{ $currentStep != 3 ? 'btn-default btn-step' : 'btn-primary' }}">3</a>
+                <a href="#step-3" type="button" wire:click="setStep(2)" class="btn {{ $currentStep != 2 ? 'btn-default btn-step' : 'btn-primary' }}">2</a>
                 <p>Mes parents</p>
             </div>
             <div class="multi-wizard-step">
-                <a href="#step-4" type="button" wire:click="setStep(4)" class="btn {{ $currentStep != 4 ? 'btn-default btn-step' : 'btn-primary' }}">4</a>
-                <p>Mon parcours</p>
+                <a href="#step-3" type="button" wire:click="setStep(3)" class="btn {{ $currentStep != 3 ? 'btn-default btn-step' : 'btn-primary' }}">3</a>
+                <p>Mon cursus</p>
             </div>
             <div class="multi-wizard-step">
-                <a href="#step-5" type="button" wire:click="setStep(5)" class="btn {{ $currentStep != 5 ? 'btn-default btn-step' : 'btn-primary' }}">5</a>
-                <p>Mon parcours détaillé</p>
+                <a href="#step-4" type="button" wire:click="setStep(4)" class="btn {{ $currentStep != 4 ? 'btn-default btn-step' : 'btn-primary' }}">4</a>
+                <p>Mon cursus détaillé</p>
             </div>
 
         </div>
@@ -78,35 +82,93 @@
     {{-- @livewire('user.user-admission-personnal-info',  ['title' => "Etape 1/4 : Informations personnelles"]) --}}
     <div class="{{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
         <section class="my-4 p-4 bg-gray">
-            <div class="">
-              <div class="row">
-                <div class="col-lg-12">
-                  <h2 class="section-title">{{ "Informations personnelles" }}</h2>
-                </div>
-              </div>
-              <div class="row">
+            <div class="row">
                 <div class="col-lg-12 mb-4 mb-lg-0">
-                  <form action="#">
-                    
-                    <input type="text" class="form-control mb-3" wire:model="name" placeholder="Nom">
-                    <input type="text" class="form-control mb-3" wire:model="lname" placeholder="Prénoms">
-                    <input type="text" class="form-control mb-3" wire:model="birthdate" placeholder="Date de naissance">
-                    <input type="email" class="form-control mb-3" wire:model="nativeLanguage" placeholder="Langue maternelle">
-                    <input type="email" class="form-control mb-3" wire:model="useLanguage" placeholder="Langue d'usage">
-                    <input type="email" class="form-control mb-3" wire:model="nativeCountry" placeholder="Pays de naissance">
-                    <input type="email" class="form-control mb-3" wire:model="nativeState" placeholder="Province/Etat de naissance">
-                    <input type="email" class="form-control mb-3" wire:model="nativeCity" placeholder="Ville de naissance">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="section-title">{{ "Informations personnelles" }}</h2>
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm  " wire:model="name" placeholder="Nom">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm " wire:model="lname" placeholder="Prénoms">
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm " wire:model="birthdate" placeholder="Date de naissance">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" class="form-control form-control-sm " wire:model="nativeCountry" placeholder="Pays de naissance">
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="email" class="form-control form-control-sm " wire:model="nativeState" placeholder="Province/Etat de naissance">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" class="form-control form-control-sm " wire:model="nativeCity" placeholder="Ville de naissance">
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="email" class="form-control form-control-sm " wire:model="nativeLanguage" placeholder="Langue maternelle">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" class="form-control form-control-sm " wire:model="useLanguage" placeholder="Langue d'usage">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="section-title">{{ "Mes adresses" }}</h2>
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm" wire:model="" placeholder="Adresse 1">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm" wire:model="lname" placeholder="Adresse 2">
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm" wire:model="birthdate" placeholder="Pays">
+                            </div>
+                            <div class="form-group col-md-6">
 
-                    <button type="submit" value="send" class="btn btn-primary">Enregistrer</button>
-                    {{-- <button type="submit" value="send" class="btn btn-primary">Annuler</button> --}}
-                    <button type="button" value="send" class="btn btn-primary" wire:click="secondStepSubmit">Suivant</button>
-                  </form>
+                                <input type="text" class="form-control form-control-sm" wire:model="nativeState" placeholder="Province/Etat ">
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm" wire:model="nativeCity" placeholder="Ville">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm" wire:model="nativeLanguage" placeholder="Code postal">
+                            </div>
+                        </div>
+                        <div class="form-row py-1 w-100">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm" wire:model="useLanguage" placeholder="Tel. 1">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control form-control-sm" wire:model="useLanguage" placeholder="Tel. 2">
+                            </div>
+                        </div>
+                        <button type="submit" value="send" class="btn btn-primary">Enregistrer</button>
+                        {{-- <button type="submit" value="send" class="btn btn-primary">Annuler</button> --}}
+                        <button type="button" value="send" class="btn btn-primary" wire:click="secondStepSubmit">Suivant</button>
+                    </form>
                 </div>
-              </div>
             </div>
         </section>
     </div>
-    <div class="{{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
+    {{-- <div class="{{ $currentStep != 2 ? 'display-none' : '' }}" id="step-2">
         <section class="my-4 p-4 bg-gray">
             <div class="">
               <div class="row">
@@ -117,9 +179,7 @@
               <div class="row">
                 <div class="col-lg-12 mb-4 mb-lg-0">
                   <form action="#">
-                    <input type="text" class="form-control mb-3" wire:model="" placeholder="Adresse 1">
-                    <input type="text" class="form-control mb-3" wire:model="lname" placeholder="Adresse 2">
-                    <input type="text" class="form-control mb-3" wire:model="birthdate" placeholder="Pays">
+                   <input type="text" class="form-control mb-3" wire:model="birthdate" placeholder="Pays">
                     <input type="text" class="form-control mb-3" wire:model="nativeState" placeholder="Province/Etat ">
                     <input type="text" class="form-control mb-3" wire:model="nativeCity" placeholder="Ville">
                     <input type="text" class="form-control mb-3" wire:model="nativeLanguage" placeholder="Code postal">
@@ -136,8 +196,8 @@
               </div>
             </div>
         </section>
-    </div>
-    <div class="{{ $currentStep != 3    ? 'display-none' : '' }}" id="step-3">
+    </div> --}}
+    <div class="{{ $currentStep != 2    ? 'display-none' : '' }}" id="step-2">
         <section class="my-4 p-4 bg-gray">
             <div class="row">
                 <div class="col-lg-12">
@@ -189,20 +249,20 @@
                             </div>
                         </div>
 
-                        <button type="button" value="send" class="btn btn-primary" wire:click="setStep(2)">Précédent</button>
+                        <button type="button" value="send" class="btn btn-primary" wire:click="setStep(1)">Précédent</button>
                         <button type="button" value="send" class="btn btn-primary">Enregistrer</button>
-                        <button type="button" value="send" class="btn btn-primary" wire:click="setStep(4)">Suivant</button>
+                        <button type="button" value="send" class="btn btn-primary" wire:click="setStep(3)">Suivant</button>
                     </form>
                 </div>
             </div>
         </section>
     </div>
-    <div class="{{ $currentStep != 4    ? 'display-none' : '' }}" id="step-4">
+    <div class="{{ $currentStep != 3    ? 'display-none' : '' }}" id="step-3">
         <section class="my-4 p-4 bg-gray">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="section-title">{{ "Mon parcours d'études" }}</h2>
+                        <h2 class="section-title">{{ "Mon cursus" }}</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -379,27 +439,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" value="send" class="btn btn-primary" wire:click="setStep(3)">Précédent</button>
+                            <button type="button" value="send" class="btn btn-primary" wire:click="setStep(2)">Précédent</button>
                             <button type="button" value="send" class="btn btn-primary">Enregistrer</button>
-                            <button type="button" value="send" class="btn btn-primary" wire:click="setStep(5)">Suivant</button>
+                            <button type="button" value="send" class="btn btn-primary" wire:click="setStep(4)">Suivant</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-    <div class="{{ $currentStep != 5    ? 'display-none' : '' }}" id="step-5">
+    <div class="{{ $currentStep != 4    ? 'display-none' : '' }}" id="step-4">
         <section class="my-4 p-4 bg-gray">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="section-title">{{ "Mon parcours d'études détaillé" }}</h2>
+                    <h2 class="section-title">{{ "Mon cursus détaillé" }}</h2>
                 </div>
             </div>
             <div class="">
                 <div class="col-lg-12 mb-4 mb-lg-0">
                     <form action="#">
                         <div class="form-group">
-                            <button type="button" value="send" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addSchoolModal">Ajouter un établissement </button>
+                            <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addSchoolModal">Ajouter un établissement </a>
                             <div class="table-responsive ">
                                 <table class="table ">
                                     <caption>Liste de mes établissements d'enseignement</caption>
@@ -441,7 +501,7 @@
                         </div>
                         <button type="button" value="send" class="btn btn-primary" wire:click="setStep(3)">Précédent</button>
                         <button type="button" value="send" class="btn btn-primary">Enregistrer</button>
-                        {{-- <button type="button" value="send" class="btn btn-primary" wire:click="setStep(4)">Suivant</button> --}}
+                        <button type="button" value="send" class="btn btn-primary" data-toggle="modal" data-target="#showFinalModal">Terminer</button>
                     </form>
                 </div>
             </div>
@@ -449,7 +509,7 @@
     </div>
 
     <!-- Modal Add school -->
-    <div class="modal fade" id="addSchoolModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self wire:click="">
+    <div class="modal fade" id="addSchoolModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content rounded-0 border-0 p-4">
                 <div class="modal-header border-0">
@@ -489,7 +549,7 @@
     <!-- Modal Add  school -->
 
     <!-- Modal Add Formation -->
-    <div class="modal fade" id="addFormationModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self wire:click="">
+    <div class="modal fade" id="addFormationModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
         <div class="modal-dialog modal-lg " role="document">
             <div class="modal-content rounded-0 border-0 p-4">
                 <div class="modal-header border-0">
@@ -538,7 +598,7 @@
     <!-- Modal Add Formation -->
 
     <!-- Modal show Formation -->
-    <div class="modal fade" id="showFormationModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self wire:click="">
+    <div class="modal fade" id="showFormationModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
         <div class="modal-dialog modal-lg " role="document">
             <div class="modal-content rounded-0 border-0 p-4">
                 <div class="modal-header border-0">
@@ -577,6 +637,34 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal show Formation -->
+
+    <!-- Modal show Finalisation -->
+    <div class="modal fade" id="showFinalModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"  >
+        <div class="modal-dialog modal-lg " role="document">
+            <div class="modal-content rounded-0 border-0 p-4">
+                <div class="modal-header border-0">
+                    <h6>Finalisation </h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="alert alert-warning" role="alert">
+                        <div class="p-4">
+                            <form>
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">En tenant compte des directives énoncées plus haut j’affirme avoir déclaré  l’ensemble de mes études  antérieures et actuelles en fournissant les renseignements exactes.</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">Terminer mon profil</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
