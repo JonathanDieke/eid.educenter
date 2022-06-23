@@ -100,11 +100,11 @@
                                 <li class="nav-item dropdown view {{ set_active_route(['admission.profile', 'admission.requests']) }}">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                        Admission
+                                        Etudes
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('admission.profile') }}">Mon profil étudiant</a>
-                                        <a class="dropdown-item" href="{{ route('admission.requests') }}">Mes demandes</a>
+                                        <a class="dropdown-item" href="{{ route('studies.profile') }}">Mon profil étudiant</a>
+                                        <a class="dropdown-item" href="{{ route('studies.admission') }}">Mes admissions</a>
                                     </div>
                                 </li>
                                 <li class="nav-item @@courses">

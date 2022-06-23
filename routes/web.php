@@ -20,8 +20,8 @@ use App\Http\Livewire\User\UserDashboardComponent;
 Route::get('/',  WelcomeComponent::class)->name('welcome');
 // Route::get('/student-profile',  WelcomeComponent::class)->name('student.profile');
 
-Route::get('/admision/profile',  UserAdmissionProfile::class)->name('admission.profile');
-Route::get('/admision/mesdemandes',  UserAdmissionRequest::class)->name('admission.requests');
+Route::get('/studies/profile',  UserAdmissionProfile::class)->name('studies.profile');
+Route::get('/studies/admisions',  UserAdmissionRequest::class)->name('studies.admission');
 Route::get('/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');
 
 require __DIR__.'/auth.php';

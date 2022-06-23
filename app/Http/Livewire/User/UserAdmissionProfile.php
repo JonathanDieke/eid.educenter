@@ -9,7 +9,7 @@ use Livewire\Component;
 class UserAdmissionProfile extends Component
 {
     public $name, $lname, $birthdate, $nativeLanguage, $useLanguage, $nativeCountry, $nativeState, $nativeCity ;
-    public $currentStep = 5 ;
+    public $currentStep = 1 ;
     public $successMsg = '';
 
     public function back($step)
@@ -28,6 +28,10 @@ class UserAdmissionProfile extends Component
 
     public function setStep($step){
         $this->currentStep = $step ;
+    }
+
+    public function editEtablissement(){
+
     }
     public function render()
     {
