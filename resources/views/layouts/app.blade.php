@@ -97,7 +97,7 @@
                                 <li class="nav-item {{ set_active_route(['user.dashboard']) }}">
                                     <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
                                 </li>
-                                <li class="nav-item dropdown view {{ set_active_route(['admission.profile', 'admission.requests']) }}">
+                                <li class="nav-item dropdown view {{ set_active_route(['admission.profile', 'studies.admission']) }}">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                         Etudes
@@ -107,8 +107,8 @@
                                         <a class="dropdown-item" href="{{ route('studies.admission') }}">Mes admissions</a>
                                     </div>
                                 </li>
-                                <li class="nav-item @@courses">
-                                    <a class="nav-link" href="#">Traductions et légalisations</a>
+                                <li class="nav-item  {{ set_active_route(['user.translate_legalize']) }}">
+                                    <a class="nav-link" href="{{ route('user.translate_legalize') }}">Traductions et légalisations</a>
                                 </li>
                                 <li class="nav-item dropdown view">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

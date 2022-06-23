@@ -5,6 +5,7 @@ use App\Http\Livewire\WelcomeComponent;
 use App\Http\Livewire\User\UserAdmissionProfile;
 use App\Http\Livewire\User\UserAdmissionRequest;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserTranslateLegalizeComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,9 @@ use App\Http\Livewire\User\UserDashboardComponent;
 Route::get('/',  WelcomeComponent::class)->name('welcome');
 // Route::get('/student-profile',  WelcomeComponent::class)->name('student.profile');
 
-Route::get('/studies/profile',  UserAdmissionProfile::class)->name('studies.profile');
-Route::get('/studies/admisions',  UserAdmissionRequest::class)->name('studies.admission');
 Route::get('/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');
+Route::get('/studies/profile',  UserAdmissionProfile::class)->middleware(['auth'])->name('studies.profile');
+Route::get('/studies/admisions',  UserAdmissionRequest::class)->middleware(['auth'])->name('studies.admission');
+Route::get('/translate-legalize', UserTranslateLegalizeComponent::class)->middleware(['auth'])->name('user.translate_legalize');
 
 require __DIR__.'/auth.php';
