@@ -30,8 +30,8 @@ class WelcomeComponent extends Component
     public function mount(AuthenticatedSessionController $auth){
         $this->auth = $auth ;
         // $this->name = "jojo";
-        $this->email = "jojo5@jojo.ci";
-        $this->password = "12345678";
+        $this->email = "jojo@jojo.ci";
+        $this->password = "password";
         // $this->password_confirmation = " " ;
     }
 

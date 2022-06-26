@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /**
@@ -19,10 +20,20 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'lname' => $this->faker->lastName() ,
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'birthdate' => $this->faker->dateTimeBetween('-50 years', '-10 years') ,
+            'gender' => Arr::random(["Male", "Female"]) ,
+            'native_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
+            'use_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
+            'country' => $this->faker->country() ,
+            'state' => $this->faker->state() ,
+            'city' => $this->faker->city() ,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            // 'address_id' => $this->faker->numberBetween($int1 = 1, $int2 = 10 ),
+            // 'cursus_id' => $this->faker->numberBetween($int1 = 1, $int2 = 10 ),
         ];
     }
 

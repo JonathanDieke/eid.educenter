@@ -594,7 +594,7 @@
         <div class="modal-dialog modal-lg " role="document">
             <div class="modal-content rounded-0 border-0 p-4">
                 <div class="modal-header border-0">
-                    <h6>Ajouter un établissement d'enseignement </h6>
+                    <h6>Ajouter une formation (Etablissement 1) </h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -613,7 +613,7 @@
                             </div>
                             @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
                             <select class="custom-select mb-3 pr-2">
-                                <option selected>Etat d'avencement</option>
+                                <option selected>Etat d'avancement</option>
                                 <option value="" >Abandonnée</option>
                                 <option value="" >En cours</option>
                                 <option value="" >Terminée</option>

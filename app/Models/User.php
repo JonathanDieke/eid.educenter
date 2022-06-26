@@ -41,4 +41,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function address(){
+        return $this->hasOne(Address::class, "user_id", 'id');
+    }
+
+    public function theParents(){
+        return $this->hasMany(TheParent::class, 'user_id', 'id');
+    }
+
+    public function cursus(){
+        return $this->hasOne(Cursus::class, "user_id", 'id');
+    }
+
+    public function attend(){
+        return $this->hasMany(UserSchool::class, "user_id", 'id');
+    }
+
+    public function admissionRequest(){
+        return $this->hasMany(AdmissionRequest::class, "user_id", 'id');
+    }
+
 }

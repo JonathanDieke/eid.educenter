@@ -40,19 +40,19 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div> 
+                        </div>
                     </form>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Modal Add school -->
+    <!-- Modal create admission request -->
     <div class="modal fade" id="createRequestModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content rounded-0 border-0 p-4">
                 <div class="modal-header border-0">
-                    <h6>Ajouter un établissement d'enseignement </h6>
+                    <h6>Créer une demande d'admission </h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -102,7 +102,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal Add  school -->
+    <!-- Modal Acreate admission request -->
 
     <x-slot name="footer">
     </x-slot>
