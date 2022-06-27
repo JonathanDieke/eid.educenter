@@ -12,20 +12,9 @@ class UserAdmissionProfile extends Component
     public $currentStep = 1 ;
     public $successMsg = '';
 
-    public function back($step)
-    {
-        $this->currentStep = $step;
+    protected function getListeners(){
+        return ['setStep' => 'setStep'];
     }
-
-    public function secondStepSubmit()
-    {
-        // $validatedData = $this->validate([
-        //     'status' => 'required',
-        // ]);
-
-        $this->currentStep = 2;
-    }
-
     public function setStep($step){
         $this->currentStep = $step ;
     }
@@ -37,5 +26,19 @@ class UserAdmissionProfile extends Component
     {
         return view('livewire.user.user-admission-profile');
     }
+
+    // public function back($step)
+    // {
+    //     $this->currentStep = $step;
+    // }
+
+    // public function secondStepSubmit()
+    // {
+    //     // $validatedData = $this->validate([
+    //     //     'status' => 'required',
+    //     // ]);
+
+    //     $this->currentStep = 2;
+    // }
 
 }
