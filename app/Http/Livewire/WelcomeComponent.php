@@ -79,7 +79,7 @@ class WelcomeComponent extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function resetErrorMessage()
+    public function hideModal()
     {
         $this->resetErrorBag();
         $this->resetValidation();

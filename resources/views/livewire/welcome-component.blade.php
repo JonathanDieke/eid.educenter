@@ -6,7 +6,7 @@
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
                    <h3>Inscription</h3>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="hideModal">
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
@@ -123,12 +123,12 @@
    <!-- Modal Register -->
 
    <!-- Modal Login -->
-   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"  wire:click="setForm('loginForm')">
+   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"  wire:ignore.self  wire:click="setForm('loginForm')">
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
                    <h3>Connexion</h3>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="hideModal">
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
@@ -662,4 +662,6 @@
         </div>
     </x-slot>
    <!-- /footer -->
+
+   
 </div>
