@@ -12,7 +12,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "spatie/laravel-livewire-wizard": "^1.1",
-        "vildanbina/livewire-wizard": "^1.2",
+        "vildanbina/livewire-wizard": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
