@@ -44,7 +44,7 @@ class WelcomeComponent extends Component
         // $this->password = "password";
         // $this->password_confirmation = "password" ;
 
-        $date = Carbon::now()->subYears(5); 
+        $this->date = Carbon::now()->subYears(5); 
     }
 
     public function setForm($formType){

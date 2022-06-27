@@ -35,6 +35,8 @@
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
+        @stack('styles')
+
         <!-- Scripts -->
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     </head>

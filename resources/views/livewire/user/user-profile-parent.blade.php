@@ -1,7 +1,7 @@
 <section class="my-4 p-4 bg-gray">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="section-title">{{ "Informations sur les parents" }}</h2>
+            <h2 class="section-title">{{ $title }}</h2>
         </div>
     </div>
     <div class="row">

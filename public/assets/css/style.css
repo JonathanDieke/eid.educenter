@@ -998,7 +998,7 @@ link:focus,
 .form-control {
   height: 60px;
   background: #fff;
-  border-radius: 0;
+  /* border-radius: 0; */
   padding-left: 25px;
 }
 

@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'birthdate' => $this->faker->dateTimeBetween('-50 years', '-10 years') ,
-            'gender' => Arr::random(["Male", "Female"]) ,
+            'gender' => Arr::random(["male", "female"]) ,
             'native_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
             'use_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
             'country' => $this->faker->country() ,

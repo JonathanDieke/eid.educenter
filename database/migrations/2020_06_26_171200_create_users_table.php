@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lname');
             $table->string('email')->unique();
             $table->date('birthdate');
-            $table->enum('gender', ["Male", "Female"]);
+            $table->enum('gender', ["male", "female"]);
             $table->enum('native_language', ["french", "english", "spanish", "russian"]);
             $table->enum('use_language', ["french", "english", "spanish", "russian"]);
             $table->string('country');
