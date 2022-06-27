@@ -1,7 +1,7 @@
 <div>
 
    <!-- Modal Register -->
-   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self wire:click="setForm('registerForm')">
+   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self  wire:click="setForm('registerForm')">
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
@@ -19,21 +19,97 @@
                     <div>
                         <form  class="row" wire:submit.prevent="register" autocomplete="off">
                             <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                            <div class="col-12">
-                                @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="text" class="form-control mb-3" wire:model="name"  placeholder="Nom">
-                            </div>
-                            <div class="col-12">
-                                @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="email" class="form-control mb-3" wire:model="email" placeholder="Email" autocomplete="off ">
-                            </div>
-                            <div class="col-12">
-                                @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="password" class="form-control mb-3" wire:model="password"  placeholder="Mot de passe">
-                            </div>
-                            <div class="col-12">
-                                @error('password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="password" class="form-control mb-3" wire:model="password_confirmation"  placeholder="Confirmez mot de passe">
+                            <div class="pl-2 w-100 ">
+                                <div class="form-row  pl-2 w-100">
+                                    <div class="form-group col-md-6">
+                                        @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="text" class="form-control form-control-sm " wire:model="name"  placeholder="Nom">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        @error('lname') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="text" class="form-control form-control-sm " wire:model="lname" placeholder="Prénoms" autocomplete="off ">
+                                    </div>
+                                </div>
+                                <div class="form-row  pl-2 w-100">
+                                    <div class="form-group col-md-12">
+                                        @error('gender') <span class="error font-italic text-danger">{{ $message }}</span> @enderror 
+                                        <select class="custom-select " wire:model='gender'>
+                                            <option selected>Genre</option>
+                                            <option value="male" >Masculin</option>
+                                            <option value="female" >Féminin</option> 
+                                        </select>
+                                    </div> 
+                                </div>
+                                <div class="form-row  pl-2 w-100">                                
+                                    <div class="form-group col-md-6">
+                                        @error('birthdate') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="date" class="form-control form-control-sm " wire:model="birthdate" placeholder="Date d'anniversaire" autocomplete="off ">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        @error('country') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model='country'>
+                                            <option selected>Pays de naissance</option>
+                                            <option value="pays1" >Pays 1</option>
+                                            <option value="pays2" >Pays 2</option> 
+                                        </select>
+                                    </div>                               
+                                </div>
+                                <div class="form-row  pl-2 w-100">
+                                    <div class="form-group col-md-6">
+                                        @error('state') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model='state'>
+                                            <option selected>Etat de naissance</option>
+                                            <option value="etat1" >etat 1</option>
+                                            <option value="etat2" >etat 2</option> 
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        @error('city') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model='city'>
+                                            <option selected>Ville de naissance</option>
+                                            <option value="ville1" >Ville 1</option>
+                                            <option value="ville2" >Ville 2</option> 
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row  pl-2 w-100">
+                                    <div class="form-group col-md-6">
+                                        @error('native_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model='native_language'>
+                                            <option selected>Langue maternelle</option>
+                                            <option value="french" >Français</option>
+                                            <option value="english" >Anglais</option>
+                                            <option value="spanish" >Espagnol</option>
+                                            <option value="russian" >Russe</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        @error('use_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model='use_language'>
+                                            <option selected>Langue d'usage</option>
+                                            <option value="french" >Français</option>
+                                            <option value="english" >Anglais</option>
+                                            <option value="spanish" >Espagnol</option>
+                                            <option value="russian" >Russe</option>
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="form-row  pl-2 w-100">
+                                    <div class="form-group col-12">
+                                        @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="email" class="form-control form-control-sm " wire:model="email" placeholder="Email" autocomplete="off ">
+                                    </div>
+                                </div>
+                                <div class="form-row  pl-2 w-100">
+                                    <div class="form-group col-md-6">
+                                        @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="password" class="form-control form-control-sm " wire:model="password"  placeholder="Mot de passe">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        @error('password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="password" class="form-control form-control-sm " wire:model="password_confirmation"  placeholder="Confirmer le mot de passe">
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary">S'enregistrer</button>
@@ -47,7 +123,7 @@
    <!-- Modal Register -->
 
    <!-- Modal Login -->
-   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self wire:click="setForm('loginForm')">
+   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"  wire:click="setForm('loginForm')">
        <div class="modal-dialog modal-lg" role="document">
            <div class="modal-content rounded-0 border-0 p-4">
                <div class="modal-header border-0">
@@ -59,13 +135,13 @@
                <div class="modal-body">
                    <form wire:submit.prevent="login" class="row" autocomplete="off">
                         <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                       <div class="col-12">
+                        <div class="col-12">
                             @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                            <input type="email" class="form-control mb-3" wire:model="email" placeholder="Email">
+                            <input type="email" class="form-control form-control-sm mb-3" wire:model="email" placeholder="Email">
                         </div>
                         <div class="col-12">
                            @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                           <input type="password" class="form-control mb-3" wire:model="password" placeholder="Mot de passe">
+                           <input type="password" class="form-control form-control-sm mb-3" wire:model="password" placeholder="Mot de passe">
                        </div>
                        <div class="col-12">
                            <button type="submit" class="btn btn-primary">Se connecter</button>
@@ -519,7 +595,7 @@
                      <h3 class="text-white">S'inscrire à la newsletter</h3>
                      <form action="#">
                      <div class="input-wrapper">
-                         <input type="email" class="form-control border-0" id="newsletter" name="newsletter" placeholder="Entrez votre email...">
+                         <input type="email" class="form-control form-control-sm border-0" id="newsletter" name="newsletter" placeholder="Entrez votre email...">
                          <button type="submit" value="send" class="btn btn-primary">Rejoindre</button>
                      </div>
                      </form>

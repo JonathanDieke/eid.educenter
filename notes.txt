@@ -2,8 +2,9 @@
 - exiger mot de passe FORT pour inscription
 - réduire les boutons sur mobile de la navigation du dossier d'admission
 - arrondir les inputs
-- datepicker pour les dates de formation dans admission
+- datepicker pour les dates de formation dans admission et date de naissance admisssion profile et register
+- translate les msg d'erreur
 
     **** Informations ****
-- que dit on pour l'intégration de cinetpay, vu que l'entreprise n'est pas en CI
+- que dit on pour l'intégration de cinetpay, vu que l'entreprise n'est pas en CI ? bouai cinetpay, on atten ceux de russie !
 

@@ -16,23 +16,35 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\View\Components\AppLayout;
+use Carbon\Carbon;
 
 class WelcomeComponent extends Component
 {
-    public $name;
+    public $name, $lname, $birthdate, $country, $state, $city, $native_language, $use_language, $gender;
     public $email;
     public  $password;
     public $password_confirmation ;
-    protected $auth;
 
+    protected $auth;
     public $formType ;
+    private $date; 
 
     public function mount(AuthenticatedSessionController $auth){
         $this->auth = $auth ;
         // $this->name = "jojo";
-        $this->email = "jojo@jojo.ci";
-        $this->password = "password";
-        // $this->password_confirmation = " " ;
+        // $this->lname = "lord";
+        // $this->gender = "male";
+        // $this->birthdate = "2000-12-23";
+        // $this->country = "pays1";
+        // $this->state = "etat1";
+        // $this->city = "ville1";
+        // $this->native_language = "french";
+        // $this->use_language = "french";
+        // $this->email = "jojo@jojo.ci";
+        // $this->password = "password";
+        // $this->password_confirmation = "password" ;
+
+        $date = Carbon::now()->subYears(5); 
     }
 
     public function setForm($formType){
@@ -48,6 +60,14 @@ class WelcomeComponent extends Component
         }elseif($this->formType == "registerForm"){
             return   [
                 'name' => ['required', 'string', 'max:128'],
+                'lname' => ['required', 'string', 'max:128'],
+                'gender' => ['required', 'string', 'max:128', 'in:male,female'],
+                'birthdate' => ['required', 'date', 'date_format:Y-m-d', "before_or_equal:$this->date"],
+                'country' => ['required', 'string', 'max:128'],
+                'state' => ['required', 'string', 'max:128'],
+                'city' => ['required', 'string', 'max:128'],
+                'native_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
+                'use_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
                 'email' => ['required', 'string', 'email', 'max:128', 'unique:users'],
                 'password' => ['required', 'string', 'confirmed', Password::defaults()],
             ];
@@ -55,34 +75,23 @@ class WelcomeComponent extends Component
         }
     }
 
-    public function updated($propertyName){
-        // if(in_array($propertyName, array("email", "password")) ){
-        //     $this->validateOnly($propertyName,  [
-        //         'email' => ['required', 'string', 'email', 'max:128'],
-        //         'password' => ['required', Password::defaults()],
-        //     ]);
-        // }else{
-        //     $this->validateOnly($propertyName);
-        // }
+    public function updated($propertyName, $valueProperty){
         $this->validateOnly($propertyName);
     }
 
-    public function hydrate()
+    public function resetErrorMessage()
     {
         $this->resetErrorBag();
         $this->resetValidation();
     }
 
     public function register(){
+        // $this->resetErrorMessage();
+        $data = $this->validate(); 
+        $data["password"] = Hash::make($data["password"]); 
 
-        $this->validate();
-
-        $user = User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => Hash::make($this->password),
-        ]);
-
+        $user = User::create($data);
+        
         event(new Registered($user));
 
         Auth::login($user);
@@ -91,6 +100,7 @@ class WelcomeComponent extends Component
     }
 
     public function login(){
+        // $this->resetErrorMessage();
         $this->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],

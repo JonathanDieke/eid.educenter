@@ -577,7 +577,7 @@
                                 <div class="form-group col-md-6">
                                   <input type="text"  class="form-control form-control-sm" id="" placeholder="Etat/Province" autocomplete="off ">
                                 </div>
-                              </div>
+                            </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary">S'enregistrer</button>
                             </div>
