@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('cursuses', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_living_in_russian');
-            $table->enum('legal_status', ["foreign", "local", "permanent_resident"]);
+            $table->boolean('is_living_in_russia');
+            $table->enum('legal_status', ["foreign", "local", "permanent_resident", "local_foreign"]);
             $table->enum('primary_studies_language', ["french", "english", "spanish", "russian"]);
             $table->enum('secondary_studies_language', ["french", "english", "spanish", "russian"]);
             $table->boolean('is_has_russian_college_diploma');

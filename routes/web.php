@@ -18,8 +18,11 @@ use App\Http\Livewire\User\UserTranslateLegalizeComponent;
 |
 */
 
-Route::get('/',  WelcomeComponent::class)->name('welcome');
-// Route::get('/student-profile',  WelcomeComponent::class)->name('student.profile');
+Route::get('/php-info', function(){
+    return phpinfo();
+})->name('phpinfo');
+
+Route::get('/',  WelcomeComponent::class)->name('welcome'); 
 
 Route::get('/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');
 Route::get('/studies/profile',  UserAdmissionProfile::class)->middleware(['auth'])->name('studies.profile');

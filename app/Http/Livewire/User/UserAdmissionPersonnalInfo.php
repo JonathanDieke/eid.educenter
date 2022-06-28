@@ -13,24 +13,25 @@ class UserAdmissionPersonnalInfo extends Component
 {
     public $title = "Etape 1/4 : Informations personnelles";
     public $languages ;
+    public $currentStep;
+
 
     public $user, $userID;
 
-    private $date; 
+    private $date;
     public $address ;
     // public $name, $lname, $birthdate, $country, $state, $city, $native_language, $use_language, $gender,  $email ;
 
-    public function mount(){
+    public function mount($user, $address){
         $this-> languages = ["french" => "Français", "english" => "Anglais", "spanish" => "Espagnol", "russian" => "Russe"];
-        $authUser = Auth::user();
+        $this->currentStep = 1;
 
-        $this->user = $authUser->toArray();
-        
+        $this->user = $user->toArray();
         $this->userID = $this->user["id"];
-        $this->address = $authUser->address?->toArray() ; //check if address is null thanks to "?"   
-        // dd($this->address);
 
-        $this->date = Carbon::now()->subYears(5);      
+        $this->address = $address?->toArray() ; //check if address is null thanks to "?"
+
+        $this->date = Carbon::now()->subYears(5);
     }
 
     protected function rules(){
@@ -45,7 +46,7 @@ class UserAdmissionPersonnalInfo extends Component
             'user.city' => ['required', 'string', 'max:128'],
             'user.native_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
             'user.use_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
-            // // address validation rules 
+            // address validation rules
             'address.address1' => ['nullable', 'string', 'max:128'],
             'address.address2' => ['nullable', 'string', 'max:128'],
             'address.country' => ['nullable', 'string', 'max:128'],
@@ -57,9 +58,9 @@ class UserAdmissionPersonnalInfo extends Component
         ];
     }
 
-    public function saveStep(){ 
+    public function saveStep(){
         $data = $this->validate();
-        
+
         $user = User::where("id", $this->userID)->first();
         $user->update($data["user"]) ;
         if(isset($user->address)){
@@ -74,7 +75,7 @@ class UserAdmissionPersonnalInfo extends Component
 
     public function nextStep(){
         $this->saveStep();
-        $this->emit('setStep', 2);
+        $this->emit('setStep', $this->currentStep +1 );
     }
 
     public function render()

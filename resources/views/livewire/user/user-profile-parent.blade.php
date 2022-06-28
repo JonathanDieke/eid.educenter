@@ -1,4 +1,5 @@
 <section class="my-4 p-4 bg-gray">
+    <x-loading-indicator/>
     <div class="row">
         <div class="col-lg-12">
             <h2 class="section-title">{{ $title }}</h2>
@@ -12,46 +13,45 @@
                         <h5>Parent 1</h5>
                         <div id="radio-group" class="mb-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="" id="" value="option1" checked>
-                                <label class="form-check-label" for="">
+                                <input class="form-check-input" type="radio" id="the_parent1_father" value="father" wire:model="theParent1.type" checked>
+                                <label class="form-check-label" for="the_parent1_father">
                                     Père
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="" id="" value="option2" >
-                                <label class="form-check-label" for="1">
+                                <input class="form-check-input" type="radio" id="the_parent1_mother" value="mother" wire:model="theParent1.type" >
+                                <label class="form-check-label" for="the_parent1_mother">
                                     Mère
                                 </label>
                             </div>
-
                         </div>
-                            <input type="text" class="form-control form-control-sm mb-3" wire:model="name" placeholder="Nom parent 1">
-                            <input type="text" class="form-control form-control-sm mb-3" wire:model="lname" placeholder="Prénoms parent 1">
+                            <input type="text" class="form-control form-control-sm mb-3" wire:model="theParent1.name" placeholder="Nom parent 1" >
+                            <input type="text" class="form-control form-control-sm mb-3" wire:model="theParent1.lname" placeholder="Prénoms parent 1" >
                     </div>
                     <div class="col-xs-12 col-md-6">
                         <h5>Parent 2</h5>
                         <div id="radio-group" class="mb-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option3" >
-                                <label class="form-check-label" for="">
+                                <input class="form-check-input" type="radio" id="the_parent2_father" value="father" wire:model="theParent2.type" >
+                                <label class="form-check-label" for="the_parent2_father">
                                     Père
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option4" checked>
-                                <label class="form-check-label" for="">
+                                <input class="form-check-input" type="radio" id="the_parent2_mother" value="mother" wire:model="theParent2.type" checked>
+                                <label class="form-check-label" for="the_parent2_mother">
                                     Mère
                                 </label>
                             </div>
                         </div>
-                            <input type="text" class="form-control form-control-sm mb-3" wire:model="name" placeholder="Nom parent 2">
-                            <input type="text" class="form-control form-control-sm mb-3" wire:model="lname" placeholder="Prénoms parent 2">
+                            <input type="text" class="form-control form-control-sm mb-3" placeholder="Nom parent 2" wire:model="theParent2.name">
+                            <input type="text" class="form-control form-control-sm mb-3" placeholder="Prénoms parent 2" wire:model="theParent2.lname">
                     </div>
                 </div>
 
-                <button type="button" value="send" class="btn btn-primary" wire:click="$emit('setStep',1)">Précédent</button>
-                <button type="button" value="send" class="btn btn-primary">Enregistrer</button>
-                <button type="button" value="send" class="btn btn-primary" wire:click="$emit('setStep',3)">Suivant</button>
+                <button type="button" class="btn btn-primary" wire:click="backStep">Précédent</button>
+                <button type="button" class="btn btn-primary" wire:click="saveStep">Enregistrer</button>
+                <button type="button" class="btn btn-primary" wire:click="nextStep">Suivant</button>
             </form>
         </div>
     </div>

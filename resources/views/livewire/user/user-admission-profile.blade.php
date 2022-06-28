@@ -47,11 +47,14 @@
         }
     </style>
 
+    <x-loading-indicator/>
+
     @if(!empty($successMsg))
         <div class="alert alert-success">
             {{ $successMsg }}
         </div>
     @endif
+
     {{-- Navigation bar --}}
     <div class="stepwizard">
         <div class="stepwizard-row setup-panel">
@@ -64,7 +67,7 @@
                 <p>Mes adresses</p>
             </div> --}}
             <div class="multi-wizard-step">
-                <a href="#step-3" type="button" wire:click="setStep(2)" class="btn {{ $currentStep != 2 ? 'btn-default btn-step' : 'btn-primary' }}">2</a>
+                <a href="#step-2" type="button" wire:click="setStep(2)" class="btn {{ $currentStep != 2 ? 'btn-default btn-step' : 'btn-primary' }}">2</a>
                 <p>Mes parents</p>
             </div>
             <div class="multi-wizard-step">
@@ -80,15 +83,15 @@
     </div>
 
     <div class="{{ $currentStep != 1 ? 'display-none' : '' }}" id="step-1">
-        @livewire('user.user-admission-personnal-info',  ['title' => "Etape 1/4 : Informations personnelles"])
+        @livewire('user.user-admission-personnal-info',  ['title' => "Etape 1/4 : Informations personnelles", "user"=> $user, "address" => $user->address])
     </div>
-    
+
     <div class="{{ $currentStep != 2    ? 'display-none' : '' }}" id="step-2">
-        @livewire('user.user-profile-parent',  ['title' => "Etape 2/4 : Informations sur les parents"])
+        @livewire('user.user-profile-parent',  ['title' => "Etape 2/4 : Informations sur les parents", "user"=> $user])
     </div>
 
     <div class="{{ $currentStep != 3    ? 'display-none' : '' }}" id="step-3">
-        @livewire('user.user-profile-cursus',  ['title' => "Etape 3/4 : Mon cursus"])
+        @livewire('user.user-profile-cursus',  ['title' => "Etape 3/4 : Mon cursus", "user"=> $user])
     </div>
 
     <div class="{{ $currentStep != 4    ? 'display-none' : '' }}" id="step-4">

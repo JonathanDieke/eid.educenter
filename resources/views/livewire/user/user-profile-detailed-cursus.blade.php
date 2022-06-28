@@ -1,4 +1,5 @@
 <section class="my-4 p-4 bg-gray">
+    <x-loading-indicator/>
     <div class="row">
         <div class="col-lg-12">
             <h2 class="section-title">{{ "Mon cursus détaillé" }}</h2>
@@ -56,7 +57,7 @@
     </div>
 
 
-    
+
     <!-- Modal Add school -->
     <div class="modal fade" id="addSchoolModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">

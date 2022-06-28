@@ -54,7 +54,7 @@
                                 <option>Langue maternelle</option>
                                 @foreach ($languages as $key => $value)
                                     <option value="{{ $key }}" {{ $user['native_language'] == $key ? 'selected' : "" }}>{{ $value }}</option>
-                                @endforeach 
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
@@ -62,7 +62,7 @@
                                 <option>Langue d'usage</option>
                                 @foreach ($languages as $key => $value)
                                     <option value="{{ $key }}" {{ $user['use_language'] == $key ? 'selected' : "" }}>{{ $value }}</option>
-                                @endforeach 
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                             <select class="custom-select mb-3" wire:model="user.gender">
                                 <option selected>Gender</option>
                                 <option value="male" {{ $user['gender'] == 'male' ? 'selected' : "" }}>Masculin</option>
-                                <option value="female"  {{ $user['gender'] == 'female' ? 'selected' : "" }} >Féminin</option> 
+                                <option value="female"  {{ $user['gender'] == 'female' ? 'selected' : "" }} >Féminin</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
@@ -130,7 +130,7 @@
                             <input type="text" class="form-control form-control-sm" wire:model="address.tel2" placeholder="Tel. 2">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" wire:click="saveStep">Enregistrer</button> 
+                    <button type="button" class="btn btn-primary" wire:click="saveStep">Enregistrer</button>
                     <button type="button" class="btn btn-primary" wire:click="nextStep">Suivant</button>
                 </form>
             </div>

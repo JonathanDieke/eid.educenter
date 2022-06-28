@@ -18,15 +18,15 @@ class CursusFactory extends Factory
     public function definition()
     {
         return [
-            'is_living_in_russian' => $this->faker->boolean(30) ,
-            'legal_status' => Arr::random(["foreign", "local", "permanent_resident"]) ,
+            'is_living_in_russia' => $this->faker->boolean(30) ,
+            'legal_status' => Arr::random(["foreign", "local", "permanent_resident", "local_foreign"]) ,
             'primary_studies_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
             'secondary_studies_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
             'is_has_russian_college_diploma' => $this->faker->boolean(30) ,
             'is_has_russian_high_school_diploma' => $this->faker->boolean(30) ,
             'is_study_in_russian_university' => $this->faker->boolean(30) ,
             'is_study_in_university' => $this->faker->boolean() ,
-            'user_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->unique()->numberBetween(1, 10),
         ];
     }
 }
