@@ -11,8 +11,11 @@
                     <form action="#">
                         <div class="form-group">
                             <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#createRequestModal">Créer une demande </a>
-                            <div class="table-responsive ">
-                                <table class="table ">
+                            <div class="table-responsive">
+                                <div class="text-center" wire:loading wire:target="deleteAdmissionRequest">
+                                    <p class=" font-weight-bold font-italic">Actualisation des données...</p>
+                                </div>
+                                <table class="table text-center" >
                                     <caption>Liste de mes demandes d'admission</caption>
                                     <thead class="thead-warning">
                                         <tr>
@@ -25,18 +28,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Université 1</td>
-                                            <td>Eté</td>
-                                            <td>Programme 1</td>
-                                            <td>Premier cycle</td>
-                                            <td class="text-truncate">
-                                                <i class="feature-icon-sm ti-plus mx-1" data-toggle="modal" data-target="#"></i>
-                                                <i class="feature-icon-sm ti-eye mx-1" data-toggle="modal" data-target="#"></i>
-                                                <i class="feature-icon-sm-danger ti-trash mx-1"></i>
-                                            </td>
-                                        </tr>
+                                        @forelse ($admissionRequests as $admission_request)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $admission_request->school->name }}</td>
+                                                <td>{{ $admission_request->session }}</td>
+                                                <td>{{ $admission_request->program->libel }}</td>
+                                                <td>{{ $admission_request->cycle }}</td>
+                                                <td class="text-center">
+                                                    {{-- <i class="feature-icon-sm ti-plus mx-1" data-toggle="modal" data-target="#"></i>
+                                                    <i class="feature-icon-sm ti-eye mx-1" data-toggle="modal" data-target="#"></i> --}}
+                                                    <i class="feature-icon-sm-danger ti-trash mx-1" wire:click="deleteAdmissionRequest({{ $admission_request->id }})"></i>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <p class="text-center font-weight-bold font-italic">
+                                                Vous n'avez encore aucune demande. Créez-en une en cliquant sur le bouton "Créer une demande".
+                                            </p>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -48,7 +57,7 @@
     </div>
 
     <!-- Modal create admission request -->
-    <div class="modal fade" id="createRequestModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static">
+    <div class="modal fade" id="createRequestModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content rounded-0 border-0 p-4">
                 <div class="modal-header border-0">
@@ -59,42 +68,42 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <form  class="row " wire:submit.prevent="register" autocomplete="off">
+                        <form  class="row" autocomplete="off" action="#">
                             <input autocomplete="false" name="hidden" type="text" style="display:none;">
+
                             @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                            <select class="custom-select mb-3">
+                            <select class="custom-select mb-3" wire:model="admission_request.school_id">
                                 <option  selected>Choisissez une université</option>
-                                <option value="" >Université 1</option>
-                                <option value="" >Université 2</option>
-                                <option value="" >Université 3</option>
-                                <option value="" >Université 4</option>
+                                @foreach ($schools as $school)
+                                    <option value="{{ $school->id }}" >{{ $school->name }}</option>
+                                @endforeach
+                            </select>
+                            <select class="custom-select mb-3" wire:model="admission_request.program_id">
+                                <option  selected>Choisissez un programme</option>
+                                @foreach ($programs as $program)
+                                    <option value="{{ $program->id }}" >{{ $program->libel }}</option>
+                                @endforeach
                             </select>
                             <div class="form-row py-3 w-100">
                                 <div class="form-group col-md-6">
-                                    <select class="custom-select mb-3">
-                                        <option  selected>Choisissez une session</option>
-                                        <option value="" >Automne</option>
-                                        <option value="" >Hiver</option>
-                                        <option value="" >Eté</option>
+                                    <select class="custom-select mb-3" wire:model="admission_request.session">
+                                        <option  >Choisissez une session</option>
+                                        <option value="autumn" >Automne</option>
+                                        <option value="winter" >Hiver</option>
+                                        <option value="summer" >Eté</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <select class="custom-select mb-3">
-                                        <option  selected>Choisissez un cycle</option>
-                                        <option value="" >Premier cycle</option>
-                                        <option value="" >Deuxième cycle</option>
-                                        <option value="" >Troisième cycle</option>
+                                    <select class="custom-select mb-3" wire:model="admission_request.cycle">
+                                        <option  >Choisissez un cycle</option>
+                                        <option value="first" >Premier cycle</option>
+                                        <option value="second" >Deuxième cycle</option>
+                                        <option value="third" >Troisième cycle</option>
                                     </select>
                                 </div>
-                                <select class="custom-select mb-3">
-                                    <option  selected>Choisissez un programme</option>
-                                    <option value="" >Programme 1</option>
-                                    <option value="" >Programme 2</option>
-                                    <option value="" >Programme 3</option>
-                                </select>
-                              </div>
+                            </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary">S'enregistrer</button>
+                                <button type="submit" class="btn btn-primary" wire:click="createAdmissionRequest">S'enregistrer</button>
                             </div>
                         </form>
                     </div>

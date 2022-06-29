@@ -9,6 +9,8 @@ class School extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+    
     public function admissionRequests(){
         return $this->hasMany(AdmissionRequest::class, "school_id", 'id');
     }

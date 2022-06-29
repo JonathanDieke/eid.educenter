@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('admission_requests', function (Blueprint $table) {
             $table->id();
+            $table->enum("session", ["autumn", "winter", "summer"]);
+            $table->enum("cycle", ["first", "second", "third"]);
 
             $table->foreignId("user_id")->constrained();
             $table->foreignId("school_id")->constrained();
+            $table->foreignId("program_id")->constrained();
 
             $table->timestamps();
         });

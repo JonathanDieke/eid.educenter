@@ -27,7 +27,7 @@ class WelcomeComponent extends Component
 
     protected $auth;
     public $formType ;
-    private $date; 
+    private $date;
 
     public function mount(AuthenticatedSessionController $auth){
         $this->auth = $auth ;
@@ -40,11 +40,11 @@ class WelcomeComponent extends Component
         // $this->city = "ville1";
         // $this->native_language = "french";
         // $this->use_language = "french";
-        // $this->email = "jojo@jojo.ci";
-        // $this->password = "password";
+        $this->email = "rodriguez.kennedy@example.org";
+        $this->password = "password";
         // $this->password_confirmation = "password" ;
 
-        $this->date = Carbon::now()->subYears(5); 
+        $this->date = Carbon::now()->subYears(5);
     }
 
     public function setForm($formType){
@@ -87,12 +87,12 @@ class WelcomeComponent extends Component
 
     public function register(){
         // $this->resetErrorMessage();
-        $data = $this->validate(); 
-        $data["password"] = Hash::make($data["password"]); 
+        $data = $this->validate();
+        $data["password"] = Hash::make($data["password"]);
         // dd($data);
 
         $user = User::create($data);
-        
+
         event(new Registered($user));
 
         Auth::login($user);

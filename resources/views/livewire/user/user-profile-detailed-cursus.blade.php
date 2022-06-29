@@ -11,9 +11,9 @@
                 <div class="form-group">
                     <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addSchoolModal">Ajouter un établissement </a>
                     <div class="text-center" wire:loading wire:target="deleteUserSchool">
-                        <p class=" font-weight-bold font-italic">Chargement des données...</p>
+                        <p class=" font-weight-bold font-italic">Actualisation des données...</p>
                     </div>
-                    <div class="table-responsive ">
+                    <div class="table-responsive " wire:loading.remove>
                         <table class="table ">
                             <caption>Liste de mes établissements d'enseignement</caption>
                             <thead class="thead-warning">
@@ -26,7 +26,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @forelse ($user_schools as $user_school)
+                                @forelse ($userSchools as $user_school)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $user_school->name }}</td>
@@ -247,11 +247,5 @@
 </div>
 <!-- Modal show Formation -->
 
-<script>
-    window.addEventListener('closeModal', () => {
-        console.log("close modal event")
-        $('.modal').modal('hide');
-    })
-</script>
 
 </section>

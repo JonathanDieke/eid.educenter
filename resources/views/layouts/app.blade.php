@@ -106,8 +106,8 @@
                                         Etudes
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('studies.profile') }}">Mon profil étudiant</a>
-                                        <a class="dropdown-item" href="{{ route('studies.admission') }}">Mes admissions</a>
+                                        <a class="dropdown-item {{ set_active_route(['studies.profile']) }}" href="{{ route('studies.profile') }}">Mon profil étudiant</a>
+                                        <a class="dropdown-item {{ set_active_route(['studies.admission']) }}" href="{{ route('studies.admission') }}">Mes admissions</a>
                                     </div>
                                 </li>
                                 <li class="nav-item  {{ set_active_route(['user.translate_legalize']) }}">
@@ -217,8 +217,14 @@
         <!-- Alpine v3 -->
         {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
-        @stack('styles')
+        @stack('scripts')
 
-        @livewireScripts 
+        @livewireScripts
+        <script>
+            window.addEventListener('closeModal', () => {
+                console.log("close modal event")
+                $('.modal').modal('hide');
+            })
+        </script>
     </body>
 </html>

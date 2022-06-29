@@ -10,7 +10,7 @@ class UserProfileDetailedCursus extends Component
 {
     public $title = "Etape 4/4 : Mon cursus détaillé";
     protected $currentStep;
-    public $user_schools, $user_school , $user;
+    public $user_school , $user;
     public $user_school_currentName, $user_school_currentID ;
     public $user_school_formation, $user_school_currentFormations  ;
 
@@ -21,7 +21,7 @@ class UserProfileDetailedCursus extends Component
 
         $this->user = $user;
 
-        $this->user_schools = !empty($user->attend->toArray()) ? $user->attend : []  ;
+        // $this->user_schools = !empty($user->attend->toArray()) ? $user->attend : []  ;
         $this->user_school = ["name" => "esatic", "country" => "", "state" => ""];
     }
 
@@ -55,12 +55,14 @@ class UserProfileDetailedCursus extends Component
         // dd($user_school_currentID, $user_school_currentName);
         $this->user_school_currentName = $user_school_currentName;
         $this->user_school_currentID = $user_school_currentID ;
+        // dd($this->user->attend?->where('id', $user_school_currentID));
 
         if($action === 'add'){
             $this->user_school_formation = ["type" => "", "program_name" => "", "status" => "", "start_date" => "", "end_date" => ""];
         }
         if($action === 'show'){
-            $this->user_school_currentFormations = $this->user->attend->where('id', $user_school_currentID)->first()->formations ;
+            $attend =  $this->user->attend->where('id', $user_school_currentID)->first() ;
+            $this->user_school_currentFormations = $attend ?$attend->formations : []  ;
         }
         // $this->user_schools = !empty($this->user->attend->formations->toArray()) ?
         //                                     $this->user->attend->formations :
@@ -79,10 +81,10 @@ class UserProfileDetailedCursus extends Component
     }
 
     public function deleteUserSchool($schoolId){
-        $this->user_schools->where("id", $schoolId)->first()->delete();
-        $this->user_schools = $this->user_schools->filter(function ($item, $key) use($schoolId) {
-            return $item->id != $schoolId ;
-        });
+        UserSchool::destroy($schoolId);
+        // $this->user_schools = $this->user_schools->filter(function ($item, $key) use($schoolId) {
+        //     return $item->id != $schoolId ;
+        // });
     }
 
     public function addUserSchoolFormation(){
@@ -111,6 +113,7 @@ class UserProfileDetailedCursus extends Component
     }
     public function render()
     {
-        return view('livewire.user.user-profile-detailed-cursus');
+        $userSchools = UserSchool::all();
+        return view('livewire.user.user-profile-detailed-cursus', compact('userSchools'));
     }
 }

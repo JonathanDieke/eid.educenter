@@ -13,11 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program_school', function (Blueprint $table) { 
+        Schema::create('program_school', function (Blueprint $table) {
 
-            $table->foreignId('program_id')->constrained();
+            $table->foreignId('program_id')
+                    ->constrained()
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+
             $table->foreignId('school_id')->constrained();
-            $table->primary(["program_id", "school_id"]);
+
+            $table->primary(["program_id", "school_id"]); 
 
             $table->timestamps();
         });
