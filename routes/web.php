@@ -6,6 +6,7 @@ use App\Http\Livewire\User\UserAdmissionProfile;
 use App\Http\Livewire\User\UserAdmissionRequest;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\User\UserTranslateLegalizeComponent;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,18 @@ Route::get('/php-info', function(){
     return phpinfo();
 })->name('phpinfo');
 
-Route::get('/',  WelcomeComponent::class)->name('welcome'); 
+Route::get('/',  WelcomeComponent::class)->name('welcome');
+
+Route::get('/monbedou',  function(){
+    $response = Http::withHeaders([
+        'Content-type' => 'application/json', 
+    ])->post('https://payment.monbedou.com/api/callback', [
+        'name' => 'Steve',
+        'role' => 'Network Administrator',
+    ]);
+
+    dd($response);
+})->name('monbedou');
 
 Route::get('/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');
 Route::get('/studies/profile',  UserAdmissionProfile::class)->middleware(['auth'])->name('studies.profile');
