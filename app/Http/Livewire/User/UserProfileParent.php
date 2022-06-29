@@ -11,8 +11,8 @@ class UserProfileParent extends Component
     public $title = "Etape 2/4 : Informations sur les parents";
     public $user ;
 
-    public $the_parent1_type, $the_parent1_name, $the_parent1_lname;
-    public $the_parent2_type, $the_parent2_name, $the_parent2_lname;
+    public $the_parent1_link, $the_parent1_name, $the_parent1_lname;
+    public $the_parent2_link, $the_parent2_name, $the_parent2_lname;
 
     public $currentStep;
 
@@ -21,7 +21,7 @@ class UserProfileParent extends Component
 
         $this->user = $user;
 
-        [$this->theParent1, $this->theParent2] = !empty($this->user->theParents->toArray()) ? $this->user->theParents->toArray() :  [['type' => 'father'], ['type' => 'mother']] ;
+        [$this->theParent1, $this->theParent2] = !empty($this->user->theParents->toArray()) ? $this->user->theParents->toArray() :  [['link' => 'father'], ['link' => 'mother']] ;
     }
 
     public function updated($name, $val){
@@ -31,17 +31,19 @@ class UserProfileParent extends Component
     protected function rules(){
         return   [
             // parent validation rules
-            'theParent1.type' => ['string', 'max:10', 'in:father,mother'],
-            'theParent1.name' => ['string', 'max:128'],
-            'theParent1.lname' => ['string', 'max:128'],
-            'theParent2.type' => ['string', 'max:10', 'in:father,mother'],
-            'theParent2.name' => ['string', 'max:128'],
-            'theParent2.lname' => ['string', 'max:128'],
+            'theParent1.link' => ['string', 'max:10', 'in:father,mother'],
+            'theParent1.name' => ['string', 'max:128', 'min:3'],
+            'theParent1.lname' => ['string', 'max:128', 'min:3'],
+            'theParent2.link' => ['string', 'max:10', 'in:father,mother'],
+            'theParent2.name' => ['string', 'max:128', 'min:3'],
+            'theParent2.lname' => ['string', 'max:128', 'min:3'],
         ];
     }
 
     public function saveStep(){
         $this->validate();
+
+        // dd($this->theParent1, $this->theParent2);
 
         if($this->user->theParents->toArray() != []){
             $this->user->theParents[0]->update($this->theParent1);
@@ -51,6 +53,8 @@ class UserProfileParent extends Component
             $theParent2 = new TheParent($this->theParent2);
             $theParent1->user()->associate($this->user);
             $theParent2->user()->associate($this->user);
+            $theParent1->save();
+            $theParent2->save();
         }
     }
 

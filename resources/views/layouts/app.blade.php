@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        @livewireStyles
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
         <!-- ** Plugins Needed for the Project ** -->
@@ -36,6 +35,8 @@
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
         @stack('styles')
+
+        @livewireStyles
 
         <!-- Scripts -->
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -214,8 +215,10 @@
         <script src="{{ asset('assets/js/script.js') }}"></script>
 
         <!-- Alpine v3 -->
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
-        @livewireScripts
+        @stack('styles')
+
+        @livewireScripts 
     </body>
 </html>

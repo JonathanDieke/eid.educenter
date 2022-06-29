@@ -13,13 +13,13 @@
                         <h5>Parent 1</h5>
                         <div id="radio-group" class="mb-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="the_parent1_father" value="father" wire:model="theParent1.type" checked>
+                                <input class="form-check-input" type="radio" id="the_parent1_father" value="father" wire:model="theParent1.link" checked>
                                 <label class="form-check-label" for="the_parent1_father">
                                     Père
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="the_parent1_mother" value="mother" wire:model="theParent1.type" >
+                                <input class="form-check-input" type="radio" id="the_parent1_mother" value="mother" wire:model="theParent1.link" >
                                 <label class="form-check-label" for="the_parent1_mother">
                                     Mère
                                 </label>
@@ -32,13 +32,13 @@
                         <h5>Parent 2</h5>
                         <div id="radio-group" class="mb-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="the_parent2_father" value="father" wire:model="theParent2.type" >
+                                <input class="form-check-input" type="radio" id="the_parent2_father" value="father" wire:model="theParent2.link" >
                                 <label class="form-check-label" for="the_parent2_father">
                                     Père
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" id="the_parent2_mother" value="mother" wire:model="theParent2.type" checked>
+                                <input class="form-check-input" type="radio" id="the_parent2_mother" value="mother" wire:model="theParent2.link" checked>
                                 <label class="form-check-label" for="the_parent2_mother">
                                     Mère
                                 </label>

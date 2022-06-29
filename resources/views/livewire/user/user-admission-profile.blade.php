@@ -95,7 +95,7 @@
     </div>
 
     <div class="{{ $currentStep != 4    ? 'display-none' : '' }}" id="step-4">
-        @livewire('user.user-profile-detailed-cursus',  ['title' => "Etape 4/4 : Mon cursus détaillé"])
+        @livewire('user.user-profile-detailed-cursus',  ['title' => "Etape 4/4 : Mon cursus détaillé", "user"=> $user])
     </div>
 
     <x-slot name='footer'>

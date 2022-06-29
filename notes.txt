@@ -1,4 +1,6 @@
 - (ok) titre et placholder état d'avancement à changer (formulaire ajout formation d'un établissement & formulaire de demande d'admission)
+- lenteur des champs sous wire:model, notamment dans cursus
+- afficher les msg d'erreur
 - exiger mot de passe FORT pour inscription
 - réduire les boutons sur mobile de la navigation du dossier d'admission
 - arrondir les inputs

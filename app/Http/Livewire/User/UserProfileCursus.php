@@ -12,14 +12,6 @@ class UserProfileCursus extends Component
 
     public $languages, $legalStatusList ;
 
-    public
-    $is_living_in_russian
-    // $legal_status ,$primary_studies_language ,
-    // $secondary_studies_language ,$is_has_russian_college_diploma ,
-    // $is_has_russian_high_school_diploma ,$is_study_in_russian_university ,
-    // $is_study_in_university
-    ;
-
     public $user, $cursus ;
 
     public function mount($user){
@@ -33,7 +25,7 @@ class UserProfileCursus extends Component
 
     protected function rules(){
         return   [
-            // parent validation rules
+            // cursus validation rules
             'cursus.is_living_in_russian' => ['boolean'],
             'cursus.legal_status' => ['string', 'in:foreign,local,permanent_resident,local_foreign'],
             'cursus.primary_studies_language' => ['string', 'in:french,english, spanish,russian'],
@@ -53,6 +45,7 @@ class UserProfileCursus extends Component
         }else{
             $cursus = new Cursus($this->cursus);
             $cursus->user()->associate($this->user);
+            $cursus->save();
         }
     }
 
