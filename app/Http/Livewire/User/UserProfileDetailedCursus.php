@@ -18,10 +18,18 @@ class UserProfileDetailedCursus extends Component
     public function mount($user){
         $this->currentStep = 4;
         $this->user_school_currentFormations = [] ;
+
         $this->user = $user;
-        echo "je suis mount()";
+
         $this->user_schools = !empty($user->attend->toArray()) ? $user->attend : []  ;
-        $this->user_school = ["name" => "Estia", "country" => "", "state" => ""];
+        $this->user_school = ["name" => "esatic", "country" => "", "state" => ""];
+    }
+
+    protected function getListeners(){
+        return ['refreshComponent' => '$refresh'];
+    }
+    public function dehydrateUserSchoolCurrentFormations(){
+        // dd("updating user_school_currentFormations ", $this->user_school_currentFormations);
     }
 
     protected function getUserSchoolRules(){
@@ -67,6 +75,14 @@ class UserProfileDetailedCursus extends Component
         $user_school->save();
         $this->reset(["user_school"]);
         $this->dispatchBrowserEvent("closeModal");
+        $this->emit('refreshComponent');
+    }
+
+    public function deleteUserSchool($schoolId){
+        $this->user_schools->where("id", $schoolId)->first()->delete();
+        $this->user_schools = $this->user_schools->filter(function ($item, $key) use($schoolId) {
+            return $item->id != $schoolId ;
+        });
     }
 
     public function addUserSchoolFormation(){
@@ -75,18 +91,23 @@ class UserProfileDetailedCursus extends Component
         $user_school_formation = new UserSchoolFormation($this->user_school_formation);
         $user_school_formation->userSchool()->associate($this->user_school_currentID);
         $user_school_formation->save();
-        $this->user_schools =  $this->user->attend ;
         $this->reset(["user_school_formation", "user_school_currentID", "user_school_currentName"]);
         $this->dispatchBrowserEvent("closeModal");
     }
 
+    public function deleteUserSchoolFormation($formationId){
+        $this->user_school_currentFormations->where("id", $formationId)->first()->delete();
+        $this->user_school_currentFormations = $this->user_school_currentFormations->filter(function ($item, $key) use($formationId) {
+            return $item->id != $formationId ;
+        });
+    }
+
     public function backStep(){
-        $this->saveStep();
         $this->emit('setStep', $this->currentStep -1);
     }
 
     public function submitForm(){
-        $this->saveStep();
+
     }
     public function render()
     {

@@ -10,6 +10,9 @@
             <form action="#">
                 <div class="form-group">
                     <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addSchoolModal">Ajouter un établissement </a>
+                    <div class="text-center" wire:loading wire:target="deleteUserSchool">
+                        <p class=" font-weight-bold font-italic">Chargement des données...</p>
+                    </div>
                     <div class="table-responsive ">
                         <table class="table ">
                             <caption>Liste de mes établissements d'enseignement</caption>
@@ -32,7 +35,7 @@
                                         <td class="text-truncate">
                                             <i class="feature-icon-sm ti-plus mx-1" data-toggle="modal" data-target="#addFormationModal" wire:click="setUserSchoolFormation({{ $user_school->id }}, '{{ $user_school->name }}', 'add')"></i>
                                             <i class="feature-icon-sm ti-eye mx-1" data-toggle="modal" data-target="#showFormationModal" wire:click="setUserSchoolFormation({{ $user_school->id }}, '{{ $user_school->name }}', 'show')"></i>
-                                            <i class="feature-icon-sm-danger ti-trash mx-1"></i>
+                                            <i class="feature-icon-sm-danger ti-trash mx-1" wire:click="deleteUserSchool({{ $user_school->id }})"></i>
                                         </td>
                                     </tr>
                                     <tr>
@@ -175,7 +178,10 @@
                 </button>
             </div>
             <div class="modal-body ">
-                <div class="table-responsive">
+                <div class="text-center" wire:loading wire:target="setUserSchoolFormation, deleteUserSchoolFormation">
+                    <p class=" font-weight-bold font-italic">Chargement des données...</p>
+                </div>
+                <div class="table-responsive" wire:loading.remove>
                     <table class="table ">
                         <thead class="thead-warning">
                             <tr>
@@ -197,8 +203,8 @@
                                     <td > {{ $formation->status }} </td>
                                     <td > {{ $formation->start_date }} </td>
                                     <td > {{ $formation->end_date }} </td>
-                                    <td class="d-inline-block text-truncate"> 
-                                        <i class="feature-icon-sm-danger ti-trash mx-1"></i>
+                                    <td class="">
+                                        <i class="feature-icon-sm-danger ti-trash mx-1" wire:click="deleteUserSchoolFormation({{ $formation->id }})"></i>
                                     </td>
                                 </tr>
                             @empty
