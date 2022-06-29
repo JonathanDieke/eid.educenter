@@ -27,13 +27,13 @@ Route::get('/',  WelcomeComponent::class)->name('welcome');
 
 Route::get('/monbedou',  function(){
     $response = Http::withHeaders([
-        'Content-type' => 'application/json', 
+        'Content-type' => 'application/json',
     ])->post('https://payment.monbedou.com/api/callback', [
         'name' => 'Steve',
         'role' => 'Network Administrator',
     ]);
 
-    dd($response);
+    dd($response->body());
 })->name('monbedou');
 
 Route::get('/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');
