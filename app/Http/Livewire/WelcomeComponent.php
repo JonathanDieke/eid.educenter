@@ -89,7 +89,7 @@ class WelcomeComponent extends Component
         // $this->resetErrorMessage();
         $data = $this->validate();
         $data["password"] = Hash::make($data["password"]);
-        dd($data);
+        // dd($data);
 
         $user = User::create($data);
 
