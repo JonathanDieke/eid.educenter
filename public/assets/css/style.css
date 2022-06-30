@@ -380,6 +380,10 @@ a h4:hover {
   background: #1a1a37 !important;
 }
 
+.bg-secondary-half {
+  background: rgb(92,92,119, 0.5) !important;
+}
+
 .bg-gray {
   background: #f8f8f8;
 }

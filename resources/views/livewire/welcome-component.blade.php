@@ -32,15 +32,15 @@
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-12">
-                                        @error('gender') <span class="error font-italic text-danger">{{ $message }}</span> @enderror 
+                                        @error('gender') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
                                         <select class="custom-select " wire:model='gender'>
                                             <option selected>Genre</option>
                                             <option value="male" >Masculin</option>
-                                            <option value="female" >Féminin</option> 
+                                            <option value="female" >Féminin</option>
                                         </select>
-                                    </div> 
+                                    </div>
                                 </div>
-                                <div class="form-row  pl-2 w-100">                                
+                                <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
                                         @error('birthdate') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
                                         <input type="date" class="form-control form-control-sm " wire:model="birthdate" placeholder="Date d'anniversaire" autocomplete="off ">
@@ -50,9 +50,9 @@
                                         <select class="custom-select " wire:model='country'>
                                             <option selected>Pays de naissance</option>
                                             <option value="pays1" >Pays 1</option>
-                                            <option value="pays2" >Pays 2</option> 
+                                            <option value="pays2" >Pays 2</option>
                                         </select>
-                                    </div>                               
+                                    </div>
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
@@ -60,7 +60,7 @@
                                         <select class="custom-select " wire:model='state'>
                                             <option selected>Etat de naissance</option>
                                             <option value="etat1" >etat 1</option>
-                                            <option value="etat2" >etat 2</option> 
+                                            <option value="etat2" >etat 2</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -68,7 +68,7 @@
                                         <select class="custom-select " wire:model='city'>
                                             <option selected>Ville de naissance</option>
                                             <option value="ville1" >Ville 1</option>
-                                            <option value="ville2" >Ville 2</option> 
+                                            <option value="ville2" >Ville 2</option>
                                         </select>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                             <option value="russian" >Russe</option>
                                         </select>
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-12">
                                         @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
@@ -156,49 +156,34 @@
    <!-- hero slider -->
    <section class="hero-section overlay bg-cover" data-background="{{ asset('assets/images/banner/banner-1.jpg') }}">
        <div class="container">
-       <div class="hero-slider">
-           <!-- slider item -->
-           <div class="hero-slider-item">
-           <div class="row">
-               <div class="col-md-8">
-               <h1 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1">Your bright future is our mission</h1>
-               <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                   tempor
-                   incididunt ut labore et
-                   dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
-               <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7">Apply now</a>
-               </div>
-           </div>
-           </div>
-           <!-- slider item -->
-           <div class="hero-slider-item">
-           <div class="row">
-               <div class="col-md-8">
-               <h1 class="text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">Your bright future is our mission</h1>
-               <p class="text-muted mb-4" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                   tempor
-                   incididunt ut labore et
-                   dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
-               <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".7">Apply now</a>
-               </div>
-           </div>
-           </div>
-           <!-- slider item -->
-           <div class="hero-slider-item">
-           <div class="row">
-               <div class="col-md-8">
-               <h1 class="text-white" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Your bright future is our mission</h1>
-               <p class="text-muted mb-4" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                   tempor
-                   incididunt ut labore et
-                   dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
-               <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="zoomIn" data-delay-in=".7">Apply now</a>
-               </div>
-           </div>
-           </div>
-       </div>
-       </div>
-   </section>
+            <div class="hero-slider">
+                <!-- slider item -->
+                <div class="hero-slider-item">
+                        <div class="row">
+                            <div class="col-md-8">
+                            <h2 class="text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">Bienvenue sur {{ env('APP_NAME') }}</h2>
+                            <p class="text-muted mb-4" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">
+                                La plateforme qui vous permet de partir étudier à l'étranger
+                            </p>
+                            <a href="#" class="btn btn-primary" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".99" data-toggle="modal" data-target="#signupModal">Inscrivez-vous</a>
+                            </div>
+                        </div>
+                </div>
+                <!-- slider item -->
+                <div class="hero-slider-item">
+                        <div class="row">
+                            <div class="col-md-8">
+                            <h2 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1">Votre réussite est notre mission</h2>
+                            <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".4">
+                                Confiez nous votre projet d'études et mettez toutes les chances de votre côté pour atteindre vos objectifs
+                            </p>
+                            <a href="#" class="btn btn-primary" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".99" data-toggle="modal" data-target="#signupModal">Inscrivez-vous</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
    <!-- /hero slider -->
 
    <!-- banner-feature -->
@@ -206,33 +191,45 @@
        <div class="container-fluid p-0">
        <div class="row no-gutters">
            <div class="col-xl-4 col-lg-5 align-self-end">
-           <img class="img-fluid w-100" src="{{ asset('assets/images/banner/banner-feature.png') }}" alt="banner-feature">
+                <img class="img-fluid w-100" src="{{ asset('assets/images/banner/banner-feature.png') }}" alt="banner-feature">
            </div>
            <div class="col-xl-8 col-lg-7">
            <div class="row feature-blocks bg-gray justify-content-between">
                <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-               <i class="ti-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-               <h3 class="mb-xl-4 mb-lg-3 mb-4">Service 1</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                   et dolore magna aliqua. Ut enim ad</p>
+               <i class="ti-agenda mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+               <h3 class="mb-xl-4 mb-lg-3 mb-4">Demande d'admission</h3>
+               <p>
+                    Confiez nous votre projet d'études !
+                    Nous nous chargeons de soumettre vos demandes d'admission dans les meilleures universités russes
+                    et mettons toutes les chances de votre côté pour obtenir une acceptation
+                </p>
                </div>
                <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
                <i class="ti-blackboard mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-               <h3 class="mb-xl-4 mb-lg-3 mb-4">Service 2</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                   et dolore magna aliqua. Ut enim ad</p>
+               <h3 class="mb-xl-4 mb-lg-3 mb-4">Assistance pour le Visa</h3>
+               <p>
+                    Vous êtes admis dans un université russe ?
+                    Nous proposons un service d'assistance personnalisée pour l'obtention de votre visa.
+                    Cette étape capitale vous semblera d'une facilité déconcertante
+                </p>
                </div>
                <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-               <i class="ti-agenda mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-               <h3 class="mb-xl-4 mb-lg-3 mb-4">Service 3</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                   et dolore magna aliqua. Ut enim ad</p>
+               <i class="ti-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+               <h3 class="mb-xl-4 mb-lg-3 mb-4">Légalisations et traduction</h3>
+               <p>
+                    Notre équipe de linguistes experts dans le domaine est à votre disposition pour toute traduction en russe
+                    ou légalisation de vos bulletins, diplômes ou tout autre document.
+                    Un service rapide, en ligne, et 100% fiable.
+                    {{-- En cas de besoin de traduire vos bulletins, diplômes, ou tout autre document dans la langue russe,
+                    notre plateforme met à votre disposition une équipe de linguistes experts dans le domaine. --}}
+                </p>
                </div>
                <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-               <i class="ti-write mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-               <h3 class="mb-xl-4 mb-lg-3 mb-4">Service 4</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                   et dolore magna aliqua. Ut enim ad</p>
+               <i class="ti-folder mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+               <h3 class="mb-xl-4 mb-lg-3 mb-4">Gestion du dossier migratoire</h3>
+               <p>
+                    Soyez assisté et representé par l'un de nos agents durant la constitution de votre dossier d'immagration
+                </p>
                </div>
            </div>
            </div>
@@ -242,14 +239,15 @@
    <!-- /banner-feature -->
 
    <!-- about us -->
-   <section class="section">
+   <section class="section" id="about-us">
        <div class="container">
        <div class="row align-items-center">
            <div class="col-md-6 order-2 order-md-1">
-           <h2 class="section-title">A propos de EduCenter</h2>
-           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
-           <p>cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
-           <a href="about.html" class="btn btn-primary-outline">Learn more</a>
+           <h2 class="section-title">A propos de {{ env('APP_NAME') }}</h2>
+           {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p> --}}
+           {{-- <p>cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p> --}}
+           <p>{{ env('APP_NAME') }} est un cabinet qui octroie les bourses d'études aux étudiants qui désirent aller continuer leurs études dans les universités extérieures dans d'autres pays comme la Russie ,l'Italie, le Canada, ... </p>
+           <a href="#" class="btn btn-primary-outline">Lire plus</a>
            </div>
            <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
            <img class="img-fluid w-100" src="{{ asset('assets/images/about/about-us.jpg') }}" alt="about image">
@@ -259,87 +257,84 @@
    </section>
    <!-- /about us -->
 
-   <!-- courses -->
+   <!-- country -->
    <section class="section-sm">
        <div class="container">
            <div class="row">
                <div class="col-12">
                    <div class="d-flex align-items-center section-title justify-content-between">
-                       <h2 class="mb-0 text-nowrap mr-3">Our Course</h2>
+                       <h2 class="mb-0 text-nowrap mr-3">Nos pays d'intervention</h2>
                        <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-                       <div>
-                       <a href="courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
-                       </div>
+                       {{-- <div>
+                       <a href="courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">S'inscrire</a>
+                       </div> --}}
                    </div>
                </div>
            </div>
-           <!-- course list -->
+           <!-- country list -->
            <div class="row justify-content-center">
-               <!-- course item -->
+               <!-- country item -->
                <div class="col-lg-4 col-sm-6 mb-5">
                    <div class="card p-0 border-primary rounded-0 hover-shadow">
-                       <img class="card-img-top rounded-0" src="{{ asset('assets/images/courses/course-1.jpg') }}" alt="course thumb">
+                       {{-- <img class="card-img-top rounded-0" src="{{ asset('assets/images/courses/course-1.jpg') }}" alt="course thumb"> --}}
+                       <img class="card-img-top rounded-0" src="{{ asset('assets/images/country-flags/russia-flag.png') }}" alt="russia flag">
                        <div class="card-body">
-                       <ul class="list-inline mb-2">
+                       {{-- <ul class="list-inline mb-2">
                            <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-                           <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-                       </ul>
-                       <a href="course-single.html">
-                           <h4 class="card-title">Photography</h4>
+                           <li class="list-inline-item"><a class="text-color" href="#">Russie</a></li>
+                       </ul> --}}
+                       <a href="#">
+                           <h4 class="card-title">Russie</h4>
                        </a>
-                       <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                           incididunt ut labore et dolore magna.</p>
-                       <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
+                       <p class="card-text mb-4">
+                            Postulez dans l'une des 10 meilleures universités russes et réalisez vous.
+                        </p>
+                       <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signupModal">S'inscrire</a>
                        </div>
                    </div>
                </div>
-               <!-- course item -->
+               <!-- country item -->
                <div class="col-lg-4 col-sm-6 mb-5">
                    <div class="card p-0 border-primary rounded-0 hover-shadow">
-                       <img class="card-img-top rounded-0" src="{{ asset('assets/images/courses/course-2.jpg') }}" alt="course thumb">
+                       <img class="card-img-top rounded-0" src="{{ asset('assets/images/country-flags/italy-flag.jpg') }}" alt="italiy flag">
                        <div class="card-body">
-                       <ul class="list-inline mb-2">
-                           <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-                           <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-                       </ul>
-                       <a href="course-single.html">
-                           <h4 class="card-title">Programming</h4>
+                       <a href="#">
+                           <h4 class="card-title">Italie</h4>
                        </a>
-                       <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                           incididunt ut labore et dolore magna.</p>
-                       <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
+                       <p class="card-text mb-4">
+                            Choisissez l'Italie pour son perfomant système éducatif et sa belle culture.
+                        </p>
+                       <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signupModal">S'inscrire</a>
                        </div>
                    </div>
                </div>
-               <!-- course item -->
+               <!-- country item -->
                <div class="col-lg-4 col-sm-6 mb-5">
                    <div class="card p-0 border-primary rounded-0 hover-shadow">
-                       <img class="card-img-top rounded-0" src="{{ asset('assets/images/courses/course-3.jpg') }}" alt="course thumb">
+                       <img class="card-img-top rounded-0" src="{{ asset('assets/images/country-flags/canada-flag.png') }}" style="height:232px" alt="canada flag">
                        <div class="card-body">
-                       <ul class="list-inline mb-2">
-                           <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-                           <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-                       </ul>
-                       <a href="course-single.html">
-                           <h4 class="card-title">Lifestyle Archives</h4>
+                       <a href="#">
+                           <h4 class="card-title">Canada</h4>
                        </a>
-                       <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                           incididunt ut labore et dolore magna.</p>
-                       <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
+                       <p class="card-text mb-4">
+                            Rejoignez le Canada pour son haut domaine scientifique avancé.
+                            {{-- Avec ses professeurs de qualité, le Canada ne saura qu'être un bon choix pour la suite de vos études. --}}
+                        </p>
+                       <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signupModal">S'inscrire</a>
                        </div>
                    </div>
                </div>
            </div>
-           <!-- /course list -->
+           <!-- /country list -->
            <!-- mobile see all button -->
-           <div class="row">
+           {{-- <div class="row">
                <div class="col-12 text-center">
                    <a href="courses.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>
                </div>
-           </div>
+           </div> --}}
        </div>
    </section>
-   <!-- /courses -->
+   <!-- /country -->
 
    <!-- cta -->
    <section class="section bg-primary">
@@ -357,20 +352,50 @@
    <!-- /cta -->
 
    <!-- success story -->
-   <section class="section bg-cover" data-background="{{ asset('assets/images/backgrounds/success-story.jpg') }}">
+   <section class="section bg-cover mb-5" data-background="{{ asset('assets/images/backgrounds/success-story.jpg') }}" >
        <div class="container">
            <div class="row">
                <div class="col-lg-6 col-sm-4 position-relative success-video">
-               <a class="play-btn venobox" href="https://youtu.be/nA1Aqp0sPQo" data-vbtype="video">
-                   <i class="ti-control-play"></i>
-               </a>
+                    <a class="play-btn venobox" href="https://youtu.be/nA1Aqp0sPQo" data-vbtype="video">
+                        <i class="ti-control-play"></i>
+                    </a>
                </div>
                <div class="col-lg-6 col-sm-8">
-               <div class="bg-white p-5">
-                   <h2 class="section-title">Témoignages</h2>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-               </div>
+                    <div class="bg-secondary-half px-5 pt-5">
+                        <h2 class="section-title">Témoignages</h2>
+                            <div class="container ">
+                                <div class="hero-slider">
+                                    <!-- success story item -->
+                                    <div class="hero-slider-item p-3">
+                                            <div class="">
+                                                <p class="text-center text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">
+                                                    Témoignage 1
+                                                </p>
+                                            </div>
+                                    </div>
+                                    <!-- success story item -->
+                                    <div class="hero-slider-item p-3">
+                                            <div class="">
+                                                <p class="text-center  text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">
+                                                    Témoignage 2
+                                                </p>
+                                            </div>
+                                    </div>
+                                    <!-- success story item -->
+                                    <div class="hero-slider-item p-3">
+                                            <div class="">
+                                                <p class="text-center text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">
+                                                    Témoignage 3
+                                                </p>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="h-100 d-inline-block p-5 m-5"></div>
+                        <div class="h-100 d-inline-block p-5 m-5"></div>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p> --}}
+                    </div>
                </div>
            </div>
        </div>
@@ -378,7 +403,7 @@
    <!-- /success story -->
 
    <!-- events -->
-   <section class="section bg-gray">
+   {{-- <section class="section bg-gray">
         <div class="container">
             <div class="row">
                <div class="col-12">
@@ -442,7 +467,7 @@
                 </div>
             </div>
         </div>
-   </section>
+   </section> --}}
    <!-- /events -->
 
    <!-- teachers -->
@@ -512,7 +537,7 @@
    <!-- /teachers -->
 
    <!-- blog -->
-   <section class="section pt-0">
+   {{-- <section class="section pt-0">
        <div class="container">
            <div class="row">
                <div class="col-12">
@@ -522,41 +547,41 @@
            <div class="row justify-content-center">
                <!-- blog post -->
                <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-               <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                   <img class="card-img-top rounded-0" src="{{ asset('assets/images/blog/post-1.jpg') }}" alt="Post thumb">
-                   <div class="card-body">
-                   <!-- post meta -->
-                   <ul class="list-inline mb-3">
-                       <!-- post date -->
-                       <li class="list-inline-item mr-3 ml-0">August 28, 2019</li>
-                       <!-- author -->
-                       <li class="list-inline-item mr-3 ml-0">By Jonathon</li>
-                   </ul>
-                   <a href="blog-single.html">
-                       <h4 class="card-title">The Expenses You Are Thinking.</h4>
-                   </a>
-                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                   <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-                   </div>
-               </div>
+                    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+                        <img class="card-img-top rounded-0" src="{{ asset('assets/images/blog/post-1.jpg') }}" alt="Post thumb">
+                        <div class="card-body">
+                            <!-- post meta -->
+                            <ul class="list-inline mb-3">
+                                <!-- post date -->
+                                <li class="list-inline-item mr-3 ml-0">August 28, 2019</li>
+                                <!-- author -->
+                                <li class="list-inline-item mr-3 ml-0">By Jonathon</li>
+                            </ul>
+                            <a href="blog-single.html">
+                                <h4 class="card-title">The Expenses You Are Thinking.</h4>
+                            </a>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
+                            <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+                        </div>
+                    </div>
                </article>
                <!-- blog post -->
                <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
                    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
                        <img class="card-img-top rounded-0" src="{{ asset('assets/images/blog/post-2.jpg') }}" alt="Post thumb">
                        <div class="card-body">
-                       <!-- post meta -->
-                       <ul class="list-inline mb-3">
-                           <!-- post date -->
-                           <li class="list-inline-item mr-3 ml-0">August 13, 2019</li>
-                           <!-- author -->
-                           <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
-                       </ul>
-                       <a href="blog-single.html">
-                           <h4 class="card-title">Tips to Succeed in an Online Course</h4>
-                       </a>
-                       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                       <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+                            <!-- post meta -->
+                            <ul class="list-inline mb-3">
+                                <!-- post date -->
+                                <li class="list-inline-item mr-3 ml-0">August 13, 2019</li>
+                                <!-- author -->
+                                <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
+                            </ul>
+                            <a href="blog-single.html">
+                                <h4 class="card-title">Tips to Succeed in an Online Course</h4>
+                            </a>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
+                            <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
                        </div>
                    </div>
                </article>
@@ -565,24 +590,24 @@
                    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
                        <img class="card-img-top rounded-0" src="{{ asset('assets/images/blog/post-3.jpg') }}" alt="Post thumb">
                        <div class="card-body">
-                       <!-- post meta -->
-                       <ul class="list-inline mb-3">
-                           <!-- post date -->
-                           <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
-                           <!-- author -->
-                           <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
-                       </ul>
-                       <a href="blog-single.html">
-                           <h4 class="card-title">Orientation Program for the new students</h4>
-                       </a>
-                       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                       <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+                            <!-- post meta -->
+                            <ul class="list-inline mb-3">
+                                <!-- post date -->
+                                <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
+                                <!-- author -->
+                                <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
+                            </ul>
+                            <a href="blog-single.html">
+                                <h4 class="card-title">Orientation Program for the new students</h4>
+                            </a>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
+                            <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
                        </div>
                    </div>
                </article>
            </div>
        </div>
-   </section>
+   </section> --}}
    <!-- /blog -->
 
    <!-- footer -->
@@ -596,7 +621,7 @@
                      <form action="#">
                      <div class="input-wrapper">
                          <input type="email" class="form-control form-control-sm border-0" id="newsletter" name="newsletter" placeholder="Entrez votre email...">
-                         <button type="submit" value="send" class="btn btn-primary">Rejoindre</button>
+                         <button type="submit" value="send" class="btn btn-primary">S'abonner</button>
                      </div>
                      </form>
                  </div>
@@ -609,32 +634,33 @@
                  <div class="row">
                  <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
                      <!-- logo -->
-                     <a class="logo-footer" href="index.html"><img class="img-fluid mb-4" src="{{ asset('assets/images/logo.png') }}" alt="logo"></a>
+                     <a class="logo-footer" href="index.html"><img class="img-fluid mb-4" src="{{ asset('assets/images/logo.png') }}" alt="logo">{{ env('APP_NAME') }}</a>
                      <ul class="list-unstyled">
-                     <li class="mb-2">Adresse, rue, ville, pays</li>
-                     <li class="mb-2">Tel 1</li>
-                     <li class="mb-2">Tel 2</li>
-                     <li class="mb-2">email</li>
+                     <li class="mb-2">SIDECI, Yopougon, Abidjan, Côte d'Ivoire</li>
+                     <li class="mb-2">+225 01 53 48 88 36 </li>
+                     <li class="mb-2">+225 01 XX XX XX</li>
+                     <li class="mb-2">jonathan.dieke225@gmail.com</li>
                      </ul>
                  </div>
                  <!-- company -->
                  <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                     <h4 class="text-white mb-5">COMPANY</h4>
+                     <h4 class="text-white mb-5">Le cabinet</h4>
                      <ul class="list-unstyled">
-                             <li class="mb-3"><a class="text-color" href="about.html">A propos de nous</a></li>
+                             <li class="mb-3"><a class="text-color" href="#about-us">A propos de nous</a></li>
                              {{-- <li class="mb-3"><a class="text-color" href="teacher.html">Our Teacher</a></li> --}}
-                             <li class="mb-3"><a class="text-color" href="contact.html">Contact</a></li>
-                             <li class="mb-3"><a class="text-color" href="blog.html">Actualités</a></li>
+                             <li class="mb-3"><a class="text-color" href="#">Contact</a></li>
+                             {{-- <li class="mb-3"><a class="text-color" href="blog.html">Actualités</a></li> --}}
                      </ul>
                  </div>
                  <!-- links -->
                  <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                     <h4 class="text-white mb-5">LINKS</h4>
+                     <h4 class="text-white mb-5">Nos réseaux</h4>
                      <ul class="list-unstyled">
-                     {{-- <li class="mb-3"><a class="text-color" href="courses.html">Courses</a></li> --}}
-                     <li class="mb-3"><a class="text-color" href="event.html">Evènements</a></li>
-                     <li class="mb-3"><a class="text-color" href="gallary.html">Gallary</a></li>
-                     <li class="mb-3"><a class="text-color" href="faqs.html">FAQs</a></li>
+                        {{-- <li class="mb-3"><a class="text-color" href="courses.html">Courses</a></li> --}}
+                        <li class="mb-3"><a class="text-color" href="#">Facebook</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">LinkedIn</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">Instagram</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">Twitter</a></li>
                      </ul>
                  </div>
                  <!-- support -->
@@ -663,5 +689,5 @@
     </x-slot>
    <!-- /footer -->
 
-   
+
 </div>

@@ -40,8 +40,8 @@ class WelcomeComponent extends Component
         // $this->city = "ville1";
         // $this->native_language = "french";
         // $this->use_language = "french";
-        $this->email = "rodriguez.kennedy@example.org";
-        $this->password = "password";
+        // $this->email = "rodriguez.kennedy@example.org";
+        // $this->password = "password";
         // $this->password_confirmation = "password" ;
 
         $this->date = Carbon::now()->subYears(5);
