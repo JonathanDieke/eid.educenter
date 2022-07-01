@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\User;
 
-use App\Models\UserSchool;
-use App\Models\UserSchoolFormation;
 use Livewire\Component;
+use App\Models\UserSchool;
+use Illuminate\Support\Str;
+use App\Models\UserSchoolFormation;
 
 class UserProfileDetailedCursus extends Component
 {
@@ -35,6 +36,10 @@ class UserProfileDetailedCursus extends Component
     }
     protected function getUserSchoolFormationRules(){
         return   [
+            // user school validation rules
+            'user_school.name' => ['required', 'string', 'min:3', "max:128"],
+            'user_school.country' => ['required', 'string', 'min:3', "max:128"],
+            'user_school.state' => ['required', 'string', 'min:3', "max:128"],
             // user school formation validation rules
             'user_school_formation.type' => ['required', 'string', 'min:3', 'max:128'],
             'user_school_formation.program_name' => ['required', 'string', 'min:3', 'max:128'],
@@ -72,31 +77,29 @@ class UserProfileDetailedCursus extends Component
         $this->reset(["user_school"]);
         $this->dispatchBrowserEvent("closeModal");
         $this->emit('refresh');
-    }
-
-    public function deleteUserSchool($schoolId){
-        UserSchool::destroy($schoolId);
-        $this->emit('refresh');
-        // $this->user_schools = $this->user_schools->filter(function ($item, $key) use($schoolId) {
-        //     return $item->id != $schoolId ;
-        // });
-    }
+    } 
 
     public function addUserSchoolFormation(){
         $data  = $this->validate($this->getUserSchoolFormationRules()) ;
-        // dd($data);
+
+        $this->user_school["name"] = Str::title($this->user_school["name"]);
+        // dd($this->user_school);
+
+        $user_school = new UserSchool($this->user_school);
+        $user_school->user()->associate($this->user);
+        $user_school->save();
+
         $user_school_formation = new UserSchoolFormation($this->user_school_formation);
-        $user_school_formation->userSchool()->associate($this->user_school_currentID);
+        $user_school_formation->userSchool()->associate($user_school);
         $user_school_formation->save();
-        $this->reset(["user_school_formation", "user_school_currentID", "user_school_currentName"]);
+        $this->reset(["user_school", "user_school_formation"]);
         $this->dispatchBrowserEvent("closeModal");
+        $this->emit('refresh');
     }
 
-    public function deleteUserSchoolFormation($formationId){
-        $this->user_school_currentFormations->where("id", $formationId)->first()->delete();
-        $this->user_school_currentFormations = $this->user_school_currentFormations->filter(function ($item, $key) use($formationId) {
-            return $item->id != $formationId ;
-        });
+    public function deleteUserSchoolFormation($userSchoolId){
+        UserSchool::destroy($userSchoolId);
+        $this->emit("refresh");
     }
 
     public function backStep(){
@@ -108,7 +111,7 @@ class UserProfileDetailedCursus extends Component
     }
     public function render()
     {
-        $userSchools = $this->user->attend;
+        $userSchools = $this->user->attend->sortBy('name');
         return view('livewire.user.user-profile-detailed-cursus', compact('userSchools'));
     }
 }

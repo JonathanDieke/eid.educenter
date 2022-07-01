@@ -25,6 +25,24 @@ class UserSchoolFormation extends Model
         );
     }
 
+    protected function startDate() : Attribute
+    {
+        return Attribute::make(
+            get: function ($value) { ;
+                return explode("-", $value)[0];
+            }
+        );
+    }
+
+    protected function endDate() : Attribute
+    {
+        return Attribute::make(
+            get: function ($value) { ;
+                return explode("-", $value)[0];
+            }
+        );
+    }
+
     public function userSchool(){
         return $this->belongsTo(UserSchool::class);
     }
