@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Supporting;
 use App\Models\UserSchool;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UserSchoolFormation extends Model
@@ -25,7 +27,35 @@ class UserSchoolFormation extends Model
         );
     }
 
-    public function userSchool(){
-        return $this->belongsTo(UserSchool::class);
+    // protected function startDate() : Attribute
+    // {
+    //     return Attribute::make(
+    //         get: function ($value) { ;
+    //             return explode("-", $value)[0];
+    //         }
+    //     );
+    // }
+
+    // protected function endDate() : Attribute
+    // {
+    //     return Attribute::make(
+    //         get: function ($value) { ;
+    //             return explode("-", $value)[0];
+    //         }
+    //     );
+    // }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get all of the supportings for the UserSchoolFormation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function supportings(): HasMany
+    {
+        return $this->hasMany(Supporting::class, "user_school_formation_id", "id");
     }
 }

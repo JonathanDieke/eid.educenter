@@ -2,39 +2,38 @@
 
 namespace App\Http\Livewire\User;
 
-use App\Models\UserSchool;
-use App\Models\UserSchoolFormation;
+use App\Models\Supporting;
 use Livewire\Component;
+use App\Models\UserSchool;
+use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
+use App\Models\UserSchoolFormation;
 
 class UserProfileDetailedCursus extends Component
 {
-    public $title = "Etape 4/4 : Mon cursus détaillé";
-    protected $currentStep;
-    public $user_school , $user;
-    public $user_school_currentName, $user_school_currentID ;
-    public $user_school_formation, $user_school_currentFormations  ;
+    use WithFileUploads;
 
+    public $title = "Etape 4/4 : Mon cursus détaillé";
+    protected $currentStep = 4, $renderSupportings = false;
+
+
+    public  $user;
+    public $currentSchoolName, $currentFormationId ;
+    public $user_school_formation ;
+    public $supporting ;
+
+    protected $listeners = ['refresh' => '$refresh'];
 
     public function mount($user){
-        $this->currentStep = 4;
-        $this->user_school_currentFormations = [] ;
-
         $this->user = $user;
-
-        // $this->user_schools = !empty($user->attend->toArray()) ? $user->attend : []  ;
-        $this->user_school = ["name" => "esatic", "country" => "", "state" => ""];
     }
 
-    protected function getUserSchoolRules(){
-        return   [
-            // user schools validation rules
-            'user_school.name' => ['required', 'string', 'min:3', 'max:128'],
-            'user_school.country' => ['required', 'string', 'min:3', 'max:128'],
-            'user_school.state' => ['required', 'string', 'min:3', 'max:128'],
-        ];
-    }
     protected function getUserSchoolFormationRules(){
         return   [
+            // user school validation rules
+            'user_school_formation.name' => ['required', 'string', 'min:3', "max:128"],
+            'user_school_formation.country' => ['required', 'string', 'min:3', "max:128"],
+            'user_school_formation.state' => ['required', 'string', 'min:3', "max:128"],
             // user school formation validation rules
             'user_school_formation.type' => ['required', 'string', 'min:3', 'max:128'],
             'user_school_formation.program_name' => ['required', 'string', 'min:3', 'max:128'],
@@ -44,71 +43,104 @@ class UserProfileDetailedCursus extends Component
         ];
     }
 
-    public function setUserSchoolFormation($user_school_currentID, $user_school_currentName, $action){
-        // dd($user_school_currentID, $user_school_currentName);
-        $this->user_school_currentID = $user_school_currentID ;
-        $this->user_school_currentName = $user_school_currentName;
-        // dd($this->user->attend?->where('id', $user_school_currentID));
-
-        if($action === 'add'){
-            $this->user_school_formation = ["type" => "", "program_name" => "", "status" => "", "start_date" => "", "end_date" => ""];
-            // dd($this->user_school_formation );
-        }
-        if($action === 'show'){
-            $attend =  $this->user->attend->where('id', $user_school_currentID)->first() ;
-            $this->user_school_currentFormations = $attend ?$attend->formations : []  ;
-        }
-        // $this->user_schools = !empty($this->user->attend->formations->toArray()) ?
-        //                                     $this->user->attend->formations :
-        //                                     ["type" => "", "program_name" => "", "status" => "", "start_date" => "", "end_date" => ""]  ;
-    }
-
-    public function addUserSchool(){
-        $data  = $this->validate($this->getUserSchoolRules()) ;
-        // dd($data);
-        $user_school = new UserSchool($this->user_school);
-        $user_school->user()->associate($this->user);
-        $user_school->save();
-        $this->reset(["user_school"]);
-        $this->dispatchBrowserEvent("closeModal");
-        $this->emit('refresh');
-    }
-
-    public function deleteUserSchool($schoolId){
-        UserSchool::destroy($schoolId);
-        $this->emit('refresh');
-        // $this->user_schools = $this->user_schools->filter(function ($item, $key) use($schoolId) {
-        //     return $item->id != $schoolId ;
-        // });
-    }
-
     public function addUserSchoolFormation(){
-        $data  = $this->validate($this->getUserSchoolFormationRules()) ;
-        // dd($data);
-        $user_school_formation = new UserSchoolFormation($this->user_school_formation);
-        $user_school_formation->userSchool()->associate($this->user_school_currentID);
+        $this->validate($this->getUserSchoolFormationRules()) ;
+
+        $this->user_school_formation["name"] = Str::title($this->user_school_formation["name"]);
+        unset($this->user_school_formation["id"]);
+        // dd($this->currentFormationId );
+
+        $user_school_formation = UserSchoolFormation::updateOrCreate(
+            ["id" => $this->currentFormationId],
+            $this->user_school_formation);
+        $user_school_formation->user()->associate($this->user);
         $user_school_formation->save();
-        $this->reset(["user_school_formation", "user_school_currentID", "user_school_currentName"]);
+
+        $this->reset(["user_school_formation"]);
         $this->dispatchBrowserEvent("closeModal");
+        $this->emit('refresh');
     }
 
     public function deleteUserSchoolFormation($formationId){
-        $this->user_school_currentFormations->where("id", $formationId)->first()->delete();
-        $this->user_school_currentFormations = $this->user_school_currentFormations->filter(function ($item, $key) use($formationId) {
-            return $item->id != $formationId ;
-        });
+        // dd($userSchoolId);
+        UserSchoolFormation::destroy($formationId);
+        $this->emit('refresh');
+    }
+
+    public function setCurrentFormation($currentFormationId, $currentFormationName, $action){
+        $this->supporting = [];
+        $this->currentSchoolName = $currentFormationName ;
+        $this->currentFormationId = $currentFormationId ;
+        $this->renderSupportings = $action == 'show'  ? true : false ;
+    }
+
+    // Edition de la formation
+    public function setUserSchoolFormation($formationId){
+        $this->user_school_formation = UserSchoolFormation::find($formationId)->toArray();
+        $this-> currentFormationId = $formationId ;
+        // dd($this->user_school_formation );
+    }
+
+    public function addSupporting(){
+        $d = $this->validate([
+            'supporting.filename' => ['file', 'max:1024', 'mimes:jpg,png,jpeg,pdf'], // 1MB Max
+            'supporting.comment' => ['required', 'string', 'max:32'],
+        ]);
+
+        $path = $this->supporting["filename"]->store('supportings');
+        $this->supporting["filename"] = $path ;
+
+        $s = new Supporting($this->supporting);
+        $s->formation()->associate($this->currentFormationId);
+        $s->save();
+
+        $this->reset(["supporting"]);
+        $this->dispatchBrowserEvent("closeModal");
+        $this->emit('refresh');
+    }
+
+    public function deleteSupporting($supportingId){
+        Supporting::destroy($supportingId);
+
+        $this->reset(["currentFormationId"]);
+        $this->dispatchBrowserEvent("closeModal");
     }
 
     public function backStep(){
         $this->emit('setStep', $this->currentStep -1);
     }
-
     public function submitForm(){
 
     }
     public function render()
     {
-        $userSchools = $this->user->attend;
-        return view('livewire.user.user-profile-detailed-cursus', compact('userSchools'));
+        $formations = $this->user->formations->sortBy('name');
+        $supportings = $this->currentFormationId ?  $formations->where("id", $this->currentFormationId)->first()->supportings : [] ;
+        return view('livewire.user.user-profile-detailed-cursus', [
+            'formations' => $formations,
+            "supportings" => $supportings
+        ]);
     }
 }
+
+
+
+    // protected function getUserSchoolRules(){
+    //     return   [
+    //         // user schools validation rules
+    //         'user_school.name' => ['required', 'string', 'min:3', 'max:128'],
+    //         'user_school.country' => ['required', 'string', 'min:3', 'max:128'],
+    //         'user_school.state' => ['required', 'string', 'min:3', 'max:128'],
+    //     ];
+    // }
+
+    // public function addUserSchool(){
+    //     $data  = $this->validate($this->getUserSchoolRules()) ;
+    //     // dd($data);
+    //     $user_school = new UserSchool($this->user_school);
+    //     $user_school->user()->associate($this->user);
+    //     $user_school->save();
+    //     $this->reset(["user_school"]);
+    //     $this->dispatchBrowserEvent("closeModal");
+    //     $this->emit('refresh');
+    // }

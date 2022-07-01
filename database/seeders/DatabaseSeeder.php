@@ -18,11 +18,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\Address::factory(10)->create();
         \App\Models\Cursus::factory(10)->create();
         $theParents = \App\Models\TheParent::factory(20)->create();
-        \App\Models\UserSchool::factory(10)->create();
+        // \App\Models\UserSchool::factory(10)->create();
         $schools = \App\Models\School::factory(10)->create();
         \App\Models\UserSchoolFormation::factory(10)->create();
         $programs = \App\Models\Program::factory(20)->create();
         \App\Models\AdmissionRequest::factory(10)->create();
+        \App\Models\Supporting::factory(10)->create();
 
         //fill ParentUser pivot table
         for($i = 0, $j = $users->count(); $i < $j; $i++ ){

@@ -16,14 +16,17 @@ return new class extends Migration
         Schema::create('user_school_formations', function (Blueprint $table) {
             $table->id();
 
-
+            $table->string("name");
+            $table->string("country");
+            $table->string("state");
+            
             $table->string("type");
             $table->string("program_name");
             $table->enum("status", ["abandoned", "in_progress", "terminated"]);
             $table->date("start_date");
             $table->date("end_date");
 
-            $table->foreignId("user_school_id")
+            $table->foreignId("user_id")
                     ->constrained()
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
