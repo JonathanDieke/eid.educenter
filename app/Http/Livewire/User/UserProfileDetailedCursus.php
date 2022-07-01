@@ -25,13 +25,6 @@ class UserProfileDetailedCursus extends Component
         $this->user_school = ["name" => "esatic", "country" => "", "state" => ""];
     }
 
-    protected function getListeners(){
-        return ['refreshComponent' => '$refresh'];
-    }
-    public function dehydrateUserSchoolCurrentFormations(){
-        // dd("updating user_school_currentFormations ", $this->user_school_currentFormations);
-    }
-
     protected function getUserSchoolRules(){
         return   [
             // user schools validation rules
@@ -53,12 +46,13 @@ class UserProfileDetailedCursus extends Component
 
     public function setUserSchoolFormation($user_school_currentID, $user_school_currentName, $action){
         // dd($user_school_currentID, $user_school_currentName);
-        $this->user_school_currentName = $user_school_currentName;
         $this->user_school_currentID = $user_school_currentID ;
+        $this->user_school_currentName = $user_school_currentName;
         // dd($this->user->attend?->where('id', $user_school_currentID));
 
         if($action === 'add'){
             $this->user_school_formation = ["type" => "", "program_name" => "", "status" => "", "start_date" => "", "end_date" => ""];
+            // dd($this->user_school_formation );
         }
         if($action === 'show'){
             $attend =  $this->user->attend->where('id', $user_school_currentID)->first() ;
@@ -77,11 +71,12 @@ class UserProfileDetailedCursus extends Component
         $user_school->save();
         $this->reset(["user_school"]);
         $this->dispatchBrowserEvent("closeModal");
-        $this->emit('refreshComponent');
+        $this->emit('refresh');
     }
 
     public function deleteUserSchool($schoolId){
         UserSchool::destroy($schoolId);
+        $this->emit('refresh');
         // $this->user_schools = $this->user_schools->filter(function ($item, $key) use($schoolId) {
         //     return $item->id != $schoolId ;
         // });
@@ -113,7 +108,7 @@ class UserProfileDetailedCursus extends Component
     }
     public function render()
     {
-        $userSchools = UserSchool::all();
+        $userSchools = $this->user->attend;
         return view('livewire.user.user-profile-detailed-cursus', compact('userSchools'));
     }
 }

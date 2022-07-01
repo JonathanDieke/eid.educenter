@@ -1,5 +1,5 @@
 - (ok) titre et placholder état d'avancement à changer (formulaire ajout formation d'un établissement & formulaire de demande d'admission)
-- lenteur des champs sous wire:model, notamment dans cursus
+- lenteur des champs sous wire:model, notamment dans cursus (résoudre avec wire:model.lazy)
 - afficher les msg d'erreur
 - ajouter des animations et msg de succès (surtout succès)
 - exiger mot de passe FORT pour inscription

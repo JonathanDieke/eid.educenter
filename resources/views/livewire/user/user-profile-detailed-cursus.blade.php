@@ -10,6 +10,7 @@
             <form action="#">
                 <div class="form-group">
                     <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addSchoolModal">Ajouter un établissement </a>
+                    <br>
                     <div class="text-center" wire:loading wire:target="deleteUserSchool">
                         <p class=" font-weight-bold font-italic">Actualisation des données...</p>
                     </div>
@@ -33,9 +34,9 @@
                                         <td>{{ $user_school->country }}</td>
                                         <td>{{ $user_school->state }}</td>
                                         <td class="text-truncate">
-                                            <i class="feature-icon-sm ti-plus mx-1" data-toggle="modal" data-target="#addFormationModal" wire:click="setUserSchoolFormation({{ $user_school->id }}, '{{ $user_school->name }}', 'add')"></i>
-                                            <i class="feature-icon-sm ti-eye mx-1" data-toggle="modal" data-target="#showFormationModal" wire:click="setUserSchoolFormation({{ $user_school->id }}, '{{ $user_school->name }}', 'show')"></i>
-                                            <i class="feature-icon-sm-danger ti-trash mx-1" wire:click="deleteUserSchool({{ $user_school->id }})"></i>
+                                            <i class="feature-icon-sm ti-plus mx-1"  data-placement="top" title="Ajouter une formation" data-toggle="modal" data-target="#addFormationModal" wire:click="setUserSchoolFormation({{ $user_school->id }}, '{{ $user_school->name }}', 'add')"></i>
+                                            <i class="feature-icon-sm ti-eye mx-1"  data-placement="top" title="Consulter les formations" data-toggle="modal" data-target="#showFormationModal" wire:click="setUserSchoolFormation({{ $user_school->id }}, '{{ $user_school->name }}', 'show')"></i>
+                                            <i class="feature-icon-sm-danger ti-trash mx-1"  data-placement="top" title="Retirer une formation" wire:click="deleteUserSchool({{ $user_school->id }})"></i>
                                         </td>
                                     </tr>
                                     <tr>
@@ -46,9 +47,9 @@
                         </table>
                     </div>
                 </div>
-                <button type="button" value="send" class="btn btn-primary" wire:click="backStep">Précédent</button>
-                {{-- <button type="button" value="send" class="btn btn-primary" wire:click="saveStep">Enregistrer</button> --}}
-                <button type="button" value="send" class="btn btn-primary" data-toggle="modal" data-target="#showFinalModal">Terminer</button>
+                <button type="button" class="btn btn-primary" wire:click="backStep">Précédent</button>
+                {{-- <button type="button" class="btn btn-primary" wire:click="saveStep">Enregistrer</button> --}}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showFinalModal">Terminer</button>
             </form>
         </div>
     </div>
@@ -126,7 +127,7 @@
                 <div>
                     <form  class="row " autocomplete="off">
                         <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                        <input type="hidden" style="display:none;" wire:model="user_school_currentID">
+                        {{-- <input type="hidden" style="display:none;" wire:model="user_school_currentID"> --}}
 
                         <div class="form-row py-3 w-100">
                             <div class="form-group col-md-6">
@@ -135,7 +136,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 @error('user_school_formation.program_name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="text"  class="form-control form-control-sm" placeholder="Nom du programme" autocomplete="off "" wire:model="user_school_formation.program_name">
+                                <input type="text"  class="form-control form-control-sm" placeholder="Nom du programme" autocomplete="off " wire:model="user_school_formation.program_name">
                             </div>
                         </div>
                         @error('user_school_formation.status') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
@@ -203,8 +204,10 @@
                                     <td > {{ $formation->status }} </td>
                                     <td > {{ $formation->start_date }} </td>
                                     <td > {{ $formation->end_date }} </td>
-                                    <td class="">
-                                        <i class="feature-icon-sm-danger ti-trash mx-1" wire:click="deleteUserSchoolFormation({{ $formation->id }})"></i>
+                                    <td class="text-truncate">
+                                        <i class="feature-icon-sm ti-files mx-1" data-placement="top" title="Ajouter un justificatif" wire:click=""></i>
+                                        <i class="feature-icon-sm ti-eye mx-1" data-placement="top" title="Consulter les justificatifs" wire:click=""></i>
+                                        <i class="feature-icon-sm-danger ti-trash mx-1" data-placement="top" title="Supprimer une formation" wire:click="deleteUserSchoolFormation({{ $formation->id }})"></i>
                                     </td>
                                 </tr>
                             @empty

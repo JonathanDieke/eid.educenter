@@ -23,17 +23,17 @@
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
                                         @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="text" class="form-control form-control-sm " wire:model="name"  placeholder="Nom">
+                                        <input type="text" class="form-control form-control-sm " wire:model.lazy="name"  placeholder="Nom">
                                     </div>
                                     <div class="form-group col-md-6">
                                         @error('lname') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="text" class="form-control form-control-sm " wire:model="lname" placeholder="Prénoms" autocomplete="off ">
+                                        <input type="text" class="form-control form-control-sm " wire:model.lazy="lname" placeholder="Prénoms" autocomplete="off ">
                                     </div>
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-12">
                                         @error('gender') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model='gender'>
+                                        <select class="custom-select " wire:model.lazy='gender'>
                                             <option selected>Genre</option>
                                             <option value="male" >Masculin</option>
                                             <option value="female" >Féminin</option>
@@ -43,11 +43,11 @@
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
                                         @error('birthdate') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="date" class="form-control form-control-sm " wire:model="birthdate" placeholder="Date d'anniversaire" autocomplete="off ">
+                                        <input type="date" class="form-control form-control-sm " wire:model.lazy="birthdate" placeholder="Date d'anniversaire" autocomplete="off ">
                                     </div>
                                     <div class="form-group col-md-6">
                                         @error('country') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model='country'>
+                                        <select class="custom-select " wire:model.lazy='country'>
                                             <option selected>Pays de naissance</option>
                                             <option value="pays1" >Pays 1</option>
                                             <option value="pays2" >Pays 2</option>
@@ -57,7 +57,7 @@
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
                                         @error('state') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model='state'>
+                                        <select class="custom-select " wire:model.lazy='state'>
                                             <option selected>Etat de naissance</option>
                                             <option value="etat1" >etat 1</option>
                                             <option value="etat2" >etat 2</option>
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         @error('city') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model='city'>
+                                        <select class="custom-select " wire:model.lazy='city'>
                                             <option selected>Ville de naissance</option>
                                             <option value="ville1" >Ville 1</option>
                                             <option value="ville2" >Ville 2</option>
@@ -75,7 +75,7 @@
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
                                         @error('native_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model='native_language'>
+                                        <select class="custom-select " wire:model.lazy='native_language'>
                                             <option selected>Langue maternelle</option>
                                             <option value="french" >Français</option>
                                             <option value="english" >Anglais</option>
@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         @error('use_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model='use_language'>
+                                        <select class="custom-select " wire:model.lazy='use_language'>
                                             <option selected>Langue d'usage</option>
                                             <option value="french" >Français</option>
                                             <option value="english" >Anglais</option>
@@ -97,17 +97,17 @@
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-12">
                                         @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="email" class="form-control form-control-sm " wire:model="email" placeholder="Email" autocomplete="off ">
+                                        <input type="email" class="form-control form-control-sm " wire:model.lazy="email" placeholder="Email" autocomplete="off ">
                                     </div>
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
                                         @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="password" class="form-control form-control-sm " wire:model="password"  placeholder="Mot de passe">
+                                        <input type="password" class="form-control form-control-sm " wire:model.lazy="password"  placeholder="Mot de passe">
                                     </div>
                                     <div class="form-group col-md-6">
                                         @error('password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="password" class="form-control form-control-sm " wire:model="password_confirmation"  placeholder="Confirmer le mot de passe">
+                                        <input type="password" class="form-control form-control-sm " wire:model.lazy="password_confirmation"  placeholder="Confirmer le mot de passe">
                                     </div>
                                 </div>
                             </div>
@@ -137,11 +137,11 @@
                         <input autocomplete="false" name="hidden" type="text" style="display:none;">
                         <div class="col-12">
                             @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                            <input type="email" class="form-control form-control-sm mb-3" wire:model="email" placeholder="Email">
+                            <input type="email" class="form-control form-control-sm mb-3" wire:model.lazy="email" placeholder="Email" autocomplete="off">
                         </div>
                         <div class="col-12">
                            @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                           <input type="password" class="form-control form-control-sm mb-3" wire:model="password" placeholder="Mot de passe">
+                           <input type="password" class="form-control form-control-sm mb-3" wire:model.lazy="password" placeholder="Mot de passe"  autocomplete="off">
                        </div>
                        <div class="col-12">
                            <button type="submit" class="btn btn-primary">Se connecter</button>
@@ -279,17 +279,17 @@
                        {{-- <img class="card-img-top rounded-0" src="{{ asset('assets/images/courses/course-1.jpg') }}" alt="course thumb"> --}}
                        <img class="card-img-top rounded-0" src="{{ asset('assets/images/country-flags/russia-flag.png') }}" alt="russia flag">
                        <div class="card-body">
-                       {{-- <ul class="list-inline mb-2">
-                           <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-                           <li class="list-inline-item"><a class="text-color" href="#">Russie</a></li>
-                       </ul> --}}
-                       <a href="#">
-                           <h4 class="card-title">Russie</h4>
-                       </a>
-                       <p class="card-text mb-4">
-                            Postulez dans l'une des 10 meilleures universités russes et réalisez vous.
-                        </p>
-                       <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signupModal">S'inscrire</a>
+                            {{-- <ul class="list-inline mb-2">
+                                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
+                                <li class="list-inline-item"><a class="text-color" href="#">Russie</a></li>
+                            </ul> --}}
+                            <a href="#">
+                                <h4 class="card-title">Russie</h4>
+                            </a>
+                            <p class="card-text mb-4">
+                                    Postulez dans l'une des 10 meilleures universités russes et réalisez vous.
+                                </p>
+                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signupModal">S'inscrire</a>
                        </div>
                    </div>
                </div>
@@ -356,7 +356,7 @@
        <div class="container">
            <div class="row">
                <div class="col-lg-6 col-sm-4 position-relative success-video">
-                    <a class="play-btn venobox" href="https://youtu.be/nA1Aqp0sPQo" data-vbtype="video">
+                    <a class="play-btn venobox" href="https://youtube.com" data-vbtype="video">
                         <i class="ti-control-play"></i>
                     </a>
                </div>
@@ -369,7 +369,9 @@
                                     <div class="hero-slider-item p-3">
                                             <div class="">
                                                 <p class="text-center text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">
-                                                    Témoignage 1
+                                                    RUSSEDUC a facilité mon admission dans l'Université d'Etat de Saint Petersbourg.
+                                                    Tout s'est fait à distance, très facilement.
+                                                    Ils étaient présents à chaque étape pour m'accompagner dans ma procédure.
                                                 </p>
                                             </div>
                                     </div>
@@ -377,7 +379,9 @@
                                     <div class="hero-slider-item p-3">
                                             <div class="">
                                                 <p class="text-center  text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">
-                                                    Témoignage 2
+                                                    La traduction de mes bulletins et diplômes en russe a été exceptionnel.
+                                                    Il n'a fallu attendre que deux jours pour recevoir mes documents traduits
+                                                    Le service est simple et rapide. Je suis satisfait !!
                                                 </p>
                                             </div>
                                     </div>
@@ -630,61 +634,61 @@
         </div>
         <!-- footer content -->
         <div class="footer bg-footer section border-bottom">
-             <div class="container">
-                 <div class="row">
-                 <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
-                     <!-- logo -->
-                     <a class="logo-footer" href="index.html"><img class="img-fluid mb-4" src="{{ asset('assets/images/logo.png') }}" alt="logo">{{ env('APP_NAME') }}</a>
-                     <ul class="list-unstyled">
-                     <li class="mb-2">SIDECI, Yopougon, Abidjan, Côte d'Ivoire</li>
-                     <li class="mb-2">+225 01 53 48 88 36 </li>
-                     <li class="mb-2">+225 01 XX XX XX</li>
-                     <li class="mb-2">jonathan.dieke225@gmail.com</li>
-                     </ul>
-                 </div>
-                 <!-- company -->
-                 <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                     <h4 class="text-white mb-5">Le cabinet</h4>
-                     <ul class="list-unstyled">
-                             <li class="mb-3"><a class="text-color" href="#about-us">A propos de nous</a></li>
-                             {{-- <li class="mb-3"><a class="text-color" href="teacher.html">Our Teacher</a></li> --}}
-                             <li class="mb-3"><a class="text-color" href="#">Contact</a></li>
-                             {{-- <li class="mb-3"><a class="text-color" href="blog.html">Actualités</a></li> --}}
-                     </ul>
-                 </div>
-                 <!-- links -->
-                 <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                     <h4 class="text-white mb-5">Nos réseaux</h4>
-                     <ul class="list-unstyled">
-                        {{-- <li class="mb-3"><a class="text-color" href="courses.html">Courses</a></li> --}}
-                        <li class="mb-3"><a class="text-color" href="#">Facebook</a></li>
-                        <li class="mb-3"><a class="text-color" href="#">LinkedIn</a></li>
-                        <li class="mb-3"><a class="text-color" href="#">Instagram</a></li>
-                        <li class="mb-3"><a class="text-color" href="#">Twitter</a></li>
-                     </ul>
-                 </div>
-                 <!-- support -->
-                 {{-- <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                     <h4 class="text-white mb-5">SUPPORT</h4>
-                     <ul class="list-unstyled">
-                     <li class="mb-3"><a class="text-color" href="#">Forums</a></li>
-                     <li class="mb-3"><a class="text-color" href="#">Documentation</a></li>
-                     <li class="mb-3"><a class="text-color" href="#">Language</a></li>
-                     <li class="mb-3"><a class="text-color" href="#">Release Status</a></li>
-                     </ul>
-                 </div> --}}
-                 <!-- support -->
-                 {{-- <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                     <h4 class="text-white mb-5">RECOMMEND</h4>
-                     <ul class="list-unstyled">
-                     <li class="mb-3"><a class="text-color" href="#">WordPress</a></li>
-                     <li class="mb-3"><a class="text-color" href="#">LearnPress</a></li>
-                     <li class="mb-3"><a class="text-color" href="#">WooCommerce</a></li>
-                     <li class="mb-3"><a class="text-color" href="#">bbPress</a></li>
-                     </ul>
-                 </div> --}}
-                 </div>
-             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+                        <!-- logo -->
+                        <h3 class="mb-5 font-weight-bold text-primary" wire:click="$emit('refresh')">{{ env('APP_NAME') }}</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">Quartier, Commune, Ville, Russie</li>
+                            <li class="mb-2">+225 01 XX XX XX</li>
+                            <li class="mb-2">+225 01 YY YY YY </li>
+                            <li class="mb-2">mailgmail.com</li>
+                        </ul>
+                    </div>
+                    <!-- company -->
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5">Le cabinet</h4>
+                        <ul class="list-unstyled">
+                                <li class="mb-3"><a class="text-color" href="#about-us">A propos de nous</a></li>
+                                {{-- <li class="mb-3"><a class="text-color" href="teacher.html">Our Teacher</a></li> --}}
+                                <li class="mb-3"><a class="text-color" href="#">Contact</a></li>
+                                {{-- <li class="mb-3"><a class="text-color" href="blog.html">Actualités</a></li> --}}
+                        </ul>
+                    </div>
+                    <!-- links -->
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5">Nos réseaux</h4>
+                        <ul class="list-unstyled">
+                            {{-- <li class="mb-3"><a class="text-color" href="courses.html">Courses</a></li> --}}
+                            <li class="mb-3"><a class="text-color" href="#">Facebook</a></li>
+                            <li class="mb-3"><a class="text-color" href="#">LinkedIn</a></li>
+                            <li class="mb-3"><a class="text-color" href="#">Instagram</a></li>
+                            <li class="mb-3"><a class="text-color" href="#">Twitter</a></li>
+                        </ul>
+                    </div>
+                    <!-- support -->
+                    {{-- <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5">SUPPORT</h4>
+                        <ul class="list-unstyled">
+                        <li class="mb-3"><a class="text-color" href="#">Forums</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">Documentation</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">Language</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">Release Status</a></li>
+                        </ul>
+                    </div> --}}
+                    <!-- support -->
+                    {{-- <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5">RECOMMEND</h4>
+                        <ul class="list-unstyled">
+                        <li class="mb-3"><a class="text-color" href="#">WordPress</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">LearnPress</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">WooCommerce</a></li>
+                        <li class="mb-3"><a class="text-color" href="#">bbPress</a></li>
+                        </ul>
+                    </div> --}}
+                </div>
+            </div>
         </div>
     </x-slot>
    <!-- /footer -->
