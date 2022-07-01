@@ -31,3 +31,8 @@ jobs:
         # DB_CONNECTION: sqlite
         # DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+    - name: Add Remote Origin
+      if: github.ref == 'refs/heads/master' && job.status == "success"
+      run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+    - name: Deploy to Heroku
+      run: git push heroku HEAD:master -f
