@@ -62,8 +62,12 @@ class User extends Authenticatable
         return $this->hasOne(Cursus::class, "user_id", 'id');
     }
 
-    public function attend(){
-        return $this->hasMany(UserSchool::class, "user_id", 'id');
+    // public function attend(){
+    //     return $this->hasMany(UserSchool::class, "user_id", 'id');
+    // }
+
+    public function formations(){
+        return $this->hasMany(UserSchoolFormation::class, "user_id", 'id');
     }
 
     public function admissionRequest(){
