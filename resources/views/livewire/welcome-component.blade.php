@@ -643,7 +643,7 @@
                             <li class="mb-2">Quartier, Commune, Ville, Russie</li>
                             <li class="mb-2">+225 01 XX XX XX</li>
                             <li class="mb-2">+225 01 YY YY YY </li>
-                            <li class="mb-2">mailgmail.com</li>
+                            <li class="mb-2">mail@mail.com</li>
                         </ul>
                     </div>
                     <!-- company -->
