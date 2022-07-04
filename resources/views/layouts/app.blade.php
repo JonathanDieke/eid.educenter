@@ -34,6 +34,8 @@
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
         @stack('styles')
 
         @livewireStyles
@@ -219,14 +221,26 @@
         <!-- Alpine v3 -->
         {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
-        @stack('scripts')
 
         @livewireScripts
+
+        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+        @stack('scripts')
         <script>
             window.addEventListener('closeModal', () => {
                 console.log("close modal event")
                 $('.modal').modal('hide');
             })
+
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4',
+                format : "yyyy-mm-dd",
+                onSelect: function(value) {
+                    console.log(value)
+                 }
+            }).on("changeDate", function(e){
+               console.log(e);
+            });
         </script>
     </body>
 </html>

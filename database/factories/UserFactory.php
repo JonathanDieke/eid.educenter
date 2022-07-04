@@ -27,9 +27,9 @@ class UserFactory extends Factory
             'gender' => Arr::random(["male", "female"]) ,
             'native_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
             'use_language' => Arr::random(["french", "english", "spanish", "russian"]) ,
-            'country' => $this->faker->country() ,
-            'state' => $this->faker->state() ,
-            'city' => $this->faker->city() ,
+            'country' => 1 ,
+            'state' => 3902 ,
+            'city' => 99 ,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
             // 'address_id' => $this->faker->numberBetween($int1 = 1, $int2 = 10 ),

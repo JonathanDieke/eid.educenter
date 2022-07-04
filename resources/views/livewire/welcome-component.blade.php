@@ -17,23 +17,23 @@
                @endforeach --}}
                <div class="modal-body">
                     <div>
-                        <form  class="row" wire:submit.prevent="register" autocomplete="off">
+                        <form  class="row" wire:submit.prevent="register" autocomplete="off" id="registerForm">
                             <input autocomplete="false" name="hidden" type="text" style="display:none;">
                             <div class="pl-2 w-100 ">
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
-                                        @error('name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="text" class="form-control form-control-sm " wire:model.lazy="name"  placeholder="Nom">
+                                        @error('register.name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="text" class="form-control form-control-sm " wire:model.lazy="register.name"  placeholder="Nom">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        @error('lname') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="text" class="form-control form-control-sm " wire:model.lazy="lname" placeholder="Prénoms" autocomplete="off ">
+                                        @error('register.lname') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="text" class="form-control form-control-sm " wire:model.lazy="register.lname" placeholder="Prénoms" autocomplete="off ">
                                     </div>
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-12">
-                                        @error('gender') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model.lazy='gender'>
+                                        @error('register.gender') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model.lazy="register.gender">
                                             <option selected>Genre</option>
                                             <option value="male" >Masculin</option>
                                             <option value="female" >Féminin</option>
@@ -42,41 +42,43 @@
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
-                                        @error('birthdate') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="text" class="form-control form-control-sm " wire:model="birthdate" placeholder="Date d'anniversaire" autocomplete="off " onfocus="(this.type='date')">
-                                        {{-- <input type="text"class="form-control datepicker" placeholder="Due Date" autocomplete="off" data-provide="datepicker" data-date-autoclose="true" data-date-format="mm/dd/yyyy" data-date-today-highlight="true"> --}}
+                                        @error('register.birthdate') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input  class="form-control form-control-sm" name="birthdate" wire:model.lazy="register.birthdate" placeholder="Date d'anniversaire" autocomplete="off "  id="datepicker" onchange="Livewire.emit('getDate', this.value)">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        @error('country') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model.lazy='country'>
+                                        @error('register.country') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model="register.country"'>
                                             <option selected>Pays de naissance</option>
-                                            <option value="pays1" >Pays 1</option>
-                                            <option value="pays2" >Pays 2</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}" >{{ $country->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
-                                        @error('state') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model.lazy='state'>
+                                        @error('register.state') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model="register.state" >
                                             <option selected>Etat de naissance</option>
-                                            <option value="etat1" >etat 1</option>
-                                            <option value="etat2" >etat 2</option>
+                                            @foreach ($states as $state)
+                                                <option value="{{ $state->id }}" >{{ $state->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        @error('city') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model.lazy='city'>
+                                        @error('register.city') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model="register.city" >
                                             <option selected>Ville de naissance</option>
-                                            <option value="ville1" >Ville 1</option>
-                                            <option value="ville2" >Ville 2</option>
+                                            @foreach ($cities as $city)
+                                                <option value="{{ $city->id }}" >{{ $city->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
-                                        @error('native_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model.lazy='native_language'>
+                                        @error('register.native_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model.lazy="register.native_language">
                                             <option selected>Langue maternelle</option>
                                             <option value="french" >Français</option>
                                             <option value="english" >Anglais</option>
@@ -85,8 +87,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        @error('use_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <select class="custom-select " wire:model.lazy='use_language'>
+                                        @error('register.use_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <select class="custom-select " wire:model.lazy="register.use_language">
                                             <option selected>Langue d'usage</option>
                                             <option value="french" >Français</option>
                                             <option value="english" >Anglais</option>
@@ -97,18 +99,18 @@
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-12">
-                                        @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="email" class="form-control form-control-sm " wire:model.lazy="email" placeholder="Email" autocomplete="off ">
+                                        @error('register.email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="email" class="form-control form-control-sm " wire:model.lazy="register.email" placeholder="Email" autocomplete="off ">
                                     </div>
                                 </div>
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
-                                        @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="password" class="form-control form-control-sm " wire:model.lazy="password"  placeholder="Mot de passe">
+                                        @error('register.password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="password" class="form-control form-control-sm " wire:model.lazy="register.password"  placeholder="Mot de passe">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        @error('password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="password" class="form-control form-control-sm " wire:model.lazy="password_confirmation"  placeholder="Confirmer le mot de passe">
+                                        @error('register.password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                                        <input type="password" class="form-control form-control-sm " wire:model.lazy="register.password_confirmation"  placeholder="Confirmer le mot de passe">
                                     </div>
                                 </div>
                             </div>
@@ -138,11 +140,11 @@
                         <input autocomplete="false" name="hidden" type="text" style="display:none;">
                         <div class="col-12">
                             @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                            <input type="email" class="form-control form-control-sm mb-3" wire:model.lazy="email" placeholder="Email" autocomplete="off">
+                            <input type="email" class="form-control form-control-sm mb-3" wire:model.lazy="login.email" placeholder="Email" autocomplete="off">
                         </div>
                         <div class="col-12">
                            @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                           <input type="password" class="form-control form-control-sm mb-3" wire:model.lazy="password" placeholder="Mot de passe"  autocomplete="off">
+                           <input type="password" class="form-control form-control-sm mb-3" wire:model.lazy="login.password" placeholder="Mot de passe"  autocomplete="off">
                        </div>
                        <div class="col-12">
                            <button type="submit" class="btn btn-primary">Se connecter</button>
@@ -693,6 +695,5 @@
         </div>
     </x-slot>
    <!-- /footer -->
-
 
 </div>

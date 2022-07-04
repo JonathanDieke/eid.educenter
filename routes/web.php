@@ -25,15 +25,10 @@ Route::get('/php-info', function(){
 
 Route::get('/',  WelcomeComponent::class)->name('welcome');
 
-Route::get('/monbedou',  function(){
-    $response = Http::withHeaders([
-        'Content-type' => 'application/json',
-    ])->post('https://payment.monbedou.com/api/callback', [
-        'name' => 'Steve',
-        'role' => 'Network Administrator',
-    ]);
-
-    dd($response->body());
+Route::get('/countries',  function(){
+    // dd("ok");
+    $countries = Http::post("https://countriesnow.space/api/v0.1/countries/state/cities", ["country" => "Ivory Coast", "state" => "Abidjan"]);
+    return $countries ;
 })->name('monbedou');
 
 Route::get('/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');

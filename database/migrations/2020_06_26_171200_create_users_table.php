@@ -22,9 +22,15 @@ return new class extends Migration
             $table->enum('gender', ["male", "female"]);
             $table->enum('native_language', ["french", "english", "spanish", "russian"]);
             $table->enum('use_language', ["french", "english", "spanish", "russian"]);
-            $table->string('country');
-            $table->string('state');
-            $table->string('city');
+
+            $table->mediumInteger('state')->unsigned()->nullable();
+            $table->mediumInteger('city')->unsigned()->nullable();
+            $table->mediumInteger('country')->unsigned()->nullable();
+
+            $table->foreign('state')->references('id')->on('states'); 
+            $table->foreign('city')->references('id')->on('cities'); 
+            $table->foreign('country')->references('id')->on('countries'); 
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
