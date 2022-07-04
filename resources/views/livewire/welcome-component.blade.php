@@ -140,11 +140,11 @@
                         <input autocomplete="false" name="hidden" type="text" style="display:none;">
                         <div class="col-12">
                             @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                            <input type="email" class="form-control form-control-sm mb-3" wire:model.lazy="login.email" placeholder="Email" autocomplete="off">
+                            <input type="email" class="form-control form-control-sm mb-3" wire:model.lazy="email" placeholder="Email" autocomplete="off">
                         </div>
                         <div class="col-12">
                            @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                           <input type="password" class="form-control form-control-sm mb-3" wire:model.lazy="login.password" placeholder="Mot de passe"  autocomplete="off">
+                           <input type="password" class="form-control form-control-sm mb-3" wire:model.lazy="password" placeholder="Mot de passe"  autocomplete="off">
                        </div>
                        <div class="col-12">
                            <button type="submit" class="btn btn-primary">Se connecter</button>

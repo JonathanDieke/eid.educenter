@@ -23,12 +23,11 @@ use Illuminate\Support\Facades\Http;
 class WelcomeComponent extends Component
 {
     // public $name, $lname, $birthdate, $country, $state, $city, $native_language, $use_language, $gender;
-    // public $email;
-    // public  $password;
+    public $email;
+    public  $password;
     // public $password_confirmation ;
 
-    public $register, $login, $states = [], $cities = [];
-    private $cityMsg = "", $stateMsg = "";
+    public $register, $states = [], $cities = []; 
 
     protected $auth;
     public $formType ;
@@ -62,11 +61,11 @@ class WelcomeComponent extends Component
         $this->formType = $formType ;
     }
 
-    protected function rules(){
+    protected function rules(){ 
         if($this->formType == "loginForm"){
             return   [
-                'login.email' => ['required', 'string', 'email', 'max:128'],
-                'login.password' => ['required', 'string'],
+                'email' => ['required', 'string', 'email', 'max:128'],
+                'password' => ['required', 'string'],
             ];
         }elseif($this->formType == "registerForm"){
             return   [
@@ -80,7 +79,7 @@ class WelcomeComponent extends Component
                 'register.native_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
                 'register.use_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
                 'register.email' => ['required', 'string', 'email', 'max:128', 'unique:users,email'],
-                'register.password' => ['required', 'string', 'confirmed', Password::defaults()],
+                'register.password' => ['required', 'string', 'confirmed', 'password'],
             ];
 
         }
@@ -120,10 +119,7 @@ class WelcomeComponent extends Component
 
     public function login(){
         // $this->resetErrorMessage();
-        $this->validate([
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
-        ]);
+        $this->validate();
 
         $this->authenticate();
 
@@ -187,9 +183,7 @@ class WelcomeComponent extends Component
         return Str::lower($this->email).'|'.request()->ip();
     }
     public function render()
-    {
-        // $response = Http::get("https://countriesnow.space/api/v0.1/countries/capital");
-        // $countries = $response['data'];
+    { 
         $countries = Country::all();
         return view('livewire.welcome-component', compact('countries'));
     }

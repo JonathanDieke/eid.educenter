@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class UserAdmissionProfile extends Component
 {
     public $user ;
-    public $currentStep = 4 ;
+    public $currentStep = 1 ;
     public $successMsg = '';
 
     protected function getListeners(){
