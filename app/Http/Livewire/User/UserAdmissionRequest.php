@@ -11,11 +11,12 @@ class UserAdmissionRequest extends Component
 {
     public $user, $admission_request, $admission_requests;
     public function mount(){
-        $this->user = Auth::user() ;
-        // $this->admission_requests  = $this->user->admissionRequest  ;
+        $this->user = Auth::user() ; 
         $this->admission_request  = []  ;
         $this->programs  = []  ;
     }
+
+    protected $listeners = ['refresh' => '$refresh'];
 
     protected function getAdmissionRequestRules(){
         return   [
@@ -43,10 +44,9 @@ class UserAdmissionRequest extends Component
         $admissionRequest->user()->associate($this->user);
         $admissionRequest->save();
 
-        // $this->reset(["admission_request"]);
-
-
+        $this->reset(["admission_request"]);
         $this->dispatchBrowserEvent("closeModal");
+        $this->emit("refresh");
     }
 
     public function deleteAdmissionRequest($admissionRequestId){

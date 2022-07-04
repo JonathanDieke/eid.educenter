@@ -83,8 +83,8 @@ class UserProfileDetailedCursus extends Component
 
     public function addSupporting(){
         $d = $this->validate([
-            'supporting.filename' => ['file', 'max:1024', 'mimes:jpg,png,jpeg,pdf'], // 1MB Max
-            'supporting.comment' => ['required', 'string', 'max:32'],
+            'supporting.filename' => ['required', 'file', 'max:1024', 'mimes:jpg,png,jpeg,pdf'], // 1MB Max
+            'supporting.comment' => ['required', 'string', 'max:32', 'min:3'],
         ]);
 
         $path = $this->supporting["filename"]->store('supportings');

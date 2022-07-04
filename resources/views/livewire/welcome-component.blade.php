@@ -43,7 +43,8 @@
                                 <div class="form-row  pl-2 w-100">
                                     <div class="form-group col-md-6">
                                         @error('birthdate') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                        <input type="date" class="form-control form-control-sm " wire:model.lazy="birthdate" placeholder="Date d'anniversaire" autocomplete="off ">
+                                        <input type="text" class="form-control form-control-sm " wire:model="birthdate" placeholder="Date d'anniversaire" autocomplete="off " onfocus="(this.type='date')">
+                                        {{-- <input type="text"class="form-control datepicker" placeholder="Due Date" autocomplete="off" data-provide="datepicker" data-date-autoclose="true" data-date-format="mm/dd/yyyy" data-date-today-highlight="true"> --}}
                                     </div>
                                     <div class="form-group col-md-6">
                                         @error('country') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
