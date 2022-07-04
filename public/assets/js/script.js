@@ -1,3 +1,6 @@
+if($("footer").offset().top < window.innerHeight){
+    $('footer').addClass('fixed-bottom')
+}
 (function ($) {
     'use strict';
 
@@ -12,9 +15,6 @@
         }
     });
 
-    // if($("footer").offset().top < window.innerHeight){
-    //     $('footer').addClass('fixed-bottom')
-    // }
 
     // Background-images
     $('[data-background]').each(function () {

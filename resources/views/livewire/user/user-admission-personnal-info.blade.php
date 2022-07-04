@@ -24,27 +24,27 @@
                         <div class="form-group col-md-6">
                             <select class="custom-select mb-3" wire:model="user.country">
                                 <option selected>Pays de naissance</option>
-                                <option value="" >Pays 1</option>
-                                <option value="" >Pays 2</option>
-                                <option value="" >Pays 3</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}" >{{ $country->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
                             <select class="custom-select mb-3" wire:model="user.state">
-                                <option selected>Province/Etat de naissance</option>
-                                <option value="" >Province/Etat 1</option>
-                                <option value="" >Province/Etat 2</option>
-                                <option value="" >Province/Etat 3</option>
+                                <option selected>Etat de naissance</option>
+                                @foreach ($states as $state)
+                                    <option value="{{ $state->id }}" >{{ $state->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <select class="custom-select mb-3" wire:model="user.city">
                                 <option selected>Ville de naissance</option>
-                                <option value="" >Ville 1</option>
-                                <option value="" >Ville 2</option>
-                                <option value="" >Ville 3</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city->id }}" >{{ $city->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -95,27 +95,27 @@
                         <div class="form-group col-md-6">
                             <select class="custom-select mb-3" wire:model="address.country">
                                 <option selected>Pays actuel</option>
-                                <option value="pays1" >Pays 1</option>
-                                <option value="pays2" >Pays 2</option>
-                                <option value="pays3" >Pays 3</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}" >{{ $country->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <select class="custom-select mb-3" wire:model="address.state">
-                                <option selected>Province/Etat actuel</option>
-                                <option value="state1" >Province/Etat 1</option>
-                                <option value="state2" >Province/Etat 2</option>
-                                <option value="state3" >Province/Etat 3</option>
+                                <option selected>Etat actuel</option>
+                                @foreach ($states as $state)
+                                    <option value="{{ $state->id }}" >{{ $state->name }}</option>
+                                @endforeach
                             </select>
                         </div>
-                    </div>
+                    </div> 
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
                             <select class="custom-select mb-3" wire:model="address.city">
                                 <option selected>Ville actuel</option>
-                                <option value="city1" >Ville 1</option>
-                                <option value="city2" >Ville 2</option>
-                                <option value="city3" >Ville 3</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city->id }}" >{{ $city->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">

@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\User;
 
-use App\Models\Address;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\State;
+use App\Models\Address;
+use App\Models\Country;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -15,16 +17,18 @@ class UserAdmissionPersonnalInfo extends Component
     public $languages ;
     public $currentStep;
 
-
+    public $states = [], $cities = [] ;
     public $user, $userID;
 
     private $date;
-    public $address ;
-    // public $name, $lname, $birthdate, $country, $state, $city, $native_language, $use_language, $gender,  $email ;
+    public $address ; 
 
     public function mount($user, $address){
         $this-> languages = ["french" => "Français", "english" => "Anglais", "spanish" => "Espagnol", "russian" => "Russe"];
         $this->currentStep = 1;
+
+        $this->states = Country::where("id", $user->country)->first()->states;
+        $this->cities = State::where("id", $user->state)->first()->cities;
 
         $this->user = $user->toArray();
         $this->userID = $this->user["id"];
@@ -32,6 +36,16 @@ class UserAdmissionPersonnalInfo extends Component
         $this->address = $address?->toArray() ; //check if address is null thanks to "?"
 
         $this->date = Carbon::now()->subYears(5);
+    }
+
+    public function updatedUserCountry($propertyValue, $propertyName){
+        $this->user['state'] = "";
+        $this->user['city'] = ""; 
+        $this->states = Country::where('id', $propertyValue)->first()->states ;
+    }
+    public function updatedUserState($propertyValue, $propertyName){ 
+        $this->user['city'] = ""; 
+        $this->cities = Country::where('id', $this->user['country'])->first()->states->where('id', $propertyValue)->first()->cities ;
     }
 
     protected function rules(){
@@ -80,6 +94,7 @@ class UserAdmissionPersonnalInfo extends Component
 
     public function render()
     {
-        return view('livewire.user.user-admission-personnal-info');
+        $countries = Country::all();
+        return view('livewire.user.user-admission-personnal-info', compact('countries'));
     }
 }
