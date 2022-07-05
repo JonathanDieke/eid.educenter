@@ -1,5 +1,5 @@
 <div class="container my-4">
-    <div >
+    <div > 
         <section class="my-4 p-4 bg-gray">
             <div class="row">
                 <div class="col-lg-12">

@@ -17,9 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('address1')->nullable();
             $table->string('address2')->nullable();
-            $table->string('country')->nullable();
-            $table->string('state')->nullable();
-            $table->string('city')->nullable();
+
+            $table->mediumInteger('country')->unsigned()->nullable();
+            $table->mediumInteger('state')->unsigned()->nullable();
+            $table->mediumInteger('city')->unsigned()->nullable();
+
+            $table->foreign('state')->references('id')->on('states');
+            $table->foreign('city')->references('id')->on('cities');
+            $table->foreign('country')->references('id')->on('countries');
+
             $table->string('postal_code')->nullable();
             $table->string('tel1')->nullable();
             $table->string('tel2')->nullable();

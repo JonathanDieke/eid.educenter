@@ -19,9 +19,9 @@ class AddressFactory extends Factory
         return [
             'address1' => explode("\n", $this->faker->address())[0],
             'address2' => explode("\n", $this->faker->address())[0],
-            'country' => $this->faker->country(),
-            'state' => $this->faker->state(),
-            'city' => $this->faker->city(),
+            'country' => 1 ,
+            'state' => 3902 ,
+            'city' => 99 ,
             'postal_code' => $this->faker->postcode(),
             'tel1' => $this->faker->phoneNumber(),
             'tel2' => $this->faker->phoneNumber(),

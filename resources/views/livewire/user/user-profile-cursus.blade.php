@@ -26,15 +26,17 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <label for="">Mon status légal</label>
-                                <br>
-                                <select class="custom-select custom-select-sm col-4 w-100" wire:model.defer="cursus.legal_status">
-                                    @foreach ($legalStatusList as $key => $value)
-                                        <option value="{{ $key }}" {{ $cursus['legal_status'] == $key ? 'selected' : "" }}>{{ $value }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            @if($cursus['is_living_in_russia'])
+                                <div class="form-group ">
+                                    <label for="">Mon status légal</label>
+                                    <br>
+                                    <select class="custom-select custom-select-sm col-4 w-100" wire:model.defer="cursus.legal_status">
+                                        @foreach ($legalStatusList as $key => $value)
+                                            <option value="{{ $key }}" {{ $cursus['legal_status'] == $key ? 'selected' : "" }}>{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group ">

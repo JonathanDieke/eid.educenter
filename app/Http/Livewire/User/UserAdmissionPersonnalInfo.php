@@ -17,35 +17,53 @@ class UserAdmissionPersonnalInfo extends Component
     public $languages ;
     public $currentStep;
 
-    public $states = [], $cities = [] ;
+    public $userStates = [], $userCities = [] ;
+    public $addressStates = [], $addressCities = [] ;
     public $user, $userID;
 
     private $date;
-    public $address ; 
+    public $address ;
 
     public function mount($user, $address){
         $this-> languages = ["french" => "Français", "english" => "Anglais", "spanish" => "Espagnol", "russian" => "Russe"];
         $this->currentStep = 1;
 
-        $this->states = Country::where("id", $user->country)->first()->states;
-        $this->cities = State::where("id", $user->state)->first()->cities;
+        $this->userStates = Country::where("id", $user->country)->first()->states;
+        $this->userCities = State::where("id", $user->state)->first()->cities;
+
+        if($address){
+            $this->addressStates = Country::where("id", $address->country)->first()->states;
+            $this->addressCities = State::where("id", $address->state)->first()->cities;
+        }
 
         $this->user = $user->toArray();
         $this->userID = $this->user["id"];
 
         $this->address = $address?->toArray() ; //check if address is null thanks to "?"
 
+        // dd($this->address);
+
         $this->date = Carbon::now()->subYears(5);
     }
 
     public function updatedUserCountry($propertyValue, $propertyName){
         $this->user['state'] = "";
-        $this->user['city'] = ""; 
-        $this->states = Country::where('id', $propertyValue)->first()->states ;
+        $this->user['city'] = "";
+        $this->userStates = Country::where('id', $propertyValue)->first()->states ;
     }
-    public function updatedUserState($propertyValue, $propertyName){ 
-        $this->user['city'] = ""; 
-        $this->cities = Country::where('id', $this->user['country'])->first()->states->where('id', $propertyValue)->first()->cities ;
+    public function updatedUserState($propertyValue, $propertyName){
+        $this->user['city'] = "";
+        $this->userCities = Country::where('id', $this->user['country'])->first()->states->where('id', $propertyValue)->first()->cities ;
+    }
+
+    public function updatedAddressCountry($propertyValue, $propertyName){
+        $this->address['state'] = "";
+        $this->address['city'] = "";
+        $this->addressStates = Country::where('id', $propertyValue)->first()->states ;
+    }
+    public function updatedAddressState($propertyValue, $propertyName){
+        $this->address['city'] = "";
+        $this->addressCities = Country::where('id', $this->address['country'])->first()->states->where('id', $propertyValue)->first()->cities ;
     }
 
     protected function rules(){

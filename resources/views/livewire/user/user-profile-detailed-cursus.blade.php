@@ -9,7 +9,7 @@
         <div class="col-lg-12 mb-4 mb-lg-0">
             <form action="#">
                 <div class="form-group">
-                    <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addFormationModal">Ajouter une formation </a>
+                    <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addFormationModal" wire:click="setCountries">Ajouter une formation </a>
                     <br>
                     <div class="text-center" wire:loading wire:target="deleteUserSchoolFormation">
                         <p class=" font-weight-bold font-italic">Actualisation des données...</p>
@@ -61,55 +61,6 @@
     </div>
 
 
-
-<!-- Modal Add school -->
-<div class="modal fade" id="addSchoolModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content rounded-0 border-0 p-4">
-            <div class="modal-header border-0">
-                <h6>Ajouter un établissement d'enseignement </h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <form  class="row " autocomplete="off">
-                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
-
-                        @error('user_school.name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                        <input type="text"  class="form-control form-control-sm" id="" placeholder="Etablissement" autocomplete="off" wire:model="user_school.name">
-                        <div class="form-row pt-3 w-100">
-                            <div class="form-group col-md-6">
-                                <select class="custom-select mb-3" wire:model="user_school.country">
-                                    <option selected>Choisissez un pays</option>
-                                    <option value="pays1" >Pays 1</option>
-                                    <option value="pays2" >Pays 2</option>
-                                    <option value="pays3" >Pays 3</option>
-                                    <option value="pays4" >Pays 4</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6" >
-                                <select class="custom-select mb-3" wire:model="user_school.state">
-                                    <option selected>Choisissez un Etat </option>
-                                    <option value="etat1">Etat 1</option>
-                                    <option value="etat2" >Etat 2</option>
-                                    <option value="etat3" >Etat 3</option>
-                                    <option value="etat4" >Etat 4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12 pt-1">
-                            <button type="button" class="btn btn-primary" wire:click="addUserSchool">Ajouter</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal Add  school -->
-
 <!-- Modal Add Formation -->
 <div class="modal fade" id="addFormationModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
     <div class="modal-dialog modal-lg " role="document">
@@ -137,19 +88,17 @@
                             <div class="form-group col-md-6">
                                 <select class="custom-select" wire:model.lazy="user_school_formation.country">
                                     <option selected>Choisissez un pays</option>
-                                    <option value="pays1" >Pays 1</option>
-                                    <option value="pays2" >Pays 2</option>
-                                    <option value="pays3" >Pays 3</option>
-                                    <option value="pays4" >Pays 4</option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}" >{{ $country->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-6" >
                                 <select class="custom-select" wire:model.lazy="user_school_formation.state">
                                     <option selected>Choisissez un Etat </option>
-                                    <option value="etat1">Etat 1</option>
-                                    <option value="etat2" >Etat 2</option>
-                                    <option value="etat3" >Etat 3</option>
-                                    <option value="etat4" >Etat 4</option>
+                                    @foreach ($states as $state)
+                                        <option value="{{ $state->id }}" >{{ $state->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -178,11 +127,11 @@
                         <div class="form-row w-100">
                             <div class="form-group col-md-6">
                                 @error('user_school_formation.start_date') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="text"  class="form-control form-control-sm" placeholder="Date de début (aaaa-mm-jj)" autocomplete="off" wire:model.lazy="user_school_formation.start_date">
+                                <input type="text" class="form-control form-control-sm formation_period" placeholder="Date de début (aaaa-mm-jj)" autocomplete="off" wire:model.lazy="user_school_formation.start_date">
                             </div>
                             <div class="form-group col-md-6">
                                 @error('user_school_formation.end_date') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                <input type="text"  class="form-control form-control-sm" placeholder="Date de fin (aaaa-mm-jj)" autocomplete="off " wire:model.lazy="user_school_formation.end_date">
+                                <input type="text"  class="form-control form-control-sm" placeholder="Date de fin (aaaa-mm-jj)" autocomplete="off " wire:model.lazy="user_school_formation.end_date" class="formation_period">
                             </div>
                         </div>
                         <div class="col-12">
@@ -291,6 +240,39 @@
 </div>
 <!-- Modal show Supportings -->
 
+<!-- Modal show Finalisation -->
+<div class="modal fade" id="showFinalModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"  >
+    <div class="modal-dialog modal-lg " role="document">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <div class="modal-header border-0">
+                <h6>Finalisation </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div class="alert alert-warning" role="alert">
+                    <div class="p-4">
+                        <form>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">En tenant compte des directives énoncées plus haut j’affirme avoir déclaré  l’ensemble de mes études  antérieures et actuelles en fournissant les renseignements exactes.</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Terminer mon profil</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal show Formation -->
+
+
+</section>
+
+
+
 <!-- Modal show Formation -->
 {{-- <div class="modal fade" id="showFormationModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
     <div class="modal-dialog modal-lg " role="document">
@@ -344,34 +326,50 @@
     </div>
 </div> --}}
 <!-- Modal show Formation -->
-
-<!-- Modal show Finalisation -->
-<div class="modal fade" id="showFinalModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"  >
-    <div class="modal-dialog modal-lg " role="document">
+<!-- Modal Add school -->
+{{-- <div class="modal fade" id="addSchoolModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self>
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content rounded-0 border-0 p-4">
             <div class="modal-header border-0">
-                <h6>Finalisation </h6>
+                <h6>Ajouter un établissement d'enseignement </h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body ">
-                <div class="alert alert-warning" role="alert">
-                    <div class="p-4">
-                        <form>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">En tenant compte des directives énoncées plus haut j’affirme avoir déclaré  l’ensemble de mes études  antérieures et actuelles en fournissant les renseignements exactes.</label>
+            <div class="modal-body">
+                <div>
+                    <form  class="row " autocomplete="off">
+                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
+
+                        @error('user_school.name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
+                        <input type="text"  class="form-control form-control-sm" id="" placeholder="Etablissement" autocomplete="off" wire:model="user_school.name">
+                        <div class="form-row pt-3 w-100">
+                            <div class="form-group col-md-6">
+                                <select class="custom-select mb-3" wire:model="user_school.country">
+                                    <option selected>Choisissez un pays</option>
+                                    <option value="pays1" >Pays 1</option>
+                                    <option value="pays2" >Pays 2</option>
+                                    <option value="pays3" >Pays 3</option>
+                                    <option value="pays4" >Pays 4</option>
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Terminer mon profil</button>
-                        </form>
-                    </div>
+                            <div class="form-group col-md-6" >
+                                <select class="custom-select mb-3" wire:model="user_school.state">
+                                    <option selected>Choisissez un Etat </option>
+                                    <option value="etat1">Etat 1</option>
+                                    <option value="etat2" >Etat 2</option>
+                                    <option value="etat3" >Etat 3</option>
+                                    <option value="etat4" >Etat 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 pt-1">
+                            <button type="button" class="btn btn-primary" wire:click="addUserSchool">Ajouter</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Modal show Formation -->
-
-
-</section>
+</div> --}}
+<!-- Modal Add  school -->

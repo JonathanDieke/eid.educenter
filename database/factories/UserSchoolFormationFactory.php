@@ -20,8 +20,8 @@ class UserSchoolFormationFactory extends Factory
     {
         return [
             'name' => $this->faker->firstName(),
-            'state' => $this->faker->state(),
-            'country' => $this->faker->country(),
+            'country' => 1 ,
+            'state' => 3902 , 
             "type" => "Type " . $this->faker->numberBetween(1, 10),
             "program_name" => Str::random(10),
             "status" => Arr::random(["abandoned", "in_progress", "terminated"]),

@@ -22,7 +22,7 @@
                             <input type="date" class="form-control form-control-sm " wire:model="user.birthdate" placeholder="Date de naissance">
                         </div>
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="user.country">
+                            <select class="custom-select" wire:model="user.country">
                                 <option selected>Pays de naissance</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->id }}" >{{ $country->name }}</option>
@@ -32,17 +32,17 @@
                     </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="user.state">
+                            <select class="custom-select" wire:model="user.state">
                                 <option selected>Etat de naissance</option>
-                                @foreach ($states as $state)
+                                @foreach ($userStates as $state)
                                     <option value="{{ $state->id }}" >{{ $state->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="user.city">
+                            <select class="custom-select" wire:model="user.city">
                                 <option selected>Ville de naissance</option>
-                                @foreach ($cities as $city)
+                                @foreach ($userCities as $city)
                                     <option value="{{ $city->id }}" >{{ $city->name }}</option>
                                 @endforeach
                             </select>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="user.native_language">
+                            <select class="custom-select" wire:model="user.native_language">
                                 <option>Langue maternelle</option>
                                 @foreach ($languages as $key => $value)
                                     <option value="{{ $key }}" {{ $user['native_language'] == $key ? 'selected' : "" }}>{{ $value }}</option>
@@ -58,7 +58,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="user.use_language">
+                            <select class="custom-select" wire:model="user.use_language">
                                 <option>Langue d'usage</option>
                                 @foreach ($languages as $key => $value)
                                     <option value="{{ $key }}" {{ $user['use_language'] == $key ? 'selected' : "" }}>{{ $value }}</option>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="user.gender">
+                            <select class="custom-select" wire:model="user.gender">
                                 <option selected>Gender</option>
                                 <option value="male" {{ $user['gender'] == 'male' ? 'selected' : "" }}>Masculin</option>
                                 <option value="female"  {{ $user['gender'] == 'female' ? 'selected' : "" }} >Féminin</option>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="address.country">
+                            <select class="custom-select" wire:model="address.country">
                                 <option selected>Pays actuel</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->id }}" >{{ $country->name }}</option>
@@ -101,19 +101,19 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="address.state">
+                            <select class="custom-select" wire:model="address.state">
                                 <option selected>Etat actuel</option>
-                                @foreach ($states as $state)
+                                @foreach ($addressStates as $state)
                                     <option value="{{ $state->id }}" >{{ $state->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                    </div> 
+                    </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
-                            <select class="custom-select mb-3" wire:model="address.city">
+                            <select class="custom-select" wire:model="address.city">
                                 <option selected>Ville actuel</option>
-                                @foreach ($cities as $city)
+                                @foreach ($addressCities as $city)
                                     <option value="{{ $city->id }}" >{{ $city->name }}</option>
                                 @endforeach
                             </select>

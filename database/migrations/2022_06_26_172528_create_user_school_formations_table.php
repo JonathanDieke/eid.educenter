@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
 
             $table->string("name");
-            $table->string("country");
-            $table->string("state");
+            $table->mediumInteger("country")->unsigned();
+            $table->mediumInteger("state")->unsigned();
+
+            $table->foreign('country')->references('id')->on('countries'); 
+            $table->foreign('state')->references('id')->on('states'); 
             
             $table->string("type");
             $table->string("program_name");

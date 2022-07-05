@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Country;
 use App\Models\Supporting;
 use Livewire\Component;
 use App\Models\UserSchool;
@@ -19,7 +20,8 @@ class UserProfileDetailedCursus extends Component
 
     public  $user;
     public $currentSchoolName, $currentFormationId ;
-    public $user_school_formation ;
+    public $user_school_formation;
+    public  $countries = [], $states = [];
     public $supporting ;
 
     protected $listeners = ['refresh' => '$refresh'];
@@ -62,7 +64,6 @@ class UserProfileDetailedCursus extends Component
     }
 
     public function deleteUserSchoolFormation($formationId){
-        // dd($userSchoolId);
         UserSchoolFormation::destroy($formationId);
         $this->emit('refresh');
     }
@@ -109,8 +110,13 @@ class UserProfileDetailedCursus extends Component
     public function backStep(){
         $this->emit('setStep', $this->currentStep -1);
     }
-    public function submitForm(){
+    public function setCountries(){
+        $this->countries = Country::all();
+    }
 
+    public function updatedUserSchoolFormationCountry($propertyValue, $propertyName){
+        $this->user_school_formation['state'] = "";
+        $this->states = Country::where('id', $propertyValue)->first()->states ;
     }
     public function render()
     {
