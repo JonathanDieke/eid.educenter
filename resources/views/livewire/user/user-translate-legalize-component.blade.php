@@ -12,7 +12,7 @@
 
             @if (count($translations) > 0)
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table text-center">
                         <thead class="thead-warning">
                             <tr>
                                 <th>#</th>

@@ -76,7 +76,7 @@
                     <form  class="row" autocomplete="off">
                         <input autocomplete="false" name="hidden" type="text" style="display:none;">
                         {{-- School information --}}
-                        @error("user_school.name")
+                        @error("user_school_formation.name")
                             <span class="error font-italic text-danger">{{ $message }}</span>
                         @enderror
                         <div class="form-row w-100">
@@ -164,10 +164,10 @@
                 {{-- <div wire:loading wire:target="supporting.filename" class="d-block font-italic mb-1">Chargement du fichier...</div> --}}
 
                 <form wire:submit.prevent="addSupporting">
-                    @error('supporting.filename') <span class="text-danger">{{ $message }}</span> @enderror
+                    @error('supporting.file') <span class="text-danger">{{ $message }}</span> @enderror
                     <div class="form-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="supporting" required wire:model="supporting.filename">
+                            <input type="file" class="custom-file-input" id="supporting" required wire:model="supporting.file">
                             <label class="custom-file-label" for="supporting">Choisir un fichier...</label>
                         </div>
                     </div>

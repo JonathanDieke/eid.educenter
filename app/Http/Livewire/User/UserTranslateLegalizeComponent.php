@@ -4,6 +4,7 @@ namespace App\Http\Livewire\User;
 
 use Livewire\Component;
 use App\Models\Translation;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,9 +30,14 @@ class UserTranslateLegalizeComponent extends Component
     public function addTranslation(){
         $d = $this->validate();
 
-        // dd($d);
+        $filename = $this->translation['original_file']->getClientOriginalName();
+        $fileExt = "." . Str::afterLast($filename, ".");
+        $filename = explode($fileExt, $filename);
+        unset($filename[count($filename)-1]);
+        $filename = implode("-", $filename);
+        $filename = now()->getTimestamp() . "_" . Str::slug($filename) . $fileExt;
 
-        $path = $this->translation["original_file"]->store('translations');
+        $path = $this->translation["original_file"]->storeAs('translations', $filename);
         $this->translation["original_file"] = $path ;
 
         $t = Translation::create($this->translation);

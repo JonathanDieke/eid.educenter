@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\Country;
-use App\Models\Supporting;
 use Livewire\Component;
-use App\Models\UserSchool;
+use App\Models\Supporting;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use App\Models\UserSchoolFormation;
@@ -34,8 +34,8 @@ class UserProfileDetailedCursus extends Component
         return   [
             // user school validation rules
             'user_school_formation.name' => ['required', 'string', 'min:3', "max:128"],
-            'user_school_formation.country' => ['required', 'string', 'min:3', "max:128"],
-            'user_school_formation.state' => ['required', 'string', 'min:3', "max:128"],
+            'user_school_formation.country' => ['required', 'integer'],
+            'user_school_formation.state' => ['required', 'integer'],
             // user school formation validation rules
             'user_school_formation.type' => ['required', 'string', 'min:3', 'max:128'],
             'user_school_formation.program_name' => ['required', 'string', 'min:3', 'max:128'],
@@ -52,11 +52,13 @@ class UserProfileDetailedCursus extends Component
         unset($this->user_school_formation["id"]);
         // dd($this->currentFormationId );
 
-        $user_school_formation = UserSchoolFormation::updateOrCreate(
-            ["id" => $this->currentFormationId],
-            $this->user_school_formation);
-        $user_school_formation->user()->associate($this->user);
-        $user_school_formation->save();
+        if($userSchoolFormation = UserSchoolFormation::find($this->currentFormationId)){
+            $userSchoolFormation->update([$this->user_school_formation]);
+        }else{
+            $user_school_formation = new UserSchoolFormation($this->user_school_formation);
+            $user_school_formation->user()->associate($this->user);
+            $user_school_formation->save();
+        }
 
         $this->reset(["user_school_formation"]);
         $this->dispatchBrowserEvent("closeModal");
@@ -84,12 +86,21 @@ class UserProfileDetailedCursus extends Component
 
     public function addSupporting(){
         $d = $this->validate([
-            'supporting.filename' => ['required', 'file', 'max:1024', 'mimes:jpg,png,jpeg,pdf'], // 1MB Max
+            'supporting.file' => ['required', 'file', 'max:1024', 'mimes:jpg,png,jpeg,pdf'], // 1MB Max
             'supporting.comment' => ['required', 'string', 'max:32', 'min:3'],
         ]);
 
-        $path = $this->supporting["filename"]->store('supportings');
+        $filename = $this->supporting['file']->getClientOriginalName();
+        $fileExt = "." . Str::afterLast($filename, ".");
+        $filename = explode($fileExt, $filename);
+        unset($filename[count($filename)-1]);
+        $filename = implode("-", $filename);
+        $filename = now()->getTimestamp() . "_" . Str::slug($filename) . $fileExt;
+
+        $path = $this->supporting["file"]->storeAs('supportings', $filename);
+
         $this->supporting["filename"] = $path ;
+        unset($this->supporting["file"]);
 
         $s = new Supporting($this->supporting);
         $s->formation()->associate($this->currentFormationId);
