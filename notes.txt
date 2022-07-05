@@ -1,12 +1,14 @@
-- (ok) titre et placholder état d'avancement à changer (formulaire ajout formation d'un établissement & formulaire de demande d'admission)
-- lenteur des champs sous wire:model, notamment dans cursus (résoudre avec wire:model.lazy)
-- afficher les msg d'erreur
 - ajouter des animations et msg de succès (surtout succès)
 - exiger mot de passe FORT pour inscription
-- réduire les boutons sur mobile de la navigation du dossier d'admission
-- arrondir les inputs
-- datepicker pour les dates de formation dans admission et date de naissance admisssion profile et register
-- translate les msg d'erreur
+- datepicker pour les dates de formation dans admission
+- datepicker date de naissance admisssion profile
+- réduire les boutons sur mobile de la navigation du dossier d'admission (ok)
+- arrondir les inputs (ok)
+- datepicker register (ok)
+- translate les msg d'erreur (ok)
+- (ok) titre et placholder état d'avancement à changer (formulaire ajout formation d'un établissement & formulaire de demande d'admission)
+- lenteur des champs sous wire:model, notamment dans cursus (résoudre avec wire:model.lazy) (ok)
+- afficher les msg d'erreur (ok)
 
     **** Informations ****
 - que dit on pour l'intégration de cinetpay, vu que l'entreprise n'est pas en CI ? bouai cinetpay, on atten ceux de russie !

@@ -60,15 +60,17 @@
                                 <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-instagram"></i></a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-8 text-center text-lg-right">
-                            <ul class="list-inline">
-                                {{-- <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
-                                <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
-                                <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li> --}}
-                                <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
-                                <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal" >Inscription</a></li>
-                            </ul>
-                        </div>
+                        @guest
+                            <div class="col-lg-8 text-center text-lg-right ">
+                                <ul class="list-inline">
+                                    {{-- <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
+                                    <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
+                                    <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li> --}}
+                                    <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
+                                    <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal" >Inscription</a></li>
+                                </ul>
+                            </div>
+                        @endguest
                     </div>
                 </div>
             </div>
@@ -233,12 +235,12 @@
 
             $('#datepicker').datepicker({
                 uiLibrary: 'bootstrap4',
-                format : "yyyy-mm-dd",  
+                format : "yyyy-mm-dd",
             });
 
             $('.formation_period').datepicker({
                 uiLibrary: 'bootstrap4',
-                format : "yyyy-mm",  
+                format : "yyyy-mm",
                 autoclose: true,
                 todayHighlight: true,
             });

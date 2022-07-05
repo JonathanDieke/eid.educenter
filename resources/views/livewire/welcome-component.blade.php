@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary">S'enregistrer</button>
+                                <button type="submit" class="btn btn-primary tbn-sm">S'enregistrer</button>
                             </div>
                         </form>
                     </div>
@@ -147,7 +147,7 @@
                            <input type="password" class="form-control form-control-sm mb-3" wire:model.lazy="password" placeholder="Mot de passe"  autocomplete="off">
                        </div>
                        <div class="col-12">
-                           <button type="submit" class="btn btn-primary">Se connecter</button>
+                           <button type="submit" class="btn btn-primary tbn-sm">Se connecter</button>
                        </div>
                    </form>
                </div>

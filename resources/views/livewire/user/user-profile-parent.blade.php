@@ -49,9 +49,9 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-primary" wire:click="backStep">Précédent</button>
-                <button type="button" class="btn btn-primary" wire:click="saveStep">Enregistrer</button>
-                <button type="button" class="btn btn-primary" wire:click="nextStep">Suivant</button>
+                <button type="button" class="btn btn-primary btn-sm" wire:click="backStep">Précédent</button>
+                <button type="button" class="btn btn-primary btn-sm" wire:click="saveStep">Enregistrer</button>
+                <button type="button" class="btn btn-primary btn-sm" wire:click="nextStep">Suivant</button>
             </form>
         </div>
     </div>

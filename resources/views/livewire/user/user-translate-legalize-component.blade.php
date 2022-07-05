@@ -8,7 +8,7 @@
                 </div>
             </div>
 
-            <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#translationModal">Traduire un document </a>
+            <a href="#" class="btn btn-secondary btn-sm  shadow mb-4 " data-toggle="modal" data-target="#translationModal">Traduire un document </a>
 
             @if (count($translations) > 0)
                 <div class="table-responsive">
@@ -76,7 +76,7 @@
                                 <div class="form-group">
                                     <input type="text"  class="form-control form-control-sm" id="" placeholder="Ajouter un commentaire" autocomplete="off" wire:model.lazy="translation.comment">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Soumettre</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Soumettre</button>
                             </form>
                         </div>
                     </div>

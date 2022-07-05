@@ -9,7 +9,7 @@
         <div class="col-lg-12 mb-4 mb-lg-0">
             <form action="#">
                 <div class="form-group">
-                    <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#addFormationModal" wire:click="setCountries">Ajouter une formation </a>
+                    <a href="#" class="btn btn-secondary shadow mb-4 " data-toggle="modal" data-target="#addFormationModal" wire:click="setCountries">Ajouter une formation </a>
                     <br>
                     <div class="text-center" wire:loading wire:target="deleteUserSchoolFormation">
                         <p class=" font-weight-bold font-italic">Actualisation des données...</p>
@@ -53,9 +53,9 @@
                         <p class="text-center font-weight-bold font-italic">Pas de données disponibles</p>
                     @endif
                 </div>
-                <button type="button" class="btn btn-primary" wire:click="backStep">Précédent</button>
-                {{-- <button type="button" class="btn btn-primary" wire:click="saveStep">Enregistrer</button> --}}
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showFinalModal">Terminer</button>
+                <button type="button" class="btn btn-primary btn-sm" wire:click="backStep">Précédent</button>
+                {{-- <button type="button" class="btn btn-primary btn-sm" wire:click="saveStep">Enregistrer</button> --}}
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#showFinalModal">Terminer</button>
             </form>
         </div>
     </div>
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="button" class="btn btn-primary" wire:click="addUserSchoolFormation">Enregistrer</button>
+                            <button type="button" class="btn btn-primary btn-sm" wire:click="addUserSchoolFormation">Enregistrer</button>
                         </div>
                     </form>
                 </div>
@@ -183,7 +183,7 @@
                         </div>
                     @endif --}}
 
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Ajouter</button>
                 </form>
 
             </div>
@@ -364,7 +364,7 @@
                             </div>
                         </div>
                         <div class="col-12 pt-1">
-                            <button type="button" class="btn btn-primary" wire:click="addUserSchool">Ajouter</button>
+                            <button type="button" class="btn btn-primary btn-sm" wire:click="addUserSchool">Ajouter</button>
                         </div>
                     </form>
                 </div>
