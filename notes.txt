@@ -9,6 +9,8 @@
 - (ok) titre et placholder état d'avancement à changer (formulaire ajout formation d'un établissement & formulaire de demande d'admission)
 - lenteur des champs sous wire:model, notamment dans cursus (résoudre avec wire:model.lazy) (ok)
 - afficher les msg d'erreur (ok)
+- nextStep 1 wrong (ok)
+- pudate formation à revoir (ok)
 
     **** Informations ****
 - que dit on pour l'intégration de cinetpay, vu que l'entreprise n'est pas en CI ? bouai cinetpay, on atten ceux de russie !

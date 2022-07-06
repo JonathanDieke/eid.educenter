@@ -1,5 +1,5 @@
 <div class="container my-4">
-    <div > 
+    <div >
         <section class="my-4 p-4 bg-gray">
             <div class="row">
                 <div class="col-lg-12">
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary" wire:click="createAdmissionRequest">S'enregistrer</button>
+                                <button type="submit" class="btn btn-primary" wire:click="createAdmissionRequest">Créer</button>
                             </div>
                         </form>
                     </div>

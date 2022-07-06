@@ -73,17 +73,17 @@ class UserAdmissionPersonnalInfo extends Component
             'user.lname' => ['required', 'string', 'max:128'],
             'user.gender' => ['required', 'string', 'max:128', 'in:male,female'],
             'user.birthdate' => ['required', 'date', 'date_format:Y-m-d', "before_or_equal:$this->date"],
-            'user.country' => ['required', 'string', 'max:128'],
-            'user.state' => ['required', 'string', 'max:128'],
-            'user.city' => ['required', 'string', 'max:128'],
+            'user.country' => ['required', 'integer'],
+            'user.state' => ['required', 'integer'],
+            'user.city' => ['required', 'integer'],
             'user.native_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
             'user.use_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
             // address validation rules
             'address.address1' => ['nullable', 'string', 'max:128'],
             'address.address2' => ['nullable', 'string', 'max:128'],
-            'address.country' => ['nullable', 'string', 'max:128'],
-            'address.state' => ['nullable', 'string', 'max:128'],
-            'address.city' => ['nullable', 'string', 'max:128'],
+            'address.country' => ['nullable', 'integer'],
+            'address.state' => ['nullable', 'integer'],
+            'address.city' => ['nullable', 'integer'],
             'address.postal_code' => ['nullable', 'string', 'max:128'],
             'address.tel1' => [ 'nullable', 'string', 'max:128'],
             'address.tel2' => [ 'nullable', 'string', 'max:128'],
@@ -92,9 +92,11 @@ class UserAdmissionPersonnalInfo extends Component
 
     public function saveStep(){
         $data = $this->validate();
+        // dd($data);
 
         $user = User::where("id", $this->userID)->first();
         $user->update($data["user"]) ;
+
         if(isset($user->address)){
             $user->address->update($data['address'] ?? []);
         }else{
@@ -107,6 +109,7 @@ class UserAdmissionPersonnalInfo extends Component
 
     public function nextStep(){
         $this->saveStep();
+        // dd();
         $this->emit('setStep', $this->currentStep +1 );
     }
 

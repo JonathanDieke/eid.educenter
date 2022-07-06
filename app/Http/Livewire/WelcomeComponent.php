@@ -27,7 +27,7 @@ class WelcomeComponent extends Component
     public  $password;
     // public $password_confirmation ;
 
-    public $register, $states = [], $cities = []; 
+    public $register, $states = [], $cities = [];
 
     protected $auth;
     public $formType ;
@@ -61,7 +61,7 @@ class WelcomeComponent extends Component
         $this->formType = $formType ;
     }
 
-    protected function rules(){ 
+    protected function rules(){
         if($this->formType == "loginForm"){
             return   [
                 'email' => ['required', 'string', 'email', 'max:128'],
@@ -79,7 +79,7 @@ class WelcomeComponent extends Component
                 'register.native_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
                 'register.use_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
                 'register.email' => ['required', 'string', 'email', 'max:128', 'unique:users,email'],
-                'register.password' => ['required', 'string', 'confirmed', 'password'],
+                'register.password' => ['required', 'string', 'confirmed', Password::default()],
             ];
 
         }
@@ -87,11 +87,11 @@ class WelcomeComponent extends Component
 
     public function updatedRegisterCountry($propertyValue, $propertyName){
         $this->register['state'] = "";
-        $this->register['city'] = ""; 
+        $this->register['city'] = "";
             $this->states = Country::where('id', $propertyValue)->first()->states ;
     }
-    public function updatedRegisterState($propertyValue, $propertyName){ 
-        $this->register['city'] = ""; 
+    public function updatedRegisterState($propertyValue, $propertyName){
+        $this->register['city'] = "";
         $this->cities = Country::where('id', $this->register['country'])->first()->states->where('id', $propertyValue)->first()->cities ;
     }
 
@@ -183,7 +183,7 @@ class WelcomeComponent extends Component
         return Str::lower($this->email).'|'.request()->ip();
     }
     public function render()
-    { 
+    {
         $countries = Country::all();
         return view('livewire.welcome-component', compact('countries'));
     }
