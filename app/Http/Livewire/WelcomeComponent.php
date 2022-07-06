@@ -23,11 +23,11 @@ use Illuminate\Support\Facades\Http;
 class WelcomeComponent extends Component
 {
     // public $name, $lname, $birthdate, $country, $state, $city, $native_language, $use_language, $gender;
-    public $email;
-    public  $password;
+    public $email = "admin@admin.ci";
+    public  $password = "password";
     // public $password_confirmation ;
 
-    public $register, $states = [], $cities = []; 
+    public $register, $states = [], $cities = [];
 
     protected $auth;
     public $formType ;
@@ -50,7 +50,7 @@ class WelcomeComponent extends Component
         // $this->city = "ville1";
         // $this->native_language = "french";
         // $this->use_language = "french";
-        // $this->email = "rodriguez.kennedy@example.org";
+        // $this->email = "admin@admin.ci";
         // $this->password = "password";
         // $this->password_confirmation = "password" ;
 
@@ -61,7 +61,7 @@ class WelcomeComponent extends Component
         $this->formType = $formType ;
     }
 
-    protected function rules(){ 
+    protected function rules(){
         if($this->formType == "loginForm"){
             return   [
                 'email' => ['required', 'string', 'email', 'max:128'],
@@ -87,11 +87,11 @@ class WelcomeComponent extends Component
 
     public function updatedRegisterCountry($propertyValue, $propertyName){
         $this->register['state'] = "";
-        $this->register['city'] = ""; 
+        $this->register['city'] = "";
             $this->states = Country::where('id', $propertyValue)->first()->states ;
     }
-    public function updatedRegisterState($propertyValue, $propertyName){ 
-        $this->register['city'] = ""; 
+    public function updatedRegisterState($propertyValue, $propertyName){
+        $this->register['city'] = "";
         $this->cities = Country::where('id', $this->register['country'])->first()->states->where('id', $propertyValue)->first()->cities ;
     }
 
@@ -147,6 +147,10 @@ class WelcomeComponent extends Component
         }
 
         RateLimiter::clear($this->throttleKey());
+        // dd(auth()->user()->is_admin );
+        if ( auth()->user()->is_admin == 'admin' ) {
+            return redirect()->route('admin.users');
+        }
     }
 
     /**
@@ -183,7 +187,7 @@ class WelcomeComponent extends Component
         return Str::lower($this->email).'|'.request()->ip();
     }
     public function render()
-    { 
+    {
         $countries = Country::all();
         return view('livewire.welcome-component', compact('countries'));
     }

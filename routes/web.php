@@ -1,12 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\WelcomeComponent;
+use App\Http\Livewire\Admin\UsersComponent;
+use App\Http\Livewire\Admin\UserInfoComponent;
 use App\Http\Livewire\User\UserAdmissionProfile;
 use App\Http\Livewire\User\UserAdmissionRequest;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\User\UserTranslateLegalizeComponent;
-use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,21 +21,25 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/php-info', function(){
-    return phpinfo();
-})->name('phpinfo');
-
 Route::get('/',  WelcomeComponent::class)->name('welcome');
 
-Route::get('/countries',  function(){
-    // dd("ok");
-    $countries = Http::post("https://countriesnow.space/api/v0.1/countries/state/cities", ["country" => "Ivory Coast", "state" => "Abidjan"]);
-    return $countries ;
-})->name('monbedou');
 
-Route::get('/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');
-Route::get('/studies/profile',  UserAdmissionProfile::class)->middleware(['auth'])->name('studies.profile');
-Route::get('/studies/admisions',  UserAdmissionRequest::class)->middleware(['auth'])->name('studies.admission');
-Route::get('/translate-legalize', UserTranslateLegalizeComponent::class)->middleware(['auth'])->name('user.translate_legalize');
+Route::get('/middleware', function(){
+    if (auth()->user()->role == 'admin' ) {
+        return redirect()->route('admin.users');
+    }else{
+        return redirect()->route('user.dashboard');
+    }
+})->middleware(['auth']);
+
+// User routes
+Route::get('/user/dashboard', UserDashboardComponent::class)->middleware(['auth'])->name('user.dashboard');
+Route::get('/user/studies/profile',  UserAdmissionProfile::class)->middleware(['auth'])->name('studies.profile');
+Route::get('/user/studies/admisions',  UserAdmissionRequest::class)->middleware(['auth'])->name('studies.admission');
+Route::get('/user/translate-legalize', UserTranslateLegalizeComponent::class)->middleware(['auth'])->name('user.translate_legalize');
+
+// Admin routes
+Route::get('/admin/users', UsersComponent::class)->name('admin.users');
+Route::get('/admin/{user}/info', UserInfoComponent::class)->name('admin.user.info');
 
 require __DIR__.'/auth.php';

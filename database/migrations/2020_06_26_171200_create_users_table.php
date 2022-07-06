@@ -27,12 +27,13 @@ return new class extends Migration
             $table->mediumInteger('city')->unsigned()->nullable();
             $table->mediumInteger('country')->unsigned()->nullable();
 
-            $table->foreign('state')->references('id')->on('states'); 
-            $table->foreign('city')->references('id')->on('cities'); 
-            $table->foreign('country')->references('id')->on('countries'); 
+            $table->foreign('state')->references('id')->on('states');
+            $table->foreign('city')->references('id')->on('cities');
+            $table->foreign('country')->references('id')->on('countries');
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->default('user')->nullable();
             $table->rememberToken();
 
             // $table->foreignId("address_id")->nullable()->constrained();

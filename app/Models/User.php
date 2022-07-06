@@ -6,6 +6,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -83,6 +84,36 @@ class User extends Authenticatable
     public function translations(): HasMany
     {
         return $this->hasMany(Translation::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get the country that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function countryR(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country', 'id');
+    }
+
+    /**
+     * Get the state that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function stateR(): BelongsTo
+    {
+        return $this->belongsTo(State::class, 'state', 'id');
+    }
+
+    /**
+     * Get the city that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cityR(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city', 'id');
     }
 
 }
