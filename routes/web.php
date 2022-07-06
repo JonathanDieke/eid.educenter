@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\WelcomeComponent;
 use App\Http\Livewire\Admin\UsersComponent;
+use App\Http\Livewire\Admin\AdmissionRequest;
+use App\Http\Livewire\Admin\Translations;
 use App\Http\Livewire\Admin\UserInfoComponent;
 use App\Http\Livewire\User\UserAdmissionProfile;
 use App\Http\Livewire\User\UserAdmissionRequest;
@@ -39,7 +41,9 @@ Route::get('/user/studies/admisions',  UserAdmissionRequest::class)->middleware(
 Route::get('/user/translate-legalize', UserTranslateLegalizeComponent::class)->middleware(['auth'])->name('user.translate_legalize');
 
 // Admin routes
-Route::get('/admin/users', UsersComponent::class)->name('admin.users');
-Route::get('/admin/{user}/info', UserInfoComponent::class)->name('admin.user.info');
+Route::get('/admin/users', UsersComponent::class)->middleware(['auth', 'admin'])->name('admin.users');
+Route::get('/admin/{user}/info', UserInfoComponent::class)->middleware(['auth', 'admin'])->name('admin.user.info');
+Route::get('/admin/requests/admission', AdmissionRequest::class)->middleware(['auth', 'admin'])->name('admin.requests.admission');
+Route::get('/admin/requests/translation', Translations::class)->middleware(['auth', 'admin'])->name('admin.requests.translation');
 
 require __DIR__.'/auth.php';

@@ -67,14 +67,14 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto text-center">
-                            <li class="nav-item active">
+                            <li class="nav-item {{ set_active_route(['admin.users']) }}">
                                 <a class="nav-link" href="{{ route('admin.users') }}">Utilisateurs</a>
                             </li>
-                            <li class="nav-item @@about">
-                                <a class="nav-link" href="#">Demandes d'admissions</a>
+                            <li class="nav-item {{ set_active_route(['admin.requests.admission']) }}">
+                                <a class="nav-link" href="{{ route('admin.requests.admission') }}">Demandes d'admissions</a>
                             </li>
-                            <li class="nav-item @@courses">
-                                <a class="nav-link" href="#">Traductions</a>
+                            <li class="nav-item {{ set_active_route(['admin.requests.Traductions']) }}">
+                                <a class="nav-link" href="{{ route('admin.requests.translation') }}">Traductions</a>
                             </li>
                             <li class="nav-item dropdown view">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

@@ -325,7 +325,7 @@
                         @if (count($user->formations) > 0)
                         <div class="table-responsive ">
                             <table class="table ">
-                                <caption>Liste de mes formations</caption>
+                                <caption>Liste des formations</caption>
                                 <thead class="thead-warning">
                                     <tr>
                                         <th scope="col">#</th>
@@ -354,6 +354,51 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <p class="text-center font-weight-bold font-italic">Pas de données disponibles</p>
+                    @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingSix">
+                    <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#admissionRequestCollapse" aria-expanded="false" aria-controls="admissionRequestCollapse">
+                        Les Admissions
+                    </button>
+                    </h2>
+            </div>
+
+            <div id="admissionRequestCollapse" class="collapse " aria-labelledby="headingSix" data-parent="#userInfoAccordion">
+                <div class="card-body">
+                    <div class="px-4">
+                        @if (count($user->admissionRequest) > 0)
+                        <div class="table-responsive ">
+                            <table class="table ">
+                                <caption>Liste des demandes d'admissions</caption>
+                                <thead class="thead-warning">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Université</th>
+                                        <th scope="col">Session</th>
+                                        <th scope="col">Programme</th>
+                                        <th scope="col">Cycle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user->admissionRequest as $admission_request)
+                                        <tr>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $admission_request->school->name }}</td>
+                                            <td>{{ $admission_request->session }}</td>
+                                            <td>{{ $admission_request->program->libel }}</td>
+                                            <td>{{ $admission_request->cycle }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
                             </table>
                         </div>
                     @else
