@@ -22,7 +22,7 @@ class AdmissionRequestFactory extends Factory
             'cycle' => Arr::random(["first", "second", "third"]),
             'user_id' => $this->faker->numberBetween(1, 10),
             'school_id' => $this->faker->numberBetween(1, 10),
-            'program_id' => $this->faker->numberBetween(1, 20),
+            'program_id' => $this->faker->numberBetween(1, 7),
         ];
     }
 }

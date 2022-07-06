@@ -55,7 +55,8 @@
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" wire:click="backStep">Précédent</button>
                 {{-- <button type="button" class="btn btn-primary btn-sm" wire:click="saveStep">Enregistrer</button> --}}
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#showFinalModal">Terminer</button>
+                {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#showFinalModal">Terminer</button> --}}
+                <a href="{{ route('studies.admission') }}" class="btn btn-primary btn-sm">Consulter mes admissions</a>
             </form>
         </div>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\AdmissionRequest;
+use App\Models\Program;
 use App\Models\School;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -11,9 +12,9 @@ class UserAdmissionRequest extends Component
 {
     public $user, $admission_request, $admission_requests;
     public function mount(){
-        $this->user = Auth::user() ; 
+        $this->user = Auth::user() ;
         $this->admission_request  = []  ;
-        $this->programs  = []  ;
+        // $this->programs  = []  ;
     }
 
     protected $listeners = ['refresh' => '$refresh'];
@@ -30,7 +31,7 @@ class UserAdmissionRequest extends Component
 
     public function updatedAdmissionRequest($value, $key){ ;
         if($key == "school_id"){
-            $this->programs = School::where("id", $value)->first()->programs->sortBy("libel") ;
+            // // $this->programs = School::where("id", $value)->first()->programs->sortBy("libel") ;
         }
     }
 
@@ -62,7 +63,8 @@ class UserAdmissionRequest extends Component
     {
         $schools = School::all()->sortBy("name");
         $admissionRequests = Auth::user()->admissionRequest;
+        $programs = Program::all()->sortBy("libel");
 
-        return view('livewire.user.user-admission-request', compact('schools', 'admissionRequests'));
+        return view('livewire.user.user-admission-request', compact('schools', 'admissionRequests', 'programs'));
     }
 }

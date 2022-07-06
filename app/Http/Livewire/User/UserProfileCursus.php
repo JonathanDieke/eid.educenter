@@ -26,7 +26,7 @@ class UserProfileCursus extends Component
     protected function rules(){
         return   [
             // cursus validation rules
-            'cursus.is_living_in_russian' => ['boolean'],
+            'cursus.is_living_in_russia' => ['boolean'],
             'cursus.legal_status' => ['string', 'in:foreign,local,permanent_resident,local_foreign'],
             'cursus.primary_studies_language' => ['string', 'in:french,english, spanish,russian'],
             'cursus.secondary_studies_language' => ['string', 'in:french,english, spanish,russian'],

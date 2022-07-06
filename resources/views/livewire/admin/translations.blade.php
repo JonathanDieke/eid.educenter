@@ -6,8 +6,7 @@
         <div class="card-body">
             @if (count($translations) > 0)
                 <div class="table-responsive ">
-                    <table class="table ">
-                        <caption>Liste des demandes d'admissions</caption>
+                    <table class="table "> 
                         <thead class="thead-warning">
                             <tr>
                                 <th scope="col">#</th>
@@ -19,18 +18,21 @@
                         </thead>
                         <tbody>
                             @foreach ($translations as $translation)
-                                <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>
-                                        <a href="{{ route('admin.user.info', $translation->user->id) }}">{{ $translation->user->name }}</a>
-                                    </td>
-                                    <td>{{ $translation->original_file }}</td>
-                                    <td>{{ $translation->comment }}</td>
-                                    <td>
-                                        <i class="feature-icon-sm ti-pencil-alt mx-1"  data-placement="top" title="titre" data-toggle="modal" data-target="#"></i>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                @if($translation->user->role != "admin")
+                                    <tr>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>
+                                            <a href="{{ route('admin.user.info', $translation->user->id) }}">{{ $translation->user->name }}</a>
+                                        </td>
+                                        <td>{{ $translation->original_file }}</td>
+                                        <td>{{ $translation->comment }}</td>
+                                        <td>
+                                            <i class="feature-icon-sm ti-pencil-alt mx-1"  data-placement="top" title="Ajouter la traduction" data-toggle="modal" data-target="#"></i>
+                                        </td>
+                                    </tr>
+
+                                @endif
+                            @endforeach
                             </tbody>
                     </table>
                 </div>

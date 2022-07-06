@@ -53,6 +53,21 @@
         <!-- header -->
         <header class="header {{ Route::Is('welcome') ? 'fixed-top' : '' }} {{ Auth::user() ? 'nav-bg' : '' }} ">
             <!-- top header -->
+            <div class="top-header py-2 bg-white">
+                <div class="container">
+                    <div class="row no-gutters">
+                        <div class="col-lg-4 text-center text-lg-left">
+                            <a class="text-color mr-3" href="callto:+2250153488836"><strong>Contact</strong> +225 01 XX XX XX </a>
+                            <ul class="list-inline d-inline" >
+                                <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"></a></li>
+                                <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"></a></li>
+                                <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"></a></li>
+                                <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- navbar -->
             <div class="navigation w-100">
                 <div class="container ">
@@ -73,7 +88,7 @@
                             <li class="nav-item {{ set_active_route(['admin.requests.admission']) }}">
                                 <a class="nav-link" href="{{ route('admin.requests.admission') }}">Demandes d'admissions</a>
                             </li>
-                            <li class="nav-item {{ set_active_route(['admin.requests.Traductions']) }}">
+                            <li class="nav-item {{ set_active_route(['admin.requests.translation']) }}">
                                 <a class="nav-link" href="{{ route('admin.requests.translation') }}">Traductions</a>
                             </li>
                             <li class="nav-item dropdown view">

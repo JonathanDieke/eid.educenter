@@ -45,6 +45,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        <button class="btn btn-primary btn-sm">Procéder au Paiement</button>
                                     </div>
 
                             @else
