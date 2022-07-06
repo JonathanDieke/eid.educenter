@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\Http;
 class WelcomeComponent extends Component
 {
     // public $name, $lname, $birthdate, $country, $state, $city, $native_language, $use_language, $gender;
-    public $email = "admin@admin.ci";
-    public  $password = "password";
+    public $email = "";
+    public  $password = "";
     // public $password_confirmation ;
 
     public $register, $states = [], $cities = [];
