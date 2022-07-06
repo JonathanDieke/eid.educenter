@@ -53,7 +53,7 @@ class UserProfileDetailedCursus extends Component
         // dd($this->currentFormationId );
 
         if($userSchoolFormation = UserSchoolFormation::find($this->currentFormationId)){
-            $userSchoolFormation->update([$this->user_school_formation]);
+            $userSchoolFormation->update($this->user_school_formation);
         }else{
             $user_school_formation = new UserSchoolFormation($this->user_school_formation);
             $user_school_formation->user()->associate($this->user);
@@ -80,8 +80,7 @@ class UserProfileDetailedCursus extends Component
     // Edition de la formation
     public function setUserSchoolFormation($formationId){
         $this->user_school_formation = UserSchoolFormation::find($formationId)->toArray();
-        $this-> currentFormationId = $formationId ;
-        // dd($this->user_school_formation );
+        $this->currentFormationId = $formationId ;
     }
 
     public function addSupporting(){

@@ -79,7 +79,7 @@ class WelcomeComponent extends Component
                 'register.native_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
                 'register.use_language' => ['required', 'string', 'max:128', 'in:french,english,spanish, russian'],
                 'register.email' => ['required', 'string', 'email', 'max:128', 'unique:users,email'],
-                'register.password' => ['required', 'string', 'confirmed', 'password'],
+                'register.password' => ['required', 'string', 'confirmed', Password::default()],
             ];
 
         }
