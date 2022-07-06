@@ -27,14 +27,15 @@ class UserSchoolFormation extends Model
         );
     }
 
-    // protected function startDate() : Attribute
-    // {
-    //     return Attribute::make(
-    //         get: function ($value) { ;
-    //             return explode("-", $value)[0];
-    //         }
-    //     );
-    // }
+    public function period() : String
+    {
+        return explode("-", $this->start_date)[0] . " - " .explode("-", $this->end_date)[0] ;
+        // Attribute::make(
+        //     get: function ($value) { ;
+        //         return explode("-", $value)[0];
+        //     }
+        // );
+    }
 
     // protected function endDate() : Attribute
     // {

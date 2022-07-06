@@ -7,12 +7,19 @@ use Livewire\Component;
 
 class UserInfoComponent extends Component
 {
+    // public $supportings = [] ;
     public function mount(User $user){
-        // dd($user);
-        $this->user = $user->only(['name', 'lname']) ;
+        $this->user = $user  ;
+        $this->supportings = []  ;
+    }
+    public function loadSupporting($userSchoolFormationId){
+        // dd( $userSchoolFormationId);
+        $this->supportings = $this->user->formations->where('id', $userSchoolFormationId)->first()->supportings ;
     }
     public function render()
     {
-        return view('livewire.admin.user-info-component', ["user" => $this->user])->layout('layouts.adminLayout');
+        return view('livewire.admin.user-info-component',
+        ["user" => $this->user, "supportings" => $this->supportings]
+        )->layout('layouts.adminLayout');
     }
 }

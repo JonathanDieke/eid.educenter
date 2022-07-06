@@ -2,6 +2,7 @@
 - exiger mot de passe FORT pour inscription
 - datepicker pour les dates de formation dans admission
 - datepicker date de naissance admisssion profile
+- star_date < en_date dans cursusDetailed/Formation
 - réduire les boutons sur mobile de la navigation du dossier d'admission (ok)
 - arrondir les inputs (ok)
 - datepicker register (ok)

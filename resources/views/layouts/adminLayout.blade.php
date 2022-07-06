@@ -76,6 +76,20 @@
                             <li class="nav-item @@courses">
                                 <a class="nav-link" href="#">Traductions</a>
                             </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#" onclick="event.preventDefault();
+                                    document.querySelector('#logoutForm').closest('form').submit();">Déconnexion</a>
+
+                                    <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     </nav>

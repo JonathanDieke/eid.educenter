@@ -1,6 +1,6 @@
-if($("footer").offset().top < window.innerHeight){
-    $('footer').addClass('fixed-bottom')
-}
+// if($("footer").offset().top < window.innerHeight){
+//     $('footer').addClass('fixed-bottom')
+// }
 (function ($) {
     'use strict';
 
