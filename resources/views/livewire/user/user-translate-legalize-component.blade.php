@@ -8,7 +8,7 @@
                 </div>
             </div>
 
-            <a href="#" class="btn btn-secondary btn-sm  shadow mb-4 " data-toggle="modal" data-target="#translationModal">Traduire un document </a>
+            <a href="#" class="btn btn-secondary btn-sm shadow mb-4 " data-toggle="modal" data-target="#translationModal">Traduire un document </a>
 
             @if (count($translations) > 0)
                 <div class="table-responsive">

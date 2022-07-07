@@ -81,9 +81,9 @@ class UserAdmissionPersonnalInfo extends Component
             // address validation rules
             'address.address1' => ['nullable', 'string', 'max:128'],
             'address.address2' => ['nullable', 'string', 'max:128'],
-            'address.country' => ['nullable', 'integer'],
-            'address.state' => ['nullable', 'integer'],
-            'address.city' => ['nullable', 'integer'],
+            'address.country' => ['required', 'integer'],
+            'address.state' => ['required', 'integer'],
+            'address.city' => ['required', 'integer'],
             'address.postal_code' => ['nullable', 'string', 'max:128'],
             'address.tel1' => [ 'nullable', 'string', 'max:128'],
             'address.tel2' => [ 'nullable', 'string', 'max:128'],

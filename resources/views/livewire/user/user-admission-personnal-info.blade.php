@@ -93,7 +93,10 @@
                     </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
-                            <select class="custom-select" wire:model="address.country">
+                            @error('address.country')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <select class="custom-select" wire:model="address.country" required>
                                 <option selected>Pays actuel</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->id }}" >{{ $country->name }}</option>
@@ -101,7 +104,10 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <select class="custom-select" wire:model="address.state">
+                            @error('address.state')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <select class="custom-select" wire:model="address.state" required>
                                 <option selected>Etat actuel</option>
                                 @foreach ($addressStates as $state)
                                     <option value="{{ $state->id }}" >{{ $state->name }}</option>
@@ -111,7 +117,10 @@
                     </div>
                     <div class="form-row py-1 w-100">
                         <div class="form-group col-md-6">
-                            <select class="custom-select" wire:model="address.city">
+                            @error('address.city')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <select class="custom-select" wire:model="address.city" required>
                                 <option selected>Ville actuel</option>
                                 @foreach ($addressCities as $city)
                                     <option value="{{ $city->id }}" >{{ $city->name }}</option>
