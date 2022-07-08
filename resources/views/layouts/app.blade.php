@@ -105,7 +105,7 @@
                                     <a class="nav-link" href="{{ route('donations') }}">Donations</a>
                                 </li>
                                 <li class="nav-item @@events">
-                                    <a class="nav-link" href="{{ route('myportal') }}">Portail (Mon compte )</a>
+                                    <a class="nav-link" href="{{ route('myportal') }}">Mon compte </a>
                                 </li>
                                 <li class="nav-item @@events">
                                     <a class="nav-link" href="{{ route('shortcut') }}">Accès rapide</a>

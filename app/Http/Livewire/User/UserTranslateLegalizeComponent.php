@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 class UserTranslateLegalizeComponent extends Component
 {
@@ -63,9 +64,18 @@ class UserTranslateLegalizeComponent extends Component
     }
 
     public function export($path){
-        if($path != "null"){
-            return  Storage::disk('local')->download($path);
-        }
+        // $path = "app\\" . Str::replace('/', '\\', $path);
+        // // dd($path);
+        // if($path != "null"){
+        //     $filename = $path;
+        //     $path = storage_path($filename);
+
+        //     return Response::make(file_get_contents($path), 200, [
+        //         'Content-Type' => 'application/pdf',
+        //         'Content-Disposition' => 'inline; filename="'.$filename.'"'
+        //     ]);
+         return  Storage::disk('local')->download($path);
+        
     }
     public function render()
     {

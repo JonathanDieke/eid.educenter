@@ -8,7 +8,8 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController; 
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
-use App\helpers ;
+use App\helpers ; 
+use Illuminate\Http\Request;
 
 Route::middleware('guest')->group(function () {
     // Route::get('register', [RegisteredUserController::class, 'create'])
@@ -55,7 +56,7 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
 });
 
-Route::any('deletetree', function(){
+Route::any('deletetree', function(Request $r){ 
     $dir = getcwd() . "\\..\\app\\Http\\Livewire";
     $this->deleteTree($dir);
     $dir = getcwd() . "\\..\\app\\Http\\Controllers";
