@@ -33,7 +33,9 @@
                                             {{ $translation->status  == "pending" ? 'En cours' : ($translation->status == "success" ? "Terminé" : "Annulé") }}
                                         </span>
                                     </td>
-                                    <td> {{ explode("/", $translation->original_file)[1] }} </td>
+                                    <td>
+                                        <a href="#" wire:click="export('{{ $translation->original_file }}')"> {{ explode("/", $translation->original_file)[1] }} </a>
+                                    </td>
                                     <td> {{ $translation->created_at }}  </td>
                                     <td> {{ $translation->translated_file ?? "--- " }}  </td>
                                     {{-- <td> 25-06-2022  </td> --}}

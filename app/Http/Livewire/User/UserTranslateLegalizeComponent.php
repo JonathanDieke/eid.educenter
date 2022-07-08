@@ -7,6 +7,7 @@ use App\Models\Translation;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserTranslateLegalizeComponent extends Component
 {
@@ -56,10 +57,13 @@ class UserTranslateLegalizeComponent extends Component
 
         }
 
-
         $this->reset(['translation']);
         $this->dispatchBrowserEvent("closeModal");
         $this->emit("refresh");
+    }
+
+    public function export($path){
+        return Storage::disk('local')->download($path);
     }
     public function render()
     {

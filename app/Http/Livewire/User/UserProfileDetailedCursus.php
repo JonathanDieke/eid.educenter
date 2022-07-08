@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use App\Models\UserSchoolFormation;
+use Illuminate\Support\Facades\Storage;
 
 class UserProfileDetailedCursus extends Component
 {
@@ -108,6 +109,10 @@ class UserProfileDetailedCursus extends Component
         $this->reset(["supporting"]);
         $this->dispatchBrowserEvent("closeModal");
         $this->emit('refresh');
+    }
+
+    public function export($path){
+        return Storage::disk('local')->download("supportings/" . $path);
     }
 
     public function deleteSupporting($supportingId){

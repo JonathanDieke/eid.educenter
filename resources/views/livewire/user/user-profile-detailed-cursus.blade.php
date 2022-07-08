@@ -222,7 +222,7 @@
                                 @foreach ($supportings as $supporting)
                                     <tr>
                                         <td> {{ $loop->iteration }} </td>
-                                        <td > {{ $supporting->filename }} </td>
+                                        <td > <a href="#" wire:click="export('{{ $supporting->filename }}')">{{ $supporting->filename }} </a> </td>
                                         <td > {{ $supporting->comment }} </td>
                                         <td class="text-truncate">
                                             <i class="feature-icon-sm-danger ti-trash mx-1" data-placement="top" title="Supprimer le justificatif" wire:click="deleteSupporting( {{ $supporting->id }} )"></i>
