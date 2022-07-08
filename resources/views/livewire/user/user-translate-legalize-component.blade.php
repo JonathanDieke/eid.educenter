@@ -66,6 +66,7 @@
                             </div>
                             <form wire:submit.prevent="addTranslation">
                                 @error('translation.original_file.*') <span class="text-danger">{{ $message }}</span> @enderror
+                                <div class="mb-1 font-weight-normal font-italic " wire:loading wire:target="translation.original_file">Chargement des fichiers...</div>
                                 <div class="form-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="original_file" required wire:model="translation.original_file" multiple>
