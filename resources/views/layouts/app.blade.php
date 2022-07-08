@@ -44,6 +44,8 @@
 
         @livewireStyles
 
+
+
         <!-- Scripts -->
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     </head>
@@ -97,13 +99,31 @@
                                     <a class="nav-link" href="{{ route('welcome') }}">Accueil</a>
                                 </li>
                                 <li class="nav-item @@about">
-                                    <a class="nav-link" href="#">Actualités</a>
+                                    <a class="nav-link" href="{{ route('news') }}">Actualités</a>
                                 </li>
                                 <li class="nav-item @@courses">
-                                    <a class="nav-link" href="#">Donations</a>
+                                    <a class="nav-link" href="{{ route('donations') }}">Donations</a>
                                 </li>
                                 <li class="nav-item @@events">
-                                    <a class="nav-link" href="#">Accès rapide</a>
+                                    <a class="nav-link" href="{{ route('myportal') }}">Portail (Mon compte )</a>
+                                </li>
+                                <li class="nav-item @@events">
+                                    <a class="nav-link" href="{{ route('shortcut') }}">Accès rapide</a>
+                                </li>
+                                <li class="nav-item @@events">
+                                    <a class="nav-link" href="{{ route('futures-student') }}">Futurs Etudiants</a>
+                                </li>
+                                <li class="nav-item @@events">
+                                    <a class="nav-link" href="{{ route('current-student') }}">Etudiants Actuels</a>
+                                </li>
+                                <li class="nav-item @@events">
+                                    <a class="nav-link" href="{{ route('universities') }}">Universités</a>
+                                </li>
+                                <li class="nav-item @@events">
+                                    <a class="nav-link" href="{{ route('programs') }}">Programme d'études</a>
+                                </li>
+                                <li class="nav-item @@events">
+                                    <a class="nav-link" href="{{ route('faculte') }}">Facultés </a>
                                 </li>
 
                             @else
@@ -173,7 +193,7 @@
 
         <!-- footer -->
         <footer>
-            {{ $footer }}
+            {{ $footer ?? "" }}
 
             <!-- copyright -->
             <div class="copyright py-4 bg-footer">
@@ -233,6 +253,11 @@
 
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         @stack('scripts')
+        <script>
+            if($("footer").offset().top < window.innerHeight){
+    $('footer').addClass('fixed-bottom')
+}
+        </script>
         <script>
             window.addEventListener('closeModal', () => {
                 console.log("close modal event")

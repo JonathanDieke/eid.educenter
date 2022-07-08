@@ -1,12 +1,20 @@
 <?php
-
-use Illuminate\Support\Facades\Http;
+ 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\WelcomeComponent;
 use App\Http\Livewire\Admin\UsersComponent;
 use App\Http\Livewire\Admin\AdmissionRequest;
 use App\Http\Livewire\Admin\Translations;
 use App\Http\Livewire\Admin\UserInfoComponent;
+use App\Http\Livewire\CurrentStudent;
+use App\Http\Livewire\Donations;
+use App\Http\Livewire\FaculteComponent;
+use App\Http\Livewire\FuturStudent;
+use App\Http\Livewire\MyPortal;
+use App\Http\Livewire\News;
+use App\Http\Livewire\Program;
+use App\Http\Livewire\ShorCut;
+use App\Http\Livewire\User\UniversityComponent;
 use App\Http\Livewire\User\UserAdmissionProfile;
 use App\Http\Livewire\User\UserAdmissionRequest;
 use App\Http\Livewire\User\UserDashboardComponent;
@@ -24,6 +32,15 @@ use App\Http\Livewire\User\UserTranslateLegalizeComponent;
 */
 
 Route::get('/',  WelcomeComponent::class)->name('welcome');
+Route::get('/universities',  UniversityComponent::class)->name('universities');
+Route::get('/news',  News::class)->name('news');
+Route::get('/donations',  Donations::class)->name('donations');
+Route::get('/my-portal',  MyPortal::class)->name('myportal');
+Route::get('/shortcut',  ShorCut::class)->name('shortcut');
+Route::get('/futures-student',  FuturStudent::class)->name('futures-student');
+Route::get('/current-student',  CurrentStudent::class)->name('current-student');
+Route::get('/programs',  Program::class)->name('programs');
+Route::get('/facultes',  FaculteComponent::class)->name('faculte');
 
 
 Route::get('/middleware', function(){
