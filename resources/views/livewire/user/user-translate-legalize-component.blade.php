@@ -65,11 +65,11 @@
                                 Les documents peuvent être uniquement de format <span class="font-italic">pdf avec une taille maximale de 1 MB</span>.
                             </div>
                             <form wire:submit.prevent="addTranslation">
-                                @error('translation.original_file') <span class="text-danger">{{ $message }}</span> @enderror
+                                @error('translation.original_file.*') <span class="text-danger">{{ $message }}</span> @enderror
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="original_file" required wire:model="translation.original_file">
-                                        <label class="custom-file-label" for="original_file">Choisir un fichier...</label>
+                                        <input type="file" class="custom-file-input" id="original_file" required wire:model="translation.original_file" multiple>
+                                        <label class="custom-file-label" for="original_file">Choisir un ou plusieurs fichier...</label>
                                     </div>
                                 </div>
                                 @error('translation.comment') <span class="text-danger">{{ $message }}</span> @enderror
