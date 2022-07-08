@@ -22,27 +22,40 @@ class UserTranslateLegalizeComponent extends Component
 
     protected function rules(){
         return [
-            'translation.original_file' => ["required", "file", 'max:1024', 'mimes:pdf'], //1 MB max
+            'translation.original_file.*' => ["required", "file", 'max:1024', 'mimes:pdf'], //1 MB max
             'translation.comment' => ["required", "string", 'max:32', 'min:3'],
         ];
     }
 
-    public function addTranslation(){
-        $d = $this->validate();
-
-        $filename = $this->translation['original_file']->getClientOriginalName();
+    private function getFileName($filename) : String {
         $fileExt = "." . Str::afterLast($filename, ".");
         $filename = explode($fileExt, $filename);
         unset($filename[count($filename)-1]);
         $filename = implode("-", $filename);
         $filename = now()->getTimestamp() . "_" . Str::slug($filename) . $fileExt;
+        return $filename ;
+    }
 
-        $path = $this->translation["original_file"]->storeAs('translations', $filename);
-        $this->translation["original_file"] = $path ;
+    public function addTranslation(){
+        $d = $this->validate();
 
-        $t = Translation::create($this->translation);
-        $t->user()->associate(Auth::user());
-        $t->save();
+
+        foreach ($this->translation['original_file'] as $photo) {
+            $filename = $this->getFileName($photo->getClientOriginalName());
+            // dd($filename);
+
+            $path = $photo->storeAs('translations', $filename);
+            // $this->translation["original_file"] = $path ;
+
+            $t = Translation::create([
+                "original_file" => $path,
+                "comment" =>$this->translation['comment'],
+             ]);
+            $t->user()->associate(Auth::user());
+            $t->save();
+
+        }
+
 
         $this->reset(['translation']);
         $this->dispatchBrowserEvent("closeModal");
