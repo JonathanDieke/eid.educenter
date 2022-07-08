@@ -254,9 +254,9 @@
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         @stack('scripts')
         <script>
-            if($("footer").offset().top < window.innerHeight){
-    $('footer').addClass('fixed-bottom')
-}
+            // if($("footer").offset().top < window.innerHeight){
+            //     $('footer').addClass('fixed-bottom')
+            // }
         </script>
         <script>
             window.addEventListener('closeModal', () => {

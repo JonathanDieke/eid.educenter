@@ -63,7 +63,9 @@ class UserTranslateLegalizeComponent extends Component
     }
 
     public function export($path){
-        return Storage::disk('local')->download($path);
+        if($path != "null"){
+            return  Storage::disk('local')->download($path);
+        }
     }
     public function render()
     {

@@ -37,7 +37,13 @@
                                         <a href="#" wire:click="export('{{ $translation->original_file }}')"> {{ explode("/", $translation->original_file)[1] }} </a>
                                     </td>
                                     <td> {{ $translation->created_at }}  </td>
-                                    <td> {{ $translation->translated_file ?? "--- " }}  </td>
+                                    <td  > 
+                                        @if ($translation->translated_file)
+                                            <a href="#" wire:click="export('{{ $translation->translated_file }}')"> {{ explode("/", $translation->translated_file)[1] }}   </a>
+                                        @else
+                                            ---
+                                        @endif
+                                    </td>
                                     {{-- <td> 25-06-2022  </td> --}}
                                     <td> {{ $translation->comment }}  </td>
                                 </tr>
@@ -72,7 +78,7 @@
                                 <div class="form-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="original_file" required wire:model="translation.original_file" multiple>
-                                        <label class="custom-file-label" for="original_file">Choisir un ou plusieurs fichier...</label>
+                                        <label class="custom-file-label" for="original_file">Choisir un ou plusieurs fichiers...</label>
                                     </div>
                                 </div>
                                 @error('translation.comment') <span class="text-danger">{{ $message }}</span> @enderror
