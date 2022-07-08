@@ -187,19 +187,19 @@
                                 <div class="row">
                                     <div class="col-md-6">Lien de parenté : </div>
                                     <div class="col-md-6">
-                                        <p>{{ $user->theParents[0]->link == 'mother' ? "Mère" : "Père" }}</p>
+                                        {{ $user->theParents[0]->link == 'mother' ? "Mère" : "Père" }}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">Nom : </div>
                                     <div class="col-md-6">
-                                        <p>{{ $user->theParents[0]->name  }}</p>
+                                        {{ $user->theParents[0]->name  }}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">Prénoms : </div>
                                     <div class="col-md-6">
-                                        <p>{{ $user->theParents[0]->lname  }}</p>
+                                        {{ $user->theParents[0]->lname  }}
                                     </div>
                                 </div>
                             </div>
@@ -208,19 +208,19 @@
                                 <div class="row">
                                     <div class="col-md-6">Lien de parenté : </div>
                                     <div class="col-md-6">
-                                        <p>{{ $user->theParents[1]->link == 'mother' ? "Mère" : "Père" }}</p>
+                                        {{ $user->theParents[1]->link == 'mother' ? "Mère" : "Père" }}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">Nom : </div>
                                     <div class="col-md-6">
-                                        <p>{{ $user->theParents[1]->name  }}</p>
+                                        {{ $user->theParents[1]->name  }}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">Prénoms : </div>
                                     <div class="col-md-6">
-                                        <p>{{ $user->theParents[1]->lname  }}</p>
+                                        {{ $user->theParents[1]->lname  }}
                                     </div>
                                 </div>
                             </div>
@@ -233,80 +233,89 @@
         <div class="card">
             <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#parentCollapse" aria-expanded="false" aria-controls="parentCollapse">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#cursusCollapse" aria-expanded="false" aria-controls="cursusCollapse">
                         Le Cursus
                     </button>
                     </h2>
             </div>
 
-            <div id="parentCollapse" class="collapse" aria-labelledby="headingFour" data-parent="#userInfoAccordion">
+            <div id="cursusCollapse" class="collapse" aria-labelledby="headingFour" data-parent="#userInfoAccordion">
                 <div class="card-body">
-                    <div class="px-4">
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Vis en Russie ? :</p>
+                    @if($user->cursus)
+                        <div class="px-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Vis en Russie ? :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus ? ($user->cursus->is_living_in_russia ? 'Oui' : 'Non') : "NULL" }} </p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->is_living_in_russia ? 'Oui' : 'Non' }} </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Status Légal :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus ? ($user->cursus->legal_status == 'foreign' ? 'Etranger' : ($user->cursus->legal_status == 'local' ? 'Citoyen(ne) russe né(e) en Russie ' : ($user->cursus->legal_status == 'permanent_resident' ? 'Résident Permanent en Russie' : 'Citoyen(ne) russe né(e) en dehors de la Russie'))) : "NULL" }} </p>
+                                </div>
                             </div>
-                         </div>
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Status Légal :</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Langue des études primaires :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus->primary_studies_language  == 'french' ? 'Français' : ($user->cursus->primary_studies_language == 'english' ? 'Anglais' : ($user->cursus->primary_studies_language == 'spanish' ? 'Espagnol' : 'Russe')) }} </p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->legal_status == 'foreign' ? 'Etranger' : ($user->cursus->legal_status == 'local' ? 'Citoyen(ne) russe né(e) en Russie ' : ($user->cursus->legal_status == 'permanent_resident' ? 'Résident Permanent en Russie' : 'Citoyen(ne) russe né(e) en dehors de la Russie'))}} </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Langue des études secondaires :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus->secondary_studies_language  == 'french' ? 'Français' : ($user->cursus->secondary_studies_language == 'english' ? 'Anglais' : ($user->cursus->secondary_studies_language == 'spanish' ? 'Espagnol' : 'Russe')) }} </p>
+                                </div>
                             </div>
-                         </div>
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Langue des études primaires :</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Détient au moins un diplôme d'études collégiales russe ? :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus->is_has_russian_college_diploma ? 'Oui' : 'Non' }} </p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->primary_studies_language  == 'french' ? 'Français' : ($user->cursus->primary_studies_language == 'english' ? 'Anglais' : ($user->cursus->primary_studies_language == 'spanish' ? 'Espagnol' : 'Russe')) }} </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Détient au moins un diplôme d'études pré-universitaire russe ? :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus->is_has_russian_high_school_diploma ? 'Oui' : 'Non' }} </p>
+                                </div>
                             </div>
-                         </div>
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Langue des études secondaires :</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Déjà étudié dans une univerisité russe ? :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus->is_study_in_russian_university ? 'Oui' : 'Non' }} </p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->secondary_studies_language  == 'french' ? 'Français' : ($user->cursus->secondary_studies_language == 'english' ? 'Anglais' : ($user->cursus->secondary_studies_language == 'spanish' ? 'Espagnol' : 'Russe')) }} </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Déjà étudié dans une univerisité russe ou en dehors ? :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ $user->cursus->is_study_in_university ? 'Oui' : 'Non' }} </p>
+                                </div>
                             </div>
-                         </div>
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Détient au moins un diplôme d'études collégiales russe ? :</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->is_has_russian_college_diploma ? 'Oui' : 'Non' }} </p>
-                            </div>
-                         </div>
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Détient au moins un diplôme d'études pré-universitaire russe ? :</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->is_has_russian_high_school_diploma ? 'Oui' : 'Non' }} </p>
-                            </div>
-                         </div>
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Déjà étudié dans une univerisité russe ? :</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->is_study_in_russian_university ? 'Oui' : 'Non' }} </p>
-                            </div>
-                         </div>
-                         <div class="row">
-                            <div class="col-md-6">
-                                <p>Déjà étudié dans une univerisité russe ou en dehors ? :</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{ $user->cursus->is_study_in_university ? 'Oui' : 'Non' }} </p>
-                            </div>
-                         </div>
-                    </div>
+                        </div>
+                    @else
+                        <div class="px-4">
+                            <p class="text-muted">
+                                NULL
+                            </p>
+                        </div>
+
+                    @endif
                 </div>
             </div>
         </div>
@@ -439,7 +448,9 @@
                                 @foreach ($supportings as $supporting)
                                     <tr>
                                         <td> {{ $loop->iteration }} </td>
-                                        <td > {{ $supporting->filename }} </td>
+                                        <td > 
+                                            <a href="#" wire:click="export('{{ $supporting->filename }}')"> {{ $supporting->filename }} </a>
+                                        </td>
                                         <td > {{ $supporting->comment }} </td>
                                     </tr>
                                 @endforeach

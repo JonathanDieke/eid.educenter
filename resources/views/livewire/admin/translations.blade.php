@@ -6,7 +6,7 @@
         <div class="card-body">
             @if (count($translations) > 0)
                 <div class="table-responsive ">
-                    <table class="table "> 
+                    <table class="table ">
                         <thead class="thead-warning">
                             <tr>
                                 <th scope="col">#</th>
@@ -24,7 +24,7 @@
                                         <td>
                                             <a href="{{ route('admin.user.info', $translation->user->id) }}">{{ $translation->user->name }}</a>
                                         </td>
-                                        <td>{{ $translation->original_file }}</td>
+                                        <td> <a href="#" wire:click="export('{{ $translation->original_file }}')">{{ explode("/", $translation->original_file)[1] }} </a> </td>
                                         <td>{{ $translation->comment }}</td>
                                         <td>
                                             <i class="feature-icon-sm ti-pencil-alt mx-1"  data-placement="top" title="Ajouter la traduction" data-toggle="modal" data-target="#"></i>
