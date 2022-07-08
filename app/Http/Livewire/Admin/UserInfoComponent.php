@@ -9,6 +9,9 @@ class UserInfoComponent extends Component
 {
     // public $supportings = [] ;
     public function mount(User $user){
+        if($user->role =="admin"){
+            return redirect()->route("admin.user.info");
+        }
         $this->user = $user  ;
         $this->supportings = []  ;
     }

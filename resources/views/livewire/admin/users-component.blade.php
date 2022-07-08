@@ -4,7 +4,7 @@
             Liste des utilisateurs
         </div>
         <div class="card-body">
-            @if ($users-count() > 0)
+            @if ($users->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-light">
                         <thead class="thead-light">

