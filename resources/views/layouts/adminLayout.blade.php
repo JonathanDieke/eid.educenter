@@ -91,6 +91,9 @@
                             <li class="nav-item {{ set_active_route(['admin.requests.translation']) }}">
                                 <a class="nav-link" href="{{ route('admin.requests.translation') }}">Traductions</a>
                             </li>
+                            <li class="nav-item {{ set_active_route(['admin.news']) }}">
+                                <a class="nav-link" href="{{ route('admin.news') }}">Actualités</a>
+                            </li>
                             <li class="nav-item dropdown view">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
@@ -167,10 +170,10 @@
         <!-- venobox popup -->
         <script src="{{ asset('assets/plugins/venobox/venobox.min.js') }}"></script>
         <!-- mixitup filter -->
-        <script src="{{ asset('assets/plugins/mixitup/mixitup.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/plugins/mixitup/mixitup.min.js') }}"></script> --}}
         <!-- google map -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-        <script src="{{ asset('assets/plugins/google-map/gmap.js') }}"></script>
+        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+        <script src="{{ asset('assets/plugins/google-map/gmap.js') }}"></script> --}}
 
         <!-- Main Script -->
         <script src="{{ asset('assets/js/script.js') }}"></script>
@@ -178,10 +181,29 @@
         <!-- Alpine v3 -->
         {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
-        @livewireScripts
-
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+
         @stack('scripts')
 
+        <script>
+            window.addEventListener('closeModal', () => {
+                console.log("close modal event")
+                $('.modal').modal('hide');
+            })
+
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4',
+                format : "yyyy-mm-dd",
+            });
+
+            // $('.formation_period').datepicker({
+            //     uiLibrary: 'bootstrap4',
+            //     format : "yyyy-mm",
+            //     autoclose: true,
+            //     todayHighlight: true,
+            // });
+        </script>
+
+        @livewireScripts
     </body>
 </html>

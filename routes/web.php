@@ -1,9 +1,10 @@
 <?php
- 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\WelcomeComponent;
 use App\Http\Livewire\Admin\UsersComponent;
 use App\Http\Livewire\Admin\AdmissionRequest;
+use App\Http\Livewire\Admin\NewsComponent;
 use App\Http\Livewire\Admin\Translations;
 use App\Http\Livewire\Admin\UserInfoComponent;
 use App\Http\Livewire\CurrentStudent;
@@ -62,5 +63,6 @@ Route::get('/admin/users', UsersComponent::class)->middleware(['auth', 'admin'])
 Route::get('/admin/{user}/info', UserInfoComponent::class)->middleware(['auth', 'admin'])->name('admin.user.info');
 Route::get('/admin/requests/admission', AdmissionRequest::class)->middleware(['auth', 'admin'])->name('admin.requests.admission');
 Route::get('/admin/requests/translation', Translations::class)->middleware(['auth', 'admin'])->name('admin.requests.translation');
+Route::get('/admin/news', NewsComponent::class)->middleware(['auth', 'admin'])->name('admin.news');
 
 require __DIR__.'/auth.php';
