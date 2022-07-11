@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
-class NewsComponent extends Component
+class AdminNewsComponent extends Component
 {
     use WithPagination ;
     use WithFileUploads;
@@ -80,6 +80,6 @@ class NewsComponent extends Component
     public function render()
     {
         $news = News::paginate(5);
-        return view('livewire.admin.news-component', compact('news'))->layout('layouts.adminLayout');
+        return view('livewire.admin.admin-news-component', compact('news'))->layout('layouts.adminLayout');
     }
 }

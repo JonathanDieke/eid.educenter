@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\WelcomeComponent;
 use App\Http\Livewire\Admin\UsersComponent;
 use App\Http\Livewire\Admin\AdmissionRequest;
-use App\Http\Livewire\Admin\NewsComponent;
+use App\Http\Livewire\Admin\AdminNewsComponent;
 use App\Http\Livewire\Admin\Translations;
 use App\Http\Livewire\Admin\UserInfoComponent;
 use App\Http\Livewire\CurrentStudent;
@@ -12,7 +12,7 @@ use App\Http\Livewire\Donations;
 use App\Http\Livewire\FaculteComponent;
 use App\Http\Livewire\FuturStudent;
 use App\Http\Livewire\MyPortal;
-use App\Http\Livewire\News;
+use App\Http\Livewire\NewsComponent;
 use App\Http\Livewire\Program;
 use App\Http\Livewire\ShorCut;
 use App\Http\Livewire\User\UniversityComponent;
@@ -34,7 +34,7 @@ use App\Http\Livewire\User\UserTranslateLegalizeComponent;
 
 Route::get('/',  WelcomeComponent::class)->name('welcome');
 Route::get('/universities',  UniversityComponent::class)->name('universities');
-Route::get('/news',  News::class)->name('news');
+Route::get('/news',  NewsComponent::class)->name('news');
 Route::get('/donations',  Donations::class)->name('donations');
 Route::get('/my-portal',  MyPortal::class)->name('myportal');
 Route::get('/shortcut',  ShorCut::class)->name('shortcut');
@@ -63,6 +63,6 @@ Route::get('/admin/users', UsersComponent::class)->middleware(['auth', 'admin'])
 Route::get('/admin/{user}/info', UserInfoComponent::class)->middleware(['auth', 'admin'])->name('admin.user.info');
 Route::get('/admin/requests/admission', AdmissionRequest::class)->middleware(['auth', 'admin'])->name('admin.requests.admission');
 Route::get('/admin/requests/translation', Translations::class)->middleware(['auth', 'admin'])->name('admin.requests.translation');
-Route::get('/admin/news', NewsComponent::class)->middleware(['auth', 'admin'])->name('admin.news');
+Route::get('/admin/news', AdminNewsComponent::class)->middleware(['auth', 'admin'])->name('admin.news');
 
 require __DIR__.'/auth.php';
