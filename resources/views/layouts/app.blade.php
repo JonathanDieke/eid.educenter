@@ -72,8 +72,10 @@
                                     {{-- <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
                                     <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
                                     <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li> --}}
-                                    <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
-                                    <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal" >Inscription</a></li>
+                                    @if(Route::Is('welcome'))
+                                        <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
+                                        <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal" >Inscription</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         @endguest
@@ -95,34 +97,34 @@
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto text-center">
                             @guest
-                                <li class="nav-item active">
+                                <li class="nav-item {{ set_active_route(['welcome']) }}">
                                     <a class="nav-link" href="{{ route('welcome') }}">Accueil</a>
                                 </li>
-                                <li class="nav-item @@about">
+                                <li class="nav-item {{ set_active_route(['news']) }}">
                                     <a class="nav-link" href="{{ route('news') }}">Actualités</a>
                                 </li>
-                                <li class="nav-item @@courses">
+                                <li class="nav-item {{ set_active_route(['donations']) }}">
                                     <a class="nav-link" href="{{ route('donations') }}">Donations</a>
                                 </li>
-                                <li class="nav-item @@events">
+                                <li class="nav-item {{ set_active_route(['myportal']) }}">
                                     <a class="nav-link" href="{{ route('myportal') }}">Mon compte </a>
                                 </li>
-                                <li class="nav-item @@events">
+                                <li class="nav-item {{ set_active_route(['shortcut']) }}">
                                     <a class="nav-link" href="{{ route('shortcut') }}">Accès rapide</a>
                                 </li>
-                                <li class="nav-item @@events">
+                                <li class="nav-item {{ set_active_route(['futures']) }}">
                                     <a class="nav-link" href="{{ route('futures-student') }}">Futurs Etudiants</a>
                                 </li>
-                                <li class="nav-item @@events">
+                                <li class="nav-item {{ set_active_route(['current']) }}">
                                     <a class="nav-link" href="{{ route('current-student') }}">Etudiants Actuels</a>
                                 </li>
-                                <li class="nav-item @@events">
+                                <li class="nav-item {{ set_active_route(['universities']) }}">
                                     <a class="nav-link" href="{{ route('universities') }}">Universités</a>
                                 </li>
-                                <li class="nav-item @@events">
+                                <li class="nav-item {{ set_active_route(['programs']) }}">
                                     <a class="nav-link" href="{{ route('programs') }}">Programme d'études</a>
                                 </li>
-                                <li class="nav-item @@events">
+                                <li class="nav-item {{ set_active_route(['faculte']) }}">
                                     <a class="nav-link" href="{{ route('faculte') }}">Facultés </a>
                                 </li>
 
@@ -186,163 +188,7 @@
         </header>
         <!-- /header -->
 
-        @if(!Auth::user())
-            <!-- Modal Register -->
-            <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" and data-backdrop="static" wire:ignore.self  wire:click="setForm('registerForm')">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content rounded-0 border-0 p-4">
-                        <div class="modal-header border-0">
-                            <h3>Inscription</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="hideModal">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        {{-- @foreach ($errors->all() as $message )
-                            <div class="alert alert-success">
-                                {{ $message }}
-                            </div>
-                        @endforeach --}}
-                        <div class="modal-body">
-                            <div>
-                                <form  class="row" wire:submit.prevent="register" autocomplete="off" id="registerForm">
-                                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                                    <div class="pl-2 w-100 ">
-                                        <div class="form-row  pl-2 w-100">
-                                            <div class="form-group col-md-6">
-                                                @error('register.name') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <input type="text" class="form-control form-control-sm " wire:model.lazy="register.name"  placeholder="Nom">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                @error('register.lname') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <input type="text" class="form-control form-control-sm " wire:model.lazy="register.lname" placeholder="Prénoms" autocomplete="off ">
-                                            </div>
-                                        </div>
-                                        <div class="form-row  pl-2 w-100">
-                                            <div class="form-group col-md-12">
-                                                @error('register.gender') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <select class="custom-select " wire:model.lazy="register.gender">
-                                                    <option selected>Genre</option>
-                                                    <option value="male" >Masculin</option>
-                                                    <option value="female" >Féminin</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="form-row  pl-2 w-100">
-                                            <div class="form-group col-md-6">
-                                                @error('register.birthdate') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <input  class="form-control form-control-sm" name="birthdate" wire:model.lazy="register.birthdate" placeholder="Date d'anniversaire" autocomplete="off "  id="datepicker" onchange="Livewire.emit('getDate', this.value)">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                @error('register.country') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <select class="custom-select " wire:model="register.country"'>
-                                                    <option selected>Pays de naissance</option>
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{ $country->id }}" >{{ $country->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-row  pl-2 w-100">
-                                            <div class="form-group col-md-6">
-                                                @error('register.state') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <select class="custom-select " wire:model="register.state" >
-                                                    <option selected>Etat de naissance</option>
-                                                    @foreach ($states as $state)
-                                                        <option value="{{ $state->id }}" >{{ $state->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                @error('register.city') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <select class="custom-select " wire:model="register.city" >
-                                                    <option selected>Ville de naissance</option>
-                                                    @foreach ($cities as $city)
-                                                        <option value="{{ $city->id }}" >{{ $city->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div> --}}
-                                        <div class="form-row  pl-2 w-100">
-                                            <div class="form-group col-md-6">
-                                                @error('register.native_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <select class="custom-select " wire:model.lazy="register.native_language">
-                                                    <option selected>Langue maternelle</option>
-                                                    <option value="french" >Français</option>
-                                                    <option value="english" >Anglais</option>
-                                                    <option value="spanish" >Espagnol</option>
-                                                    <option value="russian" >Russe</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                @error('register.use_language') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <select class="custom-select " wire:model.lazy="register.use_language">
-                                                    <option selected>Langue d'usage</option>
-                                                    <option value="french" >Français</option>
-                                                    <option value="english" >Anglais</option>
-                                                    <option value="spanish" >Espagnol</option>
-                                                    <option value="russian" >Russe</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-row  pl-2 w-100">
-                                            <div class="form-group col-12">
-                                                @error('register.email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <input type="email" class="form-control form-control-sm " wire:model.lazy="register.email" placeholder="Email" autocomplete="off ">
-                                            </div>
-                                        </div>
-                                        <div class="form-row  pl-2 w-100">
-                                            <div class="form-group col-md-6">
-                                                @error('register.password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <input type="password" class="form-control form-control-sm " wire:model.lazy="register.password"  placeholder="Mot de passe">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                @error('register.password_confirmation') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                                <input type="password" class="form-control form-control-sm " wire:model.lazy="register.password_confirmation"  placeholder="Confirmer le mot de passe">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary tbn-sm">S'enregistrer</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal Register -->
 
-            <!-- Modal Login -->
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"  wire:ignore.self  wire:click="setForm('loginForm')">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content rounded-0 border-0 p-4">
-                        <div class="modal-header border-0">
-                            <h3>Connexion</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="hideModal">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form wire:submit.prevent="login" class="row" autocomplete="off">
-                                <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                                <div class="col-12">
-                                    @error('email') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                    <input type="email" class="form-control form-control-sm mb-3" wire:model.lazy="email" placeholder="Email" autocomplete="off">
-                                </div>
-                                <div class="col-12">
-                                    @error('password') <span class="error font-italic text-danger">{{ $message }}</span> @enderror
-                                    <input type="password" class="form-control form-control-sm mb-3" wire:model.lazy="password" placeholder="Mot de passe"  autocomplete="off">
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary tbn-sm">Se connecter</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal Login -->
-        @endif
 
 
         <!-- Page Content -->
