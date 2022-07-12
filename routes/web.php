@@ -32,9 +32,9 @@ use App\Http\Livewire\User\UserTranslateLegalizeComponent;
 |
 */
 
-Route::get('/welcome',  WelcomeComponent::class)->name('welcome');
+Route::get('/',  WelcomeComponent::class)->name('welcome');
 Route::get('/universities',  UniversityComponent::class)->name('universities');
-Route::get('/',  NewsComponent::class)->name('news');
+Route::get('/news',  NewsComponent::class)->name('news');
 Route::get('/donations',  Donations::class)->name('donations');
 Route::get('/my-portal',  MyPortal::class)->name('myportal');
 Route::get('/shortcut',  ShorCut::class)->name('shortcut');
