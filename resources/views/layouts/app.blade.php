@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="row no-gutters">
                         <div class="col-lg-4 text-center text-lg-left">
-                            <a class="text-color mr-3" href="callto:+2250153488836"><strong>Contact</strong> +225 01 XX XX XX </a>
+                            <a class="text-color mr-3" href="callto:+2250153488836"><strong>Contact : </strong> +7 916 XX XX XX </a>
                             <ul class="list-inline d-inline">
                                 <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
                                 <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>

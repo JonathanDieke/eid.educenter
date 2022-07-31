@@ -644,8 +644,8 @@
                         <h3 class="mb-5 font-weight-bold text-primary" wire:click="$emit('refresh')">{{ env('APP_NAME') }}</h3>
                         <ul class="list-unstyled">
                             <li class="mb-2">Quartier, Commune, Ville, Russie</li>
-                            <li class="mb-2">+225 01 XX XX XX</li>
-                            <li class="mb-2">+225 01 YY YY YY </li>
+                            <li class="mb-2">+7 916 XX XX XX</li>
+                            <li class="mb-2">+7 916 YY YY YY </li>
                             <li class="mb-2">mail@mail.com</li>
                         </ul>
                     </div>
