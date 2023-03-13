@@ -209,7 +209,7 @@
                </div>
                <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
                <i class="ti-blackboard mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-               <h3 class="mb-xl-4 mb-lg-3 mb-4">Assistance pour le Visa</h3>
+               <h3 class="mb-xl-4 mb-lg-3 mb-4">Assistance  Visa</h3>
                <p>
                     Vous êtes admis dans un université russe ?
                     Nous proposons un service d'assistance personnalisée pour l'obtention de votre visa.
@@ -218,7 +218,7 @@
                </div>
                <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
                <i class="ti-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-               <h3 class="mb-xl-4 mb-lg-3 mb-4">Légalisations et traduction</h3>
+               <h3 class="mb-xl-4 mb-lg-3 mb-4">Légalisations et traductions</h3>
                <p>
                     Notre équipe de linguistes experts dans le domaine est à votre disposition pour toute traduction en russe
                     ou légalisation de vos bulletins, diplômes ou tout autre document.
