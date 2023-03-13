@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="row no-gutters">
                         <div class="col-lg-4 text-center text-lg-left">
-                            <a class="text-color mr-3" href="callto:+2250153488836"><strong>Contact : </strong> +7 916 XX XX XX </a>
+                            <a class="text-color mr-3" href="callto:+2250153488836"><strong>Contact : </strong> +33 7 45 68 89 89</a>
                             <ul class="list-inline d-inline">
                                 <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
                                 <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
@@ -205,15 +205,15 @@
                 <div class="container">
                     <div class="row">
                     <div class="col-sm-7 text-sm-left text-center">
-                        <p class="mb-0">© Copyright 2022-
+                        <p class="mb-0">© Copyright 2022 -
                             <script>
                                 var CurrentYear = new Date().getFullYear()
                                 document.write(CurrentYear)
                                 </script>
                             </p>
-                            {{ env('APP_NAME') }} All Rights Reserved.
+                            {{ env('APP_NAME') }}, All Rights Reserved.
                             <p>
-                                Developped with &hearts; by EID (<a href="https://linkedin.com/"> LinkedIn </a>)
+                                Developped with &hearts; by Jonathan Diéké (<a href="https://linkedin.com/in/jonathan-dieke-9b48361a6/"> LinkedIn </a>)
                             </p>
                         </div>
                     <div class="col-sm-5 text-sm-right text-center">

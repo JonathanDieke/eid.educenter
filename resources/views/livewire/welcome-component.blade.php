@@ -249,7 +249,7 @@
            <h2 class="section-title">A propos de {{ env('APP_NAME') }}</h2>
            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p> --}}
            {{-- <p>cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p> --}}
-           <p>{{ env('APP_NAME') }} est un cabinet qui octroie les bourses d'études aux étudiants qui désirent aller continuer leurs études dans les universités extérieures dans d'autres pays comme la Russie ,l'Italie, le Canada, ... </p>
+           <p>{{ env('APP_NAME') }} est un cabinet qui octroie les bourses d'études aux étudiants qui désirent poursuivre leurs études dans des universités à l'étranger comme la Russie, l'Italie ou le Canada</p>
            <a href="#" class="btn btn-primary-outline">Lire plus</a>
            </div>
            <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
@@ -320,7 +320,7 @@
                            <h4 class="card-title">Canada</h4>
                        </a>
                        <p class="card-text mb-4">
-                            Rejoignez le Canada pour son haut domaine scientifique avancé.
+                            Rejoignez le Canada pour son domaine scientifique hautement avancé.
                             {{-- Avec ses professeurs de qualité, le Canada ne saura qu'être un bon choix pour la suite de vos études. --}}
                         </p>
                        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#signupModal">S'inscrire</a>
@@ -345,7 +345,7 @@
            <div class="row">
                <div class="col-12 text-center">
                <h6 class="text-white font-secondary mb-0">Cliquez et rejoignez la communauté d'étudiants étrangers</h6>
-               <h2 class="section-title text-white">Venez étduier en Russie </h2>
+               <h2 class="section-title text-white">Venez étudier en Russie </h2>
                {{-- <a href="contact.html" class="btn btn-secondary">Rejoindre</a> --}}
                <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#signupModal" >Rejoindre</a>
                </div>
@@ -382,8 +382,8 @@
                                     <div class="hero-slider-item p-3">
                                             <div class="">
                                                 <p class="text-center  text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">
-                                                    La traduction de mes bulletins et diplômes en russe a été exceptionnel.
-                                                    Il n'a fallu attendre que deux jours pour recevoir mes documents traduits
+                                                    La traduction de mes bulletins et diplômes en russe a été exceptionnelle.
+                                                    Il n'a fallu attendre que deux jours pour recevoir mes documents traduits.
                                                     Le service est simple et rapide. Je suis satisfait !!
                                                 </p>
                                             </div>
@@ -643,10 +643,9 @@
                         <!-- logo -->
                         <h3 class="mb-5 font-weight-bold text-primary" wire:click="$emit('refresh')">{{ env('APP_NAME') }}</h3>
                         <ul class="list-unstyled">
-                            <li class="mb-2">Quartier, Commune, Ville, Russie</li>
-                            <li class="mb-2">+7 916 XX XX XX</li>
-                            <li class="mb-2">+7 916 YY YY YY </li>
-                            <li class="mb-2">mail@mail.com</li>
+                            <li class="mb-2">Quartier, Commune, Ville, Pays</li>
+                            <li class="mb-2">+33 7 45 68 89 89</li>
+                            <li class="mb-2">jonathan.dieke225@gmail.com</li>
                         </ul>
                     </div>
                     <!-- company -->
