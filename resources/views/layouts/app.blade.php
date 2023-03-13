@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="row no-gutters">
                         <div class="col-lg-4 text-center text-lg-left">
-                            <a class="text-color mr-3" href="callto:+2250153488836"><strong>Contact : </strong> +33 7 45 68 89 89</a>
+                            <a class="text-color mr-3" href="callto:+33745688989"><strong>Contact : </strong> +33 7 45 68 89 89</a>
                             <ul class="list-inline d-inline">
                                 <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
                                 <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
@@ -103,7 +103,7 @@
                                 <li class="nav-item {{ set_active_route(['news']) }}">
                                     <a class="nav-link" href="{{ route('news') }}">Actualités</a>
                                 </li>
-                                <li class="nav-item {{ set_active_route(['donations']) }}">
+                                {{-- <li class="nav-item {{ set_active_route(['donations']) }}">
                                     <a class="nav-link" href="{{ route('donations') }}">Donations</a>
                                 </li>
                                 <li class="nav-item {{ set_active_route(['myportal']) }}">
@@ -111,22 +111,22 @@
                                 </li>
                                 <li class="nav-item {{ set_active_route(['shortcut']) }}">
                                     <a class="nav-link" href="{{ route('shortcut') }}">Accès rapide</a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item {{ set_active_route(['futures']) }}">
                                     <a class="nav-link" href="{{ route('futures-student') }}">Futurs Etudiants</a>
                                 </li>
-                                <li class="nav-item {{ set_active_route(['current']) }}">
+                                {{-- <li class="nav-item {{ set_active_route(['current']) }}">
                                     <a class="nav-link" href="{{ route('current-student') }}">Etudiants Actuels</a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item {{ set_active_route(['universities']) }}">
                                     <a class="nav-link" href="{{ route('universities') }}">Universités</a>
                                 </li>
-                                <li class="nav-item {{ set_active_route(['programs']) }}">
+                                {{-- <li class="nav-item {{ set_active_route(['programs']) }}">
                                     <a class="nav-link" href="{{ route('programs') }}">Programme d'études</a>
-                                </li>
-                                <li class="nav-item {{ set_active_route(['faculte']) }}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{ set_active_route(['faculte']) }}">
                                     <a class="nav-link" href="{{ route('faculte') }}">Facultés </a>
-                                </li>
+                                </li> --}}
 
                             @else
                                 <li class="nav-item {{ set_active_route(['user.dashboard']) }}">
@@ -213,7 +213,7 @@
                             </p>
                             {{ env('APP_NAME') }}, All Rights Reserved.
                             <p>
-                                Developped with &hearts; by Jonathan Diéké (<a href="https://linkedin.com/in/jonathan-dieke-9b48361a6/"> LinkedIn </a>)
+                                Developed with &hearts; by Jonathan Diéké (<a href="https://linkedin.com/in/jonathan-dieke-9b48361a6/"> LinkedIn </a>)
                             </p>
                         </div>
                     <div class="col-sm-5 text-sm-right text-center">
