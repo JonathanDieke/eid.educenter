@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\Country;
-use App\View\Components\AppLayout;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Http;
+ use Carbon\Carbon;
 
 class WelcomeComponent extends Component
 {
