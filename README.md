@@ -14,16 +14,20 @@
 
 RUSSEDUC est une plateforme web construite avec Laravel 9 permettant principalement de collecter des candidatures d'étudiants étrangers pour des universités russes. 
 
-Il est doté d'unsystème d'administration simple :
 
-<img src="public/img/img3.png" width=80% /> 
-
-Et d'un espace utilisateur dédié aux candidats.
+Il est doté d'un espace utilisateur dédié aux candidats où ceux-ci ont la possibilité d'indiquer leurs informations (parcours académiques, diplômes, informations personneles, ...) et entregistrer une candidature. Ils peuvent aussi upload des documents (des diplômes par exemple) en vue d'une traduction :
 
 <img src="public/img/img2.png" width=80% />
 
 <br>
+<img src="public/img/img4.png" width=80% />
 
-Vous pouvez le tester sur ce lien : <a href="#"> www.example.com </a> avec les rôles suivants : 
-- USER : test@test.fr ||  password 
-- ADMIN :  admin@admin.fr || password
+<br>
+
+Et  d'un système d'administration simple permettant aux admins, entre autres, d'avoir la liste des utilisateurs, collecter les demandes d'admissions, répondre à des demandes de traduction de documents
+
+<img src="public/img/img3.png" width=80% /> 
+
+<br/>
+
+<img src="public/img/img5.png" width=80% /> 

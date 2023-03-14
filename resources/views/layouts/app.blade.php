@@ -113,7 +113,7 @@
                                     <a class="nav-link" href="{{ route('shortcut') }}">Accès rapide</a>
                                 </li> --}}
                                 <li class="nav-item {{ set_active_route(['futures']) }}">
-                                    <a class="nav-link" href="{{ route('futures-student') }}">Futurs Etudiants</a>
+                                    <a class="nav-link" href="{{ route('future-students') }}">Futurs Etudiants</a>
                                 </li>
                                 {{-- <li class="nav-item {{ set_active_route(['current']) }}">
                                     <a class="nav-link" href="{{ route('current-student') }}">Etudiants Actuels</a>

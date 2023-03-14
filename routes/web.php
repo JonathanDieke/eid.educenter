@@ -34,7 +34,8 @@ use App\Http\Livewire\User\UserTranslateLegalizeComponent;
 
 Route::get('/',  WelcomeComponent::class)->name('welcome');
 Route::get('/universities',  UniversityComponent::class)->name('universities');
-Route::get('/news',  NewsComponent::class)->name('news');  
+Route::get('/news',  NewsComponent::class)->name('news');
+Route::get('/futurs-etudiants',  NewsComponent::class)->name('future-students');
 
 
 Route::get('/middleware', function(){
