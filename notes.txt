@@ -19,3 +19,4 @@
     **** Informations ****
 - que dit on pour l'intégration de cinetpay, vu que l'entreprise n'est pas en CI ? bouai cinetpay, on atten ceux de russie !
 
+link for sql of cities, countries, states : https://github.com/dr5hn/countries-states-cities-database/blob/master/sql/cities.sql
